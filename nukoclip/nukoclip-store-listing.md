@@ -499,14 +499,17 @@ Nukoclip은 스마트폰과 태블릿에서 본격적인 일러스트 작업이 
 ---
 
 ## 備考・確認事項
-- 連絡先メール: nu0417ko@gmail.com(確定・アプリ内「このアプリについて」にも表示済み)。
-- プライバシーポリシー: https://wildheit.github.io/nukoclip/nukoclip-privacy.html(公開済み、日付も実日付に更新済み)。
+- 連絡先メール: contact@nukoapps.fyi(2026-09-20に独自ドメイン取得に伴い変更。アプリ内「このアプリについて」にも反映済み)。
+- プライバシーポリシー: https://nukoapps.fyi/nukoclip/nukoclip-privacy.html(2026-09-29にドメイン移行、公開済み、日付も実日付に更新済み)。
 - アイコン512×512・フィーチャーグラフィック1024×500は書き出し済み。
-- GitHub紹介ページ(https://wildheit.github.io/nukoclip/)は実機スクリーンショットを使った
+- GitHub紹介ページ(https://nukoapps.fyi/nukoclip/)は実機スクリーンショットを使った
   機能紹介画像(レイヤー/左手デバイス/筆圧ブラシ/多言語)に更新済み。
 - ストア用スクリーンショットも用意済み: 縦長4枚(全体紹介/レイヤー機能/マスク編集/左手デバイス)+
   横長3枚(左手デバイス/筆圧ブラシ/多言語対応)、いずれもキャプション付き・Android実機の上下バー除去済み。
-- コンテンツレーティング(全年齢向け想定)はPlay Console上で別途申告が必要。
+- 対象年齢は13歳以上(Play Console「対象年齢層」で13〜15/16〜17/18歳以上を選択、13歳未満は対象外)。
+  コンテンツレーティングはこれとは別にPlay Console上で申告が必要。
+- パッケージ名は`fyi.nukoapps.nukoclip`(2026-09-29に`io.github.wildheit.nukoclip`から変更。
+  Play Console上は別アプリとして新規登録が必要)。
 - PSD書き出し/読み込みは、ストア配布用ビルド(storeフレーバー)では機能ごと非表示になるよう対応済み
   (`BuildConfig.PSD_FEATURE_AVAILABLE`で制御。手元の開発用ビルドでは引き続き試せる)。説明文からも
   PSDへの言及は削除済み。
