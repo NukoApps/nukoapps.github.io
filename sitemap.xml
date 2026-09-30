@@ -2,34 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nukoapps.fyi/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://nukoapps.fyi/about/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://nukoapps.fyi/tokushoho/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://nukoapps.fyi/nukoclip/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://nukoapps.fyi/nukoclip/nukoclip-privacy.html</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
-    <loc>https://nukoapps.fyi/nukocompress/nukocompress-privacy.html</loc>
-    <lastmod>2026-09-19</lastmod>
+    <loc>https://nukoapps.fyi/compress/</loc>
+    <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://nukoapps.fyi/compress/compress-privacy.html</loc>
+    <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://nukoapps.fyi/exif/exif-privacy.html</loc>
+    <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://nukoapps.fyi/rename/rename-privacy.html</loc>
+    <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://nukoapps.fyi/scope/scope-privacy.html</loc>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://nukoapps.fyi/shadowingchinese/shadowingchinese-privacy.html</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://nukoapps.fyi/nukostash/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
 </urlset>
