@@ -31,6 +31,15 @@
       if (val2 !== null) el2.innerHTML = val2;
     }
 
+    var imgNodes = document.querySelectorAll('[data-ja-src],[data-en-src],[data-ja-alt],[data-en-alt]');
+    for (var m = 0; m < imgNodes.length; m++) {
+      var im = imgNodes[m];
+      var s = im.getAttribute('data-' + lang + '-src');
+      if (s !== null && im.getAttribute('src') !== s) im.setAttribute('src', s);
+      var a = im.getAttribute('data-' + lang + '-alt');
+      if (a !== null) im.setAttribute('alt', a);
+    }
+
     var btns = document.querySelectorAll('[data-lang-btn]');
     for (var k = 0; k < btns.length; k++) {
       var btn = btns[k];
