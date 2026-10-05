@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ja="ChineseShadowing — 好きな文章で、中国語シャドウイング。" data-en="ChineseShadowing — Chinese shadowing with any text.">ChineseShadowing — 好きな文章で、中国語シャドウイング。</title>
+<meta name="description" data-ja="ChineseShadowingは、好きな中国語の文章に拼音・注音を自動で付けてシャドウイング練習ができるAndroidアプリ。オフライン対応、録音して聞き比べ、AI発音採点(任意)。" data-en="ChineseShadowing is an Android app for Chinese shadowing practice. It adds Pinyin and Zhuyin to any text automatically, works offline, and lets you record and compare your voice, with optional AI scoring." content="ChineseShadowingは、好きな中国語の文章に拼音・注音を自動で付けてシャドウイング練習ができるAndroidアプリ。オフライン対応、録音して聞き比べ、AI発音採点(任意)。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --dark: #2A1418;
+    --dark-soft: #4A1E2C;
+    --rose: #E11D48;
+    --rose-deep: #BE123C;
+    --amber: #F5A623;
+    --cream: #FFF3DC;
+    --paper: #FFF9EE;
+    --ink: #2B2224;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--rose-deep); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--dark);
+    color: var(--cream);
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--cream); color: var(--dark); font-weight: bold; border-color: var(--cream); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 60%, #7A1F3A 130%);
+    color: var(--cream);
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 44px; margin: 0 0 8px; line-height: 1.2; }
+  .hero .tagline { font-size: 20px; opacity: 0.92; margin: 0 0 20px; color: var(--amber); }
+  .hero p.desc { font-size: 16px; opacity: 0.88; max-width: 46ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--rose);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art img {
+    max-height: 520px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--dark); }
+  .section-sub { text-align: center; color: #5a4a4e; margin: 0 0 40px; }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 14px;
+    scroll-snap-type: x mandatory;
+  }
+  .screens img {
+    scroll-snap-align: start;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    height: 480px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--rose-deep); }
+  .feature-card p { margin: 0; font-size: 14px; color: #5a4a4e; }
+
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .plan {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  }
+  .plan.pro { border: 2px solid var(--amber); }
+  .plan h3 { margin: 0 0 10px; font-size: 18px; color: var(--dark); }
+  .plan ul { margin: 0; padding-left: 20px; font-size: 14px; color: #4a3d40; }
+  .plan li { margin-bottom: 4px; }
+
+  .privacy-section { text-align: center; background: var(--cream); }
+  .privacy-note {
+    max-width: 680px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #4a3d40;
+    text-align: left;
+  }
+
+  .cta-section { text-align: center; background: var(--paper); }
+
+  footer {
+    background: var(--dark);
+    color: rgba(255,243,220,0.7);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: var(--cream); }
+
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    .screens img { height: 400px; }
+    header { flex-wrap: wrap; gap: 10px 16px; padding: 14px 16px; }
+    header nav { flex-wrap: wrap; gap: 8px 14px; }
+    header nav a { white-space: nowrap; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="ChineseShadowing icon">
+    ChineseShadowing
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <a href="chineseshadowing-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>ChineseShadowing</h1>
+      <p class="tagline" data-ja="好きな文章で、中国語シャドウイング。" data-en="Chinese shadowing with any text you like.">好きな文章で、中国語シャドウイング。</p>
+      <p class="desc" data-ja="中国語(普通話・台湾華語)の文章を貼り付けるだけで、すべての漢字に拼音と注音を自動で付与。録音して聞き比べながら、シャドウイングを続けられます。" data-en="Paste any Chinese text (Putonghua or Taiwan Mandarin) and every character gets Pinyin and Zhuyin automatically. Record yourself and compare with the model audio as you practice shadowing.">
+        中国語(普通話・台湾華語)の文章を貼り付けるだけで、すべての漢字に拼音と注音を自動で付与。
+        録音して聞き比べながら、シャドウイングを続けられます。
+      </p>
+      <div class="badges">
+        <span class="badge" data-ja="拼音・注音の両方に対応" data-en="Both Pinyin and Zhuyin">拼音・注音の両方に対応</span>
+        <span class="badge" data-ja="付与はオフラインで完結" data-en="Annotation works offline">付与はオフラインで完結</span>
+        <span class="badge" data-ja="9言語対応" data-en="9 languages">9言語対応</span>
+        <span class="badge" data-ja="基本無料・Pro買い切り" data-en="Free, with one-time Pro">基本無料・Pro買い切り</span>
+      </div>
+      <a class="cta" href="https://play.google.com/store/apps/details?id=fyi.nukoapps.chineseshadowing" data-ja="Google Play で手に入れよう" data-en="Get it on Google Play">Google Play で手に入れよう</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/screenshot_1_zhuyin.png"
+           data-ja-src="assets/screenshot_1_zhuyin.png" data-en-src="assets/en/screenshot_1_zhuyin.png"
+           alt="ChineseShadowingの画面: 漢字の上に注音符號を自動表示"
+           data-ja-alt="ChineseShadowingの画面: 漢字の上に注音符號を自動表示"
+           data-en-alt="ChineseShadowing screen: Zhuyin shown above each character automatically">
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="アプリの画面" data-en="Screenshots">アプリの画面</h2>
+    <p class="section-sub" data-ja="注音・拼音の表示から、録音、AI採点まで。" data-en="From Zhuyin and Pinyin display to recording and AI scoring.">注音・拼音の表示から、録音、AI採点まで。</p>
+    <div class="screens">
+      <img src="assets/screenshot_1_zhuyin.png" loading="lazy"
+           data-ja-src="assets/screenshot_1_zhuyin.png" data-en-src="assets/en/screenshot_1_zhuyin.png"
+           alt="オフラインで注音符號・拼音を自動表示"
+           data-ja-alt="オフラインで注音符號・拼音を自動表示"
+           data-en-alt="Auto Zhuyin and Pinyin, fully offline">
+      <img src="assets/screenshot_2_pinyin.png" loading="lazy"
+           data-ja-src="assets/screenshot_2_pinyin.png" data-en-src="assets/en/screenshot_2_pinyin.png"
+           alt="拼音・注音・漢字、表示は自由に選べる"
+           data-ja-alt="拼音・注音・漢字、表示は自由に選べる"
+           data-en-alt="Pinyin, Zhuyin, characters: your choice">
+      <img src="assets/screenshot_3_ai_scoring.png" loading="lazy"
+           data-ja-src="assets/screenshot_3_ai_scoring.png" data-en-src="assets/en/screenshot_3_ai_scoring.png"
+           alt="録音してAIが発音を採点"
+           data-ja-alt="録音してAIが発音を採点"
+           data-en-alt="Record and get AI pronunciation scores">
+      <img src="assets/screenshot_4_blind_mode.png" loading="lazy"
+           data-ja-src="assets/screenshot_4_blind_mode.png" data-en-src="assets/en/screenshot_4_blind_mode.png"
+           alt="ブラインドモードで耳を鍛える"
+           data-ja-alt="ブラインドモードで耳を鍛える"
+           data-en-alt="Train your ear in Blind mode">
+      <img src="assets/screenshot_5_register.png" loading="lazy"
+           data-ja-src="assets/screenshot_5_register.png" data-en-src="assets/en/screenshot_5_register.png"
+           alt="文章は貼り付け、またはカメラで読み取って登録"
+           data-ja-alt="文章は貼り付け、またはカメラで読み取って登録"
+           data-en-alt="Paste any text, or scan with the camera">
+      <img src="assets/screenshot_6_combined.png" loading="lazy"
+           data-ja-src="assets/screenshot_6_combined.png" data-en-src="assets/en/screenshot_6_combined.png"
+           alt="注音と拼音を並べて表示"
+           data-ja-alt="注音と拼音を並べて表示"
+           data-en-alt="Show Zhuyin and Pinyin together">
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="主な機能" data-en="Key features">主な機能</h2>
+    <p class="section-sub" data-ja="読む・聞く・話すを、一つのアプリで。" data-en="Read, listen, and speak, all in one app.">読む・聞く・話すを、一つのアプリで。</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="拼音と注音を自動で付与" data-en="Automatic Pinyin and Zhuyin">拼音と注音を自動で付与</h3>
+        <p data-ja="繁体字・簡体字の文章を貼り付けるだけ。内蔵辞書が全文字に注音符號と拼音を付けます。アカウントも通信も不要です。" data-en="Paste Traditional or Simplified Chinese and the built-in dictionary adds Zhuyin and Pinyin to every character. No account or network needed.">繁体字・簡体字の文章を貼り付けるだけ。内蔵辞書が全文字に注音符號と拼音を付けます。アカウントも通信も不要です。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="カメラで読み取り(試験的)" data-en="Scan with the camera (experimental)">カメラで読み取り(試験的)</h3>
+        <p data-ja="印刷された文字をカメラで読み取って登録できます。漢字をなぞって選択し、意味も調べられます。" data-en="Scan printed text with your camera. Drag over characters to select them and look up their meaning.">印刷された文字をカメラで読み取って登録できます。漢字をなぞって選択し、意味も調べられます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="3つの練習モード" data-en="Three practice modes">3つの練習モード</h3>
+        <p data-ja="一文リピート特訓、リッスン＆ポーズ、全文連続再生。再生速度は0.5〜1.5倍で調整できます。" data-en="Sentence Repeat Drill, Listen &amp; Pause, and Continuous Playback, at 0.5x to 1.5x speed.">一文リピート特訓、リッスン＆ポーズ、全文連続再生。再生速度は0.5〜1.5倍で調整できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="表示モードを切り替え" data-en="Flexible display modes">表示モードを切り替え</h3>
+        <p data-ja="漢字＋音標、漢字のみ、音標のみ、ブラインド(聞くだけ)。注音・拼音・両方から選べます。" data-en="Characters + Phonetics, Characters only, Phonetics only, or Blind (listening only). Show Zhuyin, Pinyin, or both.">漢字＋音標、漢字のみ、音標のみ、ブラインド(聞くだけ)。注音・拼音・両方から選べます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="録音して聞き比べ" data-en="Record and compare">録音して聞き比べ</h3>
+        <p data-ja="一文ずつ自分の声を録音し、お手本音声と聞き比べられます。読み上げは端末の音声合成(TTS)を使います。" data-en="Record your voice sentence by sentence and compare it with the model audio. Playback uses your device's text-to-speech.">一文ずつ自分の声を録音し、お手本音声と聞き比べられます。読み上げは端末の音声合成(TTS)を使います。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="AI発音採点(任意)" data-en="AI scoring (optional)">AI発音採点(任意)</h3>
+        <p data-ja="ご自身のGemini APIキーを設定すると、単語ごとの発音・声調のフィードバックが得られます。未設定でも他の機能はすべて使えます。" data-en="Add your own Gemini API key to get word-by-word pronunciation and tone feedback. Everything else works without it.">ご自身のGemini APIキーを設定すると、単語ごとの発音・声調のフィードバックが得られます。未設定でも他の機能はすべて使えます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="台湾華語・普通話を選べる" data-en="Taiwan Mandarin or Putonghua">台湾華語・普通話を選べる</h3>
+        <p data-ja="中国語の基準(國語/普通話)を設定で切り替え。AI採点の基準、既定の音声、台湾標準の読みに反映されます。" data-en="Choose the Guoyu or Putonghua standard in settings. It sets the reference for AI scoring, the default voice, and Taiwan-standard readings.">中国語の基準(國語/普通話)を設定で切り替え。AI採点の基準、既定の音声、台湾標準の読みに反映されます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="ブックマークと進捗" data-en="Bookmarks and progress">ブックマークと進捗</h3>
+        <p data-ja="復習したい文をブックマークして、練習の進捗を確認できます。" data-en="Bookmark sentences you want to revisit and track your progress.">復習したい文をブックマークして、練習の進捗を確認できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="無料版とPro版" data-en="Free and Pro">無料版とPro版</h2>
+    <p class="section-sub" data-ja="基本機能はすべて無料。Proは買い切りで、定期購入ではありません。" data-en="All core features are free. Pro is a one-time purchase, not a subscription.">基本機能はすべて無料。Proは買い切りで、定期購入ではありません。</p>
+    <div class="plans">
+      <div class="plan">
+        <h3 data-ja="無料版" data-en="Free">無料版</h3>
+        <ul>
+          <li data-ja="基本機能はすべて利用可能" data-en="All core features included">基本機能はすべて利用可能</li>
+          <li data-ja="文章は合計50文まで" data-en="Up to 50 sentences in total">文章は合計50文まで</li>
+          <li data-ja="画面下部に小さな広告バナー(Google AdMob)" data-en="Small ad banner at the bottom (Google AdMob)">画面下部に小さな広告バナー(Google AdMob)</li>
+        </ul>
+      </div>
+      <div class="plan pro">
+        <h3 data-ja="Pro版(買い切り)" data-en="Pro (one-time purchase)">Pro版(買い切り)</h3>
+        <ul>
+          <li data-ja="広告なし" data-en="No ads">広告なし</li>
+          <li data-ja="文章の登録数が無制限" data-en="Unlimited texts">文章の登録数が無制限</li>
+          <li data-ja="テキスト一覧の一括バックアップ・復元" data-en="Full backup and restore of your text list">テキスト一覧の一括バックアップ・復元</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div class="section-inner">
+    <h2 data-ja="プライバシーについて" data-en="About privacy">プライバシーについて</h2>
+    <p class="section-sub" data-ja="文章・ブックマーク・録音は、あなたの端末の中だけに保存されます。" data-en="Your texts, bookmarks, and recordings stay on your device.">文章・ブックマーク・録音は、あなたの端末の中だけに保存されます。</p>
+    <div class="privacy-note" data-ja="登録は不要で、開発者は独自のサーバーを持たず、文章・録音・写真を受け取ることはありません。AI機能を使う場合は、録音や画像がご自身のGemini APIキーでGoogleのGemini APIへ直接送信されます。無料版では広告(Google AdMob)が表示され、購入の処理はGoogle Playが行います。詳しくはプライバシーポリシーをご覧ください。" data-en="No sign-up is required. We run no server of our own and never receive your texts, recordings, or photos. If you use the AI features, recordings and images are sent directly from your device to Google's Gemini API with your own API key. The free version shows ads (Google AdMob), and purchases are handled by Google Play. See the Privacy Policy for details.">
+      登録は不要で、開発者は独自のサーバーを持たず、文章・録音・写真を受け取ることはありません。
+      AI機能を使う場合は、録音や画像がご自身のGemini APIキーでGoogleのGemini APIへ直接送信されます。
+      無料版では広告(Google AdMob)が表示され、購入の処理はGoogle Playが行います。詳しくはプライバシーポリシーをご覧ください。
+    </div>
+    <p style="margin-top:20px;"><a href="chineseshadowing-privacy" data-ja="プライバシーポリシーを読む" data-en="Read the Privacy Policy">プライバシーポリシーを読む</a></p>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="section-inner">
+    <h2 data-ja="今すぐ試してみる" data-en="Try it now">今すぐ試してみる</h2>
+    <p class="section-sub" data-ja="好きな文章で、今日から中国語のシャドウイングを。" data-en="Start shadowing Chinese with the text you love, today.">好きな文章で、今日から中国語のシャドウイングを。</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=fyi.nukoapps.chineseshadowing" data-ja="Google Play で手に入れよう" data-en="Get it on Google Play">Google Play で手に入れよう</a>
+  </div>
+</section>
+
+<footer>
+  <p>ChineseShadowing</p>
+  <p>
+    <a href="chineseshadowing-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+
+</body>
+</html>
