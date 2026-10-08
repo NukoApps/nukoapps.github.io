@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ja="Nukoket — 同人イベントの「売る」も「買う」も、これひとつ。" data-en="Nukoket — Sell and shop at doujin events, all in one app.">Nukoket — 同人イベントの「売る」も「買う」も、これひとつ。</title>
+<meta name="description" data-ja="Nukoketは、同人誌即売会・コミケ・オンリーイベントで頒布と買い物をサポートする無料Androidアプリです。レジ・お釣り計算・在庫管理・会場マップ・予算管理に対応し、オフラインで使えます。" data-en="Nukoket is a free Android app for doujin events and fan conventions. Booth register with change calculation, stock tracking, venue map and budget — all working offline." content="Nukoketは、同人誌即売会・コミケ・オンリーイベントで頒布と買い物をサポートする無料Androidアプリです。レジ・お釣り計算・在庫管理・会場マップ・予算管理に対応し、オフラインで使えます。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --coral-deep: #5A2414;
+    --coral: #B5532F;
+    --coral-bright: #F2A07B;
+    --violet-deep: #493B70;
+    --cream: #FBF4EC;
+    --ink: #222222;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--coral); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--coral-deep);
+    color: var(--cream);
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--cream); color: var(--coral-deep); font-weight: bold; border-color: var(--cream); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--coral-deep) 0%, #8A3D22 55%, #C8683F 120%);
+    color: var(--cream);
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero .title-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .hero .title-row img { width: 72px; height: 72px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .hero h1 { font-size: 44px; margin: 0; }
+  .hero .tagline { font-size: 20px; opacity: 0.95; margin: 0 0 20px; }
+  .hero p.desc { font-size: 16px; opacity: 0.88; max-width: 48ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--cream);
+    color: var(--coral-deep);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .cta[aria-disabled="true"] { opacity: 0.75; cursor: default; }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art img {
+    max-height: 560px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--coral-deep); }
+  .section-sub { text-align: center; color: #555; margin: 0 0 40px; }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    justify-content: center;
+  }
+  .screens figure { margin: 0; flex-shrink: 0; }
+  .screens img {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    height: 440px;
+    width: auto;
+  }
+  .screens figcaption { text-align: center; font-size: 13px; color: #666; margin-top: 8px; }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--coral); }
+  .feature-card p { margin: 0; font-size: 14px; color: #555; }
+
+  .alt { background: white; }
+  .alt .feature-card { background: var(--cream); box-shadow: none; }
+
+  .note-box {
+    max-width: 680px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #444;
+  }
+  .note-box ul { margin: 0; padding-left: 20px; }
+
+  footer {
+    background: var(--coral-deep);
+    color: rgba(251,244,236,0.75);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: var(--cream); }
+
+  @media (max-width: 760px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    .hero-art img { max-height: 460px; }
+    .screens { justify-content: flex-start; }
+    .screens img { height: 380px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="Nukoket icon">
+    Nukoket
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="title-row">
+        <img src="assets/icon.png" alt="">
+        <h1>Nukoket</h1>
+      </div>
+      <p class="tagline" data-ja="同人イベントの「売る」も「買う」も、これひとつ。" data-en="Sell and shop at doujin events, all in one app.">同人イベントの「売る」も「買う」も、これひとつ。</p>
+      <p class="desc" data-ja="同人誌即売会・コミケ・オンリーイベントのための無料アプリ。サークル参加ではレジ・お釣り計算・在庫管理を、一般参加では買い物リスト・会場マップ・予算管理を。通信が不安定な会場でも、すべてオフラインで動きます。" data-en="A free app for doujin events, comic markets and fan conventions. Exhibitors get a register with change calculation and stock tracking; buyers get a wish list, venue map and budget. Everything works offline, even when the hall's signal doesn't.">同人誌即売会・コミケ・オンリーイベントのための無料アプリ。サークル参加ではレジ・お釣り計算・在庫管理を、一般参加では買い物リスト・会場マップ・予算管理を。通信が不安定な会場でも、すべてオフラインで動きます。</p>
+      <div class="badges">
+        <span class="badge" data-ja="全機能無料" data-en="All features free">全機能無料</span>
+        <span class="badge" data-ja="オフラインで動作" data-en="Works offline">オフラインで動作</span>
+        <span class="badge" data-ja="データは端末内のみ" data-en="Data stays on your device">データは端末内のみ</span>
+        <span class="badge" data-ja="9言語対応" data-en="9 languages">9言語対応</span>
+      </div>
+      <a class="cta" href="#" aria-disabled="true" data-ja="Google Play で手に入れよう(近日公開)" data-en="Get it on Google Play (coming soon)">Google Play で手に入れよう(近日公開)</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/screen-register.jpg" alt="Nukoketのレジ画面">
+    </div>
+  </div>
+</div>
+
+<!-- ===== Exhibitors ===== -->
+<section>
+  <div class="section-inner">
+    <h2 data-ja="サークル参加(頒布)" data-en="For exhibitors">サークル参加(頒布)</h2>
+    <p class="section-sub" data-ja="準備から当日の会計、終わったあとの集計まで。" data-en="From preparation to checkout to the numbers afterwards.">準備から当日の会計、終わったあとの集計まで。</p>
+    <div class="screens">
+      <figure><img src="assets/screen-register.jpg" alt=""><figcaption data-ja="お客さん向けレジ画面" data-en="Customer-facing register">お客さん向けレジ画面</figcaption></figure>
+      <figure><img src="assets/screen-sell.jpg" alt=""><figcaption data-ja="タップで売上記録" data-en="Tap to record sales">タップで売上記録</figcaption></figure>
+      <figure><img src="assets/screen-summary.jpg" alt=""><figcaption data-ja="売上・お釣りの集計" data-en="Sales and cash summary">売上・お釣りの集計</figcaption></figure>
+      <figure><img src="assets/screen-giveaway.jpg" alt=""><figcaption data-ja="見本誌・プレゼントも記録" data-en="Samples and gifts">見本誌・プレゼントも記録</figcaption></figure>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="お客さん向けレジ画面" data-en="Customer-facing register">お客さん向けレジ画面</h3>
+        <p data-ja="大きな画像と価格で見やすく、お預かりのお札をタップするだけでおつりを自動計算。在庫数はお客さんに見せず、残りわずかなときだけ表示します。" data-en="Big pictures and prices; tap the bills you received and the change is calculated. Stock stays hidden and only shows when running low.">大きな画像と価格で見やすく、お預かりのお札をタップするだけでおつりを自動計算。在庫数はお客さんに見せず、残りわずかなときだけ表示します。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="商品・セット・在庫" data-en="Products, sets and stock">商品・セット・在庫</h3>
+        <p data-ja="画像・価格・搬入数を登録。「新刊＋ポストカード」のようなセットも作れて、売れると中身の在庫がそれぞれ減ります。" data-en="Register pictures, prices and how many you brought. Sets like “new book + postcard” take each item out of stock when sold.">画像・価格・搬入数を登録。「新刊＋ポストカード」のようなセットも作れて、売れると中身の在庫がそれぞれ減ります。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="見本誌・プレゼント" data-en="Sample copies and gifts">見本誌・プレゼント</h3>
+        <p data-ja="運営への見本誌や友達への献本は「あげた」として記録。在庫は減っても売上には含めません。" data-en="Copies given to the organizers or friends leave stock without counting as sales.">運営への見本誌や友達への献本は「あげた」として記録。在庫は減っても売上には含めません。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="お釣り準備と現金チェック" data-en="Change float and cash check">お釣り準備と現金チェック</h3>
+        <p data-ja="開始時の現金を金種ごとに数え、終了時の現金と売上を照らし合わせて過不足を確認できます。" data-en="Count the starting cash bill by bill, then compare the cash at the end with recorded sales.">開始時の現金を金種ごとに数え、終了時の現金と売上を照らし合わせて過不足を確認できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="持ち物チェックリスト" data-en="Packing checklist">持ち物チェックリスト</h3>
+        <p data-ja="お釣り・値札・テーブルクロスなど定番の持ち物をワンタップで。商品と搬入数もリストに入れられます。" data-en="Standard items in one tap, plus your products with the quantities to bring.">お釣り・値札・テーブルクロスなど定番の持ち物をワンタップで。商品と搬入数もリストに入れられます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="集計・CSV・前回からコピー" data-en="Summary, CSV and copy from last time">集計・CSV・前回からコピー</h3>
+        <p data-ja="商品ごとの販売数・消化率をCSVで書き出し。次のイベントは前回の商品・セット・リストを引き継いで準備できます。" data-en="Export per-product sales and sell-through as CSV, and start the next event from the previous one.">商品ごとの販売数・消化率をCSVで書き出し。次のイベントは前回の商品・セット・リストを引き継いで準備できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Buyers ===== -->
+<section class="alt">
+  <div class="section-inner">
+    <h2 data-ja="一般参加(買い物)" data-en="For buyers">一般参加(買い物)</h2>
+    <p class="section-sub" data-ja="買い忘れ・予算オーバー・回り忘れを防ぎます。" data-en="No missed circles, no blown budget.">買い忘れ・予算オーバー・回り忘れを防ぎます。</p>
+    <div class="screens">
+      <figure><img src="assets/screen-list.jpg" alt=""><figcaption data-ja="サークルと欲しいもの" data-en="Circles and wish list">サークルと欲しいもの</figcaption></figure>
+      <figure><img src="assets/screen-eventday.jpg" alt=""><figcaption data-ja="当日の買い物チェック" data-en="Event-day checklist">当日の買い物チェック</figcaption></figure>
+      <figure><img src="assets/screen-map.jpg" alt=""><figcaption data-ja="会場マップにピン" data-en="Pins on the venue map">会場マップにピン</figcaption></figure>
+      <figure><img src="assets/screen-budget.jpg" alt=""><figcaption data-ja="予算と頼まれもの" data-en="Budget and errands">予算と頼まれもの</figcaption></figure>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="サークルと欲しいもの" data-en="Circles and wish list">サークルと欲しいもの</h3>
+        <p data-ja="スペース番号・SNS・お品書き画像と一緒に登録。欲しいものは価格と優先度(絶対買う／できれば／余裕があれば)で整理。" data-en="Space number, SNS link and menu picture for each circle; items with price and priority (must / want / if budget allows).">スペース番号・SNS・お品書き画像と一緒に登録。欲しいものは価格と優先度(絶対買う／できれば／余裕があれば)で整理。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="当日の買い物チェック" data-en="Event-day checklist">当日の買い物チェック</h3>
+        <p data-ja="スペース番号順に並んだサークルを、残りのルートを見ながら巡回。購入済み・売り切れ・見送りをタップで記録。" data-en="Circles in space-number order with the route of the ones left. Tap to mark bought, sold out or skipped.">スペース番号順に並んだサークルを、残りのルートを見ながら巡回。購入済み・売り切れ・見送りをタップで記録。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="会場マップにピン" data-en="Venue map with pins">会場マップにピン</h3>
+        <p data-ja="配置図の画像を最大5ページまで取り込んで、サークルの位置にピン。買い残しの状況で色分けされます。" data-en="Import up to 5 pages of the venue map and pin your circles; pins are colored by what is left to buy.">配置図の画像を最大5ページまで取り込んで、サークルの位置にピン。買い残しの状況で色分けされます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="予算と頼まれもの" data-en="Budget and errands">予算と頼まれもの</h3>
+        <p data-ja="予定・必須・使った金額を予算と比較。友達からの頼まれものは自分の予算と分けて、友達ごとに集計します。" data-en="Planned, must-buy and spent amounts against your budget. Errands for friends are kept apart, with totals per friend.">予定・必須・使った金額を予算と比較。友達からの頼まれものは自分の予算と分けて、友達ごとに集計します。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="X・Pixivから追加" data-en="Add from X or Pixiv">X・Pixivから追加</h3>
+        <p data-ja="投稿・リンク・画像を共有するだけでサークルや欲しいものとして登録。スペース番号や作者名は読み取れる範囲で自動入力。" data-en="Share a post, link or picture to Nukoket to add a circle or wish-list item; space number and author are filled in when readable.">投稿・リンク・画像を共有するだけでサークルや欲しいものとして登録。スペース番号や作者名は読み取れる範囲で自動入力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Common ===== -->
+<section>
+  <div class="section-inner">
+    <h2 data-ja="海外イベントにも" data-en="Ready for events abroad">海外イベントにも</h2>
+    <p class="section-sub" data-ja="イベントごとの通貨、アプリ内で切り替えられる9言語。" data-en="Currency per event and 9 languages you can switch inside the app.">イベントごとの通貨、アプリ内で切り替えられる9言語。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="イベントごとの通貨" data-en="Currency per event">イベントごとの通貨</h3>
+        <p data-ja="日本円はもちろん、台湾ドル・韓国ウォン・米ドルなど。レジのお札ボタンも通貨に合わせて切り替わります。" data-en="Yen, Taiwan dollars, won, US dollars and more — the register's bill buttons follow the currency.">日本円はもちろん、台湾ドル・韓国ウォン・米ドルなど。レジのお札ボタンも通貨に合わせて切り替わります。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="9言語・アプリ内で切り替え" data-en="9 languages, switchable in the app">9言語・アプリ内で切り替え</h3>
+        <p data-ja="日本語・英語・繁体字/簡体字中国語・韓国語・タイ語・ベトナム語・スペイン語・フランス語。現地のお客さんとのやりとりにも。" data-en="Japanese, English, Traditional/Simplified Chinese, Korean, Thai, Vietnamese, Spanish and French — handy with customers abroad.">日本語・英語・繁体字/簡体字中国語・韓国語・タイ語・ベトナム語・スペイン語・フランス語。現地のお客さんとのやりとりにも。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="まるごとバックアップ" data-en="Full backup">まるごとバックアップ</h3>
+        <p data-ja="イベント・画像・設定を1つのファイルに保存して、機種変更先で復元できます。" data-en="Save events, pictures and settings to one file and restore them on a new phone.">イベント・画像・設定を1つのファイルに保存して、機種変更先で復元できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="section-inner">
+    <h2 data-ja="料金とプライバシー" data-en="Price and privacy">料金とプライバシー</h2>
+    <p class="section-sub" data-ja="すべての機能を無料で。データはあなたの端末の中だけに。" data-en="Every feature free. Your data stays on your device.">すべての機能を無料で。データはあなたの端末の中だけに。</p>
+    <div class="note-box">
+      <ul>
+        <li data-ja="すべての機能を無料で使えます。サブスクリプションはありません。" data-en="All features are free. There is no subscription.">すべての機能を無料で使えます。サブスクリプションはありません。</li>
+        <li data-ja="イベント・商品・売上・買い物リストのデータは端末内にのみ保存され、どこにもアップロードされません。" data-en="Your events, products, sales and shopping lists are stored only on your device and are never uploaded.">イベント・商品・売上・買い物リストのデータは端末内にのみ保存され、どこにもアップロードされません。</li>
+        <li data-ja="一部の画面に小さな広告(Google AdMob)が表示されます。販売・レジ・当日の買い物画面には表示しません。" data-en="A small ad banner (Google AdMob) appears on some screens — never on the selling, register or event-day screens.">一部の画面に小さな広告(Google AdMob)が表示されます。販売・レジ・当日の買い物画面には表示しません。</li>
+        <li data-ja="役に立ったら、アプリ内の任意のカンパで開発を応援していただけます。" data-en="If it helps you, you can support development with an optional in-app tip.">役に立ったら、アプリ内の任意のカンパで開発を応援していただけます。</li>
+      </ul>
+      <p style="margin:16px 0 0;"><a href="doujin-privacy.html" data-ja="プライバシーポリシーを見る" data-en="Read the privacy policy">プライバシーポリシーを見る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Nukoket</p>
+  <p>
+    <a href="doujin-privacy.html" data-ja="プライバシーポリシー" data-en="Privacy policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+
+</body>
+</html>
