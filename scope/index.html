@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ja="Scope — かざして、中国語の発音をチェック。" data-en="Scope — Point your camera, check the pronunciation.">Scope — かざして、中国語の発音をチェック。</title>
+<meta name="description" data-ja="Scopeは、カメラをかざすだけで中国語(繁体字・簡体字)に拼音・注音を重ねて表示するAndroidアプリ。台湾華語/普通話を選べて、オフラインでも使えます。" data-en="Scope is an Android app that overlays Pinyin and Zhuyin on Chinese text seen through your camera. Choose Taiwan Mandarin or Putonghua, and it works offline." content="Scopeは、カメラをかざすだけで中国語(繁体字・簡体字)に拼音・注音を重ねて表示するAndroidアプリ。台湾華語/普通話を選べて、オフラインでも使えます。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --dark: #0F172A;
+    --teal: #0E7490;
+    --teal-deep: #155E75;
+    --cyan: #22D3EE;
+    --cream: #F8E9D4;
+    --paper: #F2FAFC;
+    --ink: #1B2A33;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--teal); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--dark);
+    color: var(--cream);
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--cream); color: var(--dark); font-weight: bold; border-color: var(--cream); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--teal) 60%, var(--cyan) 135%);
+    color: var(--cream);
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 44px; margin: 0 0 8px; line-height: 1.2; }
+  .hero .tagline { font-size: 20px; opacity: 0.95; margin: 0 0 20px; color: var(--cyan); }
+  .hero p.desc { font-size: 16px; opacity: 0.9; max-width: 46ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--cyan);
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art img {
+    max-height: 520px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--dark); }
+  .section-sub { text-align: center; color: #4a5f69; margin: 0 0 40px; }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 14px;
+    scroll-snap-type: x mandatory;
+  }
+  .screens img {
+    scroll-snap-align: start;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    height: 480px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--teal-deep); }
+  .feature-card p { margin: 0; font-size: 14px; color: #4a5f69; }
+  .fine-print { max-width: 760px; margin: 32px auto 0; text-align: center; font-size: 13px; color: #5d727c; }
+
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .plan {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  }
+  .plan.pro { border: 2px solid var(--cyan); }
+  .plan h3 { margin: 0 0 10px; font-size: 18px; color: var(--dark); }
+  .plan ul { margin: 0; padding-left: 20px; font-size: 14px; color: #34464f; }
+  .plan li { margin-bottom: 4px; }
+
+  .privacy-section { text-align: center; background: var(--cream); }
+  .privacy-note {
+    max-width: 680px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #34464f;
+    text-align: left;
+  }
+
+  .cta-section { text-align: center; background: var(--paper); }
+  .cta-section .cta { background: var(--dark); color: var(--cream); }
+
+  footer {
+    background: var(--dark);
+    color: rgba(248,233,212,0.7);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: var(--cream); }
+
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    .screens img { height: 400px; }
+    header { flex-wrap: wrap; gap: 10px 16px; padding: 14px 16px; }
+    header nav { flex-wrap: wrap; gap: 8px 14px; }
+    header nav a { white-space: nowrap; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="Scope icon">
+    Scope
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <a href="scope-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Scope</h1>
+      <p class="tagline" data-ja="かざして、中国語の発音をチェック。" data-en="Point your camera, check the pronunciation.">かざして、中国語の発音をチェック。</p>
+      <p class="desc" data-ja="カメラをかざすだけで、目に映った中国語(繁体字・簡体字)に拼音・注音を重ねて表示。オフラインでさっと発音を調べたいときに使えます。" data-en="Point your camera at Chinese text and see Pinyin or Zhuyin overlaid on screen: a quick way to check pronunciation, even offline.">
+        カメラをかざすだけで、目に映った中国語(繁体字・簡体字)に拼音・注音を重ねて表示。
+        オフラインでさっと発音を調べたいときに使えます。
+      </p>
+      <div class="badges">
+        <span class="badge" data-ja="オフラインで動作" data-en="Works offline">オフラインで動作</span>
+        <span class="badge" data-ja="台湾華語・普通話を選択" data-en="Taiwan Mandarin or Putonghua">台湾華語・普通話を選択</span>
+        <span class="badge" data-ja="AIで精度アップも可能(任意)" data-en="Optional AI accuracy boost">AIで精度アップも可能(任意)</span>
+        <span class="badge" data-ja="基本無料・Pro買い切り" data-en="Free, with one-time Pro">基本無料・Pro買い切り</span>
+      </div>
+      <!-- Google Play の公開後、実際のストアURL(https://play.google.com/store/apps/details?id=fyi.nukoapps.scope)に差し替え -->
+      <a class="cta" href="#" aria-disabled="true" data-ja="Google Play で手に入れよう(近日公開)" data-en="Get it on Google Play (coming soon)">Google Play で手に入れよう(近日公開)</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/screenshot_1_live.jpg"
+           data-ja-src="assets/screenshot_1_live.jpg" data-en-src="assets/en/screenshot_1_live.jpg"
+           alt="Scopeの画面: カメラに映った中国語の上に注音を重ねて表示"
+           data-ja-alt="Scopeの画面: カメラに映った中国語の上に注音を重ねて表示"
+           data-en-alt="Scope screen: Zhuyin overlaid on Chinese text seen through the camera">
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="アプリの画面" data-en="Screenshots">アプリの画面</h2>
+    <p class="section-sub" data-ja="実際に台湾の看板・メニューを読み取った様子です。" data-en="Real Taiwanese signs and menus, read by the app.">実際に台湾の看板・メニューを読み取った様子です。</p>
+    <div class="screens">
+      <img src="assets/screenshot_1_live.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_1_live.jpg" data-en-src="assets/en/screenshot_1_live.jpg"
+           alt="かざすだけで拼音・注音を表示"
+           data-ja-alt="かざすだけで拼音・注音を表示"
+           data-en-alt="Point and see Pinyin and Zhuyin">
+      <img src="assets/screenshot_2_vertical.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_2_vertical.jpg" data-en-src="assets/en/screenshot_2_vertical.jpg"
+           alt="縦書きの文字も読み取りに挑戦"
+           data-ja-alt="縦書きの文字も読み取りに挑戦"
+           data-en-alt="Tries vertical text too">
+      <img src="assets/screenshot_3_detail.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_3_detail.jpg" data-en-src="assets/en/screenshot_3_detail.jpg"
+           alt="撮影して、ルビ付きでじっくり確認"
+           data-ja-alt="撮影して、ルビ付きでじっくり確認"
+           data-en-alt="Freeze the frame, read it closely">
+      <img src="assets/screenshot_4_ai.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_4_ai.jpg" data-en-src="assets/en/screenshot_4_ai.jpg"
+           alt="読み取りが心もとないときはAIでも(任意)"
+           data-ja-alt="読み取りが心もとないときはAIでも(任意)"
+           data-en-alt="Need a second opinion? Ask AI (optional)">
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="主な機能" data-en="Key features">主な機能</h2>
+    <p class="section-sub" data-ja="カメラをかざすだけで、その場で発音をチェックできます。" data-en="Just point the camera to check pronunciation on the spot.">カメラをかざすだけで、その場で発音をチェックできます。</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="かざすだけで発音表示" data-en="Instant pronunciation overlay">かざすだけで発音表示</h3>
+        <p data-ja="カメラを向けると、画面内の漢字にリアルタイムで拼音・注音が重なって表示されます。" data-en="Aim your camera and readings appear in real time over the characters on screen.">カメラを向けると、画面内の漢字にリアルタイムで拼音・注音が重なって表示されます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="縦書きの読み取りにも挑戦" data-en="Also tries vertical text">縦書きの読み取りにも挑戦</h3>
+        <p data-ja="台湾でよく見かける縦書きの看板やメニューも認識を試みます。" data-en="The app also attempts to read vertical-text signs and menus, common in Taiwan.">台湾でよく見かける縦書きの看板やメニューも認識を試みます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="撮影して落ち着いて確認" data-en="Freeze the frame">撮影して落ち着いて確認</h3>
+        <p data-ja="シャッターボタンで画面を一時静止。ちらつきを気にせず、その場でじっくり読み方を確認できます。" data-en="Tap the shutter to pause the view so you can read comfortably without flicker.">シャッターボタンで画面を一時静止。ちらつきを気にせず、その場でじっくり読み方を確認できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="読みやすい一覧表示" data-en="Clean, readable breakdown">読みやすい一覧表示</h3>
+        <p data-ja="静止した画像から、漢字と発音記号を1文字ずつ対応させたルビ風の一覧画面を表示します。" data-en="From a captured frame, view a ruby-text style layout pairing every character with its reading.">静止した画像から、漢字と発音記号を1文字ずつ対応させたルビ風の一覧画面を表示します。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="拼音・注音を切り替え" data-en="Switch Pinyin / Zhuyin">拼音・注音を切り替え</h3>
+        <p data-ja="簡体字の学習者にはピンイン、繁体字(台湾)の学習者にはボポモフォ(注音符號)を、ワンタップで切り替え。" data-en="Switch between Pinyin (Simplified Chinese learners) and Zhuyin/Bopomofo (Traditional Chinese/Taiwan learners) with one tap.">簡体字の学習者にはピンイン、繁体字(台湾)の学習者にはボポモフォ(注音符號)を、ワンタップで切り替え。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="台湾華語・普通話を選べる" data-en="Taiwan Mandarin or Putonghua">台湾華語・普通話を選べる</h3>
+        <p data-ja="読みが異なる語(例: 垃圾、星期)は選んだ基準に従い、多音字を含む語(例: 銀行)は文脈に沿って読みます。" data-en="Words read differently (e.g. 垃圾, 星期) follow the standard you choose, and words with several readings (e.g. 銀行) are read in context.">読みが異なる語(例: 垃圾、星期)は選んだ基準に従い、多音字を含む語(例: 銀行)は文脈に沿って読みます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="オフラインで動作" data-en="Works offline">オフラインで動作</h3>
+        <p data-ja="発音の変換は内蔵辞書ベースで完全にオフライン。通信環境がなくても旅行先でそのまま使えます。" data-en="Pronunciation lookup runs entirely on-device from a built-in dictionary, so no connection is needed while traveling.">発音の変換は内蔵辞書ベースで完全にオフライン。通信環境がなくても旅行先でそのまま使えます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="AIで精度アップ(任意)" data-en="Optional AI accuracy boost">AIで精度アップ(任意)</h3>
+        <p data-ja="ご自身のGemini APIキーを設定すると、撮影画面から画像をAIで再解析し、オフライン認識だけでは心もとない場合の精度を高められます。" data-en="Add your own Gemini API key to re-read the image with AI from the capture screen, improving accuracy when on-device recognition alone falls short.">ご自身のGemini APIキーを設定すると、撮影画面から画像をAIで再解析し、オフライン認識だけでは心もとない場合の精度を高められます。</p>
+      </div>
+    </div>
+    <p class="fine-print" data-ja="※文字認識の精度は、撮影対象・状況(照明・角度・ブレなど)やAndroid標準の文字認識エンジンの精度に依存します。どのような条件でも常に正確に読み取れることを保証するものではありません。" data-en="Recognition accuracy depends on what you photograph, shooting conditions (lighting, angle, motion blur), and Android's built-in text recognition engine. Accurate results are not guaranteed under all conditions.">
+      ※文字認識の精度は、撮影対象・状況(照明・角度・ブレなど)やAndroid標準の文字認識エンジンの精度に依存します。どのような条件でも常に正確に読み取れることを保証するものではありません。
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="無料版とPro版" data-en="Free and Pro">無料版とPro版</h2>
+    <p class="section-sub" data-ja="読み取り機能はすべて無料。Proは買い切りで、定期購入ではありません。" data-en="All reading features are free. Pro is a one-time purchase, not a subscription.">読み取り機能はすべて無料。Proは買い切りで、定期購入ではありません。</p>
+    <div class="plans">
+      <div class="plan">
+        <h3 data-ja="無料版" data-en="Free">無料版</h3>
+        <ul>
+          <li data-ja="読み取り機能はすべて利用可能" data-en="All reading features included">読み取り機能はすべて利用可能</li>
+          <li data-ja="画面上部に小さな広告バナー(Google AdMob)" data-en="Small ad banner at the top (Google AdMob)">画面上部に小さな広告バナー(Google AdMob)</li>
+        </ul>
+      </div>
+      <div class="plan pro">
+        <h3 data-ja="Pro版(買い切り)" data-en="Pro (one-time purchase)">Pro版(買い切り)</h3>
+        <ul>
+          <li data-ja="広告なし" data-en="No ads">広告なし</li>
+          <li data-ja="スキャン結果を記録として保存し、後から見返せる" data-en="Save scans as records to revisit later">スキャン結果を記録として保存し、後から見返せる</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div class="section-inner">
+    <h2 data-ja="プライバシーについて" data-en="About privacy">プライバシーについて</h2>
+    <p class="section-sub" data-ja="カメラ映像は、あなたの端末の中で処理されます。" data-en="The camera image is processed on your device.">カメラ映像は、あなたの端末の中で処理されます。</p>
+    <div class="privacy-note" data-ja="登録は不要で、開発者は独自のサーバーを持たず、カメラ映像や認識したテキストを受け取ることはありません。端末の外に送信されるのは、ご自身のGemini APIキーで再解析を選んだ画像と、無料版の広告リクエストのみです。購入の処理はGoogle Playが行います。詳しくはプライバシーポリシーをご覧ください。" data-en="No sign-up is required. We run no server of our own and never receive your camera feed or recognized text. The only data sent off your device is an image you choose to re-read with your own Gemini API key, and ad requests in the free version. Purchases are handled by Google Play. See the Privacy Policy for details.">
+      登録は不要で、開発者は独自のサーバーを持たず、カメラ映像や認識したテキストを受け取ることはありません。
+      端末の外に送信されるのは、ご自身のGemini APIキーで再解析を選んだ画像と、無料版の広告リクエストのみです。
+      購入の処理はGoogle Playが行います。詳しくはプライバシーポリシーをご覧ください。
+    </div>
+    <p style="margin-top:20px;"><a href="scope-privacy" data-ja="プライバシーポリシーを読む" data-en="Read the Privacy Policy">プライバシーポリシーを読む</a></p>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="section-inner">
+    <h2 data-ja="無料ではじめられます" data-en="Free to start">無料ではじめられます</h2>
+    <p class="section-sub" data-ja="読み取り機能はすべて無料。カメラをかざして、その場で発音をチェック。" data-en="All reading features are free. Point your camera and check the pronunciation on the spot.">読み取り機能はすべて無料。カメラをかざして、その場で発音をチェック。</p>
+    <!-- Google Play の公開後、実際のストアURLに差し替え -->
+    <a class="cta" href="#" aria-disabled="true" data-ja="Google Play で手に入れよう(近日公開)" data-en="Get it on Google Play (coming soon)">Google Play で手に入れよう(近日公開)</a>
+  </div>
+</section>
+
+<footer>
+  <p>Scope</p>
+  <p>
+    <a href="scope-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+
+</body>
+</html>
