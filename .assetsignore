@@ -1,0 +1,9 @@
+# Cloudflare Workers static assets: files listed here are NOT uploaded.
+# The Git history (.git) can exceed the 25 MiB per-asset limit and made the deploy fail.
+.git
+.github
+.wrangler
+node_modules
+wrangler.json
+wrangler.jsonc
+.assetsignore
