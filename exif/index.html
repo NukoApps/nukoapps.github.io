@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ja="Exif — 共有する前に、写真の個人情報を削除。" data-en="Exif — Remove private photo metadata before you share.">Exif — 共有する前に、写真の個人情報を削除。</title>
+<meta name="description" data-ja="Exifは、写真に隠れたGPS位置情報・撮影日時・カメラ情報(EXIF)を確認して、ワンタップで削除できるAndroidアプリです。元の写真は変更せず、新しいコピーとして保存します。" data-en="Exif is an Android app that shows the hidden GPS location, date and camera details (EXIF) inside your photos and removes them in one tap. Your original is never modified — the cleaned photo is saved as a new copy." content="Exifは、写真に隠れたGPS位置情報・撮影日時・カメラ情報(EXIF)を確認して、ワンタップで削除できるAndroidアプリです。元の写真は変更せず、新しいコピーとして保存します。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --violet-deep: #493B70;
+    --violet-soft: #6B5A96;
+    --steel-deep: #16303F;
+    --steel-bright: #4C9AC0;
+    --steel-accent: #2C5F7C;
+    --cream: #F8E9D4;
+    --ink: #222222;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--violet-soft); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--violet-deep);
+    color: var(--cream);
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--cream); color: var(--violet-deep); font-weight: bold; border-color: var(--cream); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--violet-deep) 0%, var(--violet-deep) 55%, var(--steel-accent) 130%);
+    color: var(--cream);
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 44px; margin: 0 0 8px; }
+  .hero .tagline { font-size: 20px; opacity: 0.9; margin: 0 0 20px; }
+  .hero p.desc { font-size: 16px; opacity: 0.85; max-width: 46ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--steel-accent);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .hero-art {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-art img {
+    max-height: 520px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--violet-deep); }
+  .section-sub { text-align: center; color: #555; margin: 0 0 40px; }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    justify-content: center;
+    scroll-snap-type: x mandatory;
+  }
+  .screens img {
+    scroll-snap-align: start;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    height: 420px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--violet-deep); }
+  .feature-card p { margin: 0; font-size: 14px; color: #555; }
+
+  .pro-card {
+    max-width: 720px;
+    margin: 48px auto 0;
+    background: white;
+    border: 2px solid var(--steel-accent);
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .pro-card h3 { margin: 0 0 6px; color: var(--steel-accent); font-size: 20px; }
+  .pro-card .pro-lead { margin: 0 0 12px; font-size: 14px; color: #555; }
+  .pro-card ul { margin: 0; padding-left: 20px; font-size: 15px; }
+
+  .feature-shots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin-top: 48px;
+  }
+  .feature-shots img {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .privacy-section {
+    text-align: center;
+    background: var(--cream);
+  }
+  .privacy-note {
+    max-width: 640px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #444;
+    text-align: left;
+  }
+
+  .cta-section {
+    text-align: center;
+    background: var(--cream);
+  }
+  .cta-section .cta { background: var(--violet-deep); }
+
+  footer {
+    background: var(--violet-deep);
+    color: rgba(248,233,212,0.7);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: var(--cream); }
+
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="Exif icon">
+    Exif
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <a href="exif-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Exif</h1>
+      <p class="tagline" data-ja="共有する前に、写真の個人情報を削除。" data-en="Remove private photo metadata before you share.">共有する前に、写真の個人情報を削除。</p>
+      <p class="desc" data-ja="写真には、撮影場所のGPS座標・撮影日時・スマホの機種名など、見えない情報(EXIF)が記録されていることがあります。Exifはそれをすべて確認して、ワンタップで取り除けるアプリです。" data-en="Photos often carry hidden metadata (EXIF): the exact GPS location, the date and time, your phone model and more. Exif shows you all of it and strips it out in one tap.">
+        写真には、撮影場所のGPS座標・撮影日時・スマホの機種名など、見えない情報(EXIF)が記録されていることがあります。
+        Exifはそれをすべて確認して、ワンタップで取り除けるアプリです。
+      </p>
+      <div class="badges">
+        <span class="badge" data-ja="GPSだけ/EXIFすべてを削除" data-en="Remove GPS only, or all EXIF">GPSだけ/EXIFすべてを削除</span>
+        <span class="badge" data-ja="写真は端末内だけで処理" data-en="Photos never leave your device">写真は端末内だけで処理</span>
+        <span class="badge" data-ja="元の写真は変更しません" data-en="Your original is never modified">元の写真は変更しません</span>
+        <span class="badge" data-ja="9言語対応" data-en="9 languages">9言語対応</span>
+        <span class="badge" data-ja="無料で使える" data-en="Free to use">無料で使える</span>
+      </div>
+      <a class="cta" href="https://play.google.com/store/apps/details?id=fyi.nukoapps.exif" data-ja="Google Play で手に入れよう" data-en="Get it on Google Play">Google Play で手に入れよう</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/feature-1-exif_gps.png"
+           data-ja-src="assets/feature-1-exif_gps.png" data-en-src="assets/en/feature-1-exif_gps.png"
+           alt="Exifの画面: 写真に記録されたGPS座標とカメラ情報の表示"
+           data-ja-alt="Exifの画面: 写真に記録されたGPS座標とカメラ情報の表示"
+           data-en-alt="Exif screen: GPS coordinates and camera details recorded in a photo">
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="アプリの画面" data-en="Screenshots">アプリの画面</h2>
+    <p class="section-sub" data-ja="写真を選ぶだけで、隠れた情報が見えます。" data-en="Pick a photo and see what it has been hiding.">写真を選ぶだけで、隠れた情報が見えます。</p>
+    <div class="screens">
+      <img src="assets/screenshot-1-exif.png"
+           data-ja-src="assets/screenshot-1-exif.png" data-en-src="assets/en/screenshot-1-exif.png"
+           alt="Exifの画面(GPS座標・カメラ情報)" data-ja-alt="Exifの画面(GPS座標・カメラ情報)" data-en-alt="Exif screen (GPS coordinates and camera info)">
+      <img src="assets/screenshot-2-removed.png"
+           data-ja-src="assets/screenshot-2-removed.png" data-en-src="assets/en/screenshot-2-removed.png"
+           alt="GPS削除後の画面(位置情報なし)" data-ja-alt="GPS削除後の画面(位置情報なし)" data-en-alt="After removing GPS (no location data)">
+      <img src="assets/screenshot-3-batch.png"
+           data-ja-src="assets/screenshot-3-batch.png" data-en-src="assets/en/screenshot-3-batch.png"
+           alt="一括モードの画面(Pro)" data-ja-alt="一括モードの画面(Pro)" data-en-alt="Batch mode (Pro)">
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="主な機能" data-en="Key features">主な機能</h2>
+    <p class="section-sub" data-ja="見える化して、ワンタップで安全に。" data-en="See it, then remove it safely in one tap.">見える化して、ワンタップで安全に。</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="写真に隠れた情報を確認" data-en="See what's hidden in a photo">写真に隠れた情報を確認</h3>
+        <p data-ja="解像度・撮影日時・GPS座標(標高と「マップで開く」付き)・カメラ情報、すべてのEXIFタグの一覧。" data-en="Dimensions, date taken, GPS coordinates (with altitude and “Open in Maps”), camera details and a list of every EXIF tag.">解像度・撮影日時・GPS座標(標高と「マップで開く」付き)・カメラ情報、すべてのEXIFタグの一覧。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="GPSだけを削除" data-en="Remove GPS only">GPSだけを削除</h3>
+        <p data-ja="位置情報だけを消して、他の情報は残せます。" data-en="Delete just the location and keep everything else.">位置情報だけを消して、他の情報は残せます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="EXIFをすべて削除" data-en="Remove all EXIF">EXIFをすべて削除</h3>
+        <p data-ja="写真からメタデータをすべて取り除きます。" data-en="Wipe all metadata from the photo.">写真からメタデータをすべて取り除きます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="必ず新しいコピーで保存" data-en="Always a new copy">必ず新しいコピーで保存</h3>
+        <p data-ja="元の写真は変更されません。きれいにしたコピーは、ギャラリーに保存することも、そのまま共有することもできます。" data-en="Your original is never modified. Save the cleaned copy to your gallery or share it straight from the app.">元の写真は変更されません。きれいにしたコピーは、ギャラリーに保存することも、そのまま共有することもできます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="画質はそのまま" data-en="Image quality untouched">画質はそのまま</h3>
+        <p data-ja="書き換えるのはメタデータだけ。写真を再圧縮しないので、画質は変わりません。" data-en="Only the metadata is rewritten — the photo itself is not re-compressed.">書き換えるのはメタデータだけ。写真を再圧縮しないので、画質は変わりません。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="登録・ログイン不要" data-en="No account, no sign-in">登録・ログイン不要</h3>
+        <p data-ja="写真を選んで、きれいにして、共有するだけ。9言語に対応しています。" data-en="Pick a photo, clean it, share it. Available in 9 languages.">写真を選んで、きれいにして、共有するだけ。9言語に対応しています。</p>
+      </div>
+    </div>
+
+    <div class="pro-card">
+      <h3 data-ja="Proでさらに便利に(買い切り)" data-en="Go further with Pro (one-time purchase)">Proでさらに便利に(買い切り)</h3>
+      <p class="pro-lead" data-ja="プライバシーの保護は、ずっと無料。Proは大量処理や細かな制御のための機能です。" data-en="Protecting your privacy is always free. Pro adds power tools for bigger jobs.">プライバシーの保護は、ずっと無料。Proは大量処理や細かな制御のための機能です。</p>
+      <ul>
+        <li data-ja="一括モード:たくさんの写真をまとめて処理" data-en="Batch mode: clean many photos at once">一括モード:たくさんの写真をまとめて処理</li>
+        <li data-ja="フォルダを選んで中の写真を一括追加" data-en="Add every photo in a folder in one go">フォルダを選んで中の写真を一括追加</li>
+        <li data-ja="選択的削除:位置情報・カメラ情報・日時・その他から、消したい項目だけを選択" data-en="Selective removal: choose location, camera info, date/time or other metadata">選択的削除:位置情報・カメラ情報・日時・その他から、消したい項目だけを選択</li>
+        <li data-ja="プリセット:よく使う組み合わせを保存して再利用" data-en="Presets: save your favorite combinations and reuse them">プリセット:よく使う組み合わせを保存して再利用</li>
+        <li data-ja="広告バナーを非表示" data-en="Removes the ad banner">広告バナーを非表示</li>
+      </ul>
+    </div>
+
+    <div class="feature-shots">
+      <img src="assets/feature-1-exif_gps.png" loading="lazy"
+           data-ja-src="assets/feature-1-exif_gps.png" data-en-src="assets/en/feature-1-exif_gps.png"
+           alt="写真に隠れた情報をひと目で確認: GPS座標とカメラ情報"
+           data-ja-alt="写真に隠れた情報をひと目で確認: GPS座標とカメラ情報"
+           data-en-alt="See what your photos reveal about you: GPS coordinates and camera info">
+      <img src="assets/feature-2-gps_removed.png" loading="lazy"
+           data-ja-src="assets/feature-2-gps_removed.png" data-en-src="assets/en/feature-2-gps_removed.png"
+           alt="ワンタップで位置情報を削除: 削除後は「位置情報なし」"
+           data-ja-alt="ワンタップで位置情報を削除: 削除後は「位置情報なし」"
+           data-en-alt="Remove location in one tap: it reads “No location data” afterwards">
+      <img src="assets/feature-3-new_copy.png" loading="lazy"
+           data-ja-src="assets/feature-3-new_copy.png" data-en-src="assets/en/feature-3-new_copy.png"
+           alt="元の写真はそのまま、新しいコピーで保存"
+           data-ja-alt="元の写真はそのまま、新しいコピーで保存"
+           data-en-alt="Saved as a new copy, your original stays untouched">
+      <img src="assets/feature-4-batch_list.png" loading="lazy"
+           data-ja-src="assets/feature-4-batch_list.png" data-en-src="assets/en/feature-4-batch_list.png"
+           alt="たくさんの写真をまとめて処理(Pro)"
+           data-ja-alt="たくさんの写真をまとめて処理(Pro)"
+           data-en-alt="Clean many photos at once (Pro)">
+      <img src="assets/feature-5-batch_done.png" loading="lazy"
+           data-ja-src="assets/feature-5-batch_done.png" data-en-src="assets/en/feature-5-batch_done.png"
+           alt="一括処理もあっという間(Pro)"
+           data-ja-alt="一括処理もあっという間(Pro)"
+           data-en-alt="Whole batch done in seconds (Pro)">
+    </div>
+
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div class="section-inner">
+    <h2 data-ja="プライバシーについて" data-en="About privacy">プライバシーについて</h2>
+    <p class="section-sub" data-ja="写真の処理は、すべてあなたの端末内で完結します。" data-en="All photo processing happens entirely on your device.">写真の処理は、すべてあなたの端末内で完結します。</p>
+    <div class="privacy-note" data-ja="写真やそのメタデータがサーバーにアップロードされることはありません。写真に記録された位置情報を表示するため、Androidの「メディアの位置情報」権限を求めますが、端末の現在地は使用しません。無料版には画面下部に小さな広告(Google AdMob)が表示されます。買い切りのProにアップグレードすると、広告は表示されなくなり、一括モード・フォルダ追加・選択的削除・プリセットも使えるようになります。" data-en="Your photos and their metadata are never uploaded to any server. To show the location stored inside your photos, Android asks for the “media location” permission — Exif never uses your device’s current location. The free version shows a small ad (Google AdMob) at the bottom of the screen. Upgrading to the one-time Pro purchase removes the ad and also unlocks batch mode, folder import, selective removal and presets.">
+      写真やそのメタデータがサーバーにアップロードされることはありません。写真に記録された位置情報を表示するため、Androidの「メディアの位置情報」権限を求めますが、端末の現在地は使用しません。
+      無料版には画面下部に小さな広告(Google AdMob)が表示されます。買い切りのProにアップグレードすると、広告は表示されなくなり、
+      一括モード・フォルダ追加・選択的削除・プリセットも使えるようになります。
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="section-inner">
+    <h2 data-ja="今すぐ試してみる" data-en="Try it now">今すぐ試してみる</h2>
+    <p class="section-sub" data-ja="写真を共有する前に、まずExifで確認を。" data-en="Before you share a photo, check it with Exif first.">
+      写真を共有する前に、まずExifで確認を。
+    </p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=fyi.nukoapps.exif" data-ja="Google Play で手に入れよう" data-en="Get it on Google Play">Google Play で手に入れよう</a>
+  </div>
+</section>
+
+<footer>
+  <p>Exif</p>
+  <p>
+    <a href="exif-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+
+</body>
+</html>
