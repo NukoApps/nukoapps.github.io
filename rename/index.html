@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ja="Rename — ファイル名を一括変更" data-en="Rename — Batch File Renamer">Rename — ファイル名を一括変更</title>
+<meta name="description" data-ja="Renameは、たくさんのファイル名をまとめて変更できるアプリです。先頭・末尾の追加、検索と置換、連番。変更後の名前をプレビューしてから実行でき、ワンタップで元に戻せます。" data-en="Rename is a batch file renamer. Add a prefix or suffix, find &amp; replace, or number your files in order. Preview every new name before you rename, and undo in one tap." content="Renameは、たくさんのファイル名をまとめて変更できるアプリです。先頭・末尾の追加、検索と置換、連番。変更後の名前をプレビューしてから実行でき、ワンタップで元に戻せます。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --brown-deep: #3A2208;
+    --brown-mid: #6B4216;
+    --amber: #A8661F;
+    --amber-bright: #C77D2E;
+    --cream: #FBEBD0;
+    --paper: #FBF8F4;
+    --ink: #222222;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--amber); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--brown-deep);
+    color: var(--cream);
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--cream); color: var(--brown-deep); font-weight: bold; border-color: var(--cream); }
+
+  .hero {
+    background: linear-gradient(120deg, #2A1804 0%, var(--brown-mid) 50%, var(--amber-bright) 130%);
+    color: var(--cream);
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 44px; margin: 0 0 8px; }
+  .hero .tagline { font-size: 20px; opacity: 0.92; margin: 0 0 20px; }
+  .hero p.desc { font-size: 16px; opacity: 0.88; max-width: 46ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--amber);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art img {
+    max-height: 520px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--brown-mid); }
+  .section-sub { text-align: center; color: #555; margin: 0 0 40px; }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--brown-mid); }
+  .feature-card p { margin: 0; font-size: 14px; color: #555; }
+
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    justify-items: center;
+  }
+  .shots img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  .pro-list { max-width: 640px; margin: 0 auto; padding-left: 22px; color: #444; }
+  .pro-list li { margin: 4px 0; }
+
+  .privacy-section { text-align: center; }
+  .privacy-note {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #444;
+    text-align: left;
+  }
+  .privacy-note + .privacy-note { margin-top: 16px; }
+
+  .cta-section { text-align: center; }
+
+  footer {
+    background: var(--brown-deep);
+    color: rgba(251,235,208,0.7);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: var(--cream); }
+
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    header { flex-wrap: wrap; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="Rename icon">
+    Rename
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <a href="rename-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Rename</h1>
+      <p class="tagline" data-ja="ファイル名を、数秒で一括変更" data-en="Rename hundreds of files in seconds">ファイル名を、数秒で一括変更</p>
+      <p class="desc" data-ja="「DSC00184.JPG」のような名前の写真を、ひとつずつ直していませんか。Renameは、ファイルを選んでルールを決めるだけで、変更後の名前を見ながらまとめてリネームできるアプリです。やっぱりやめたい時も、ワンタップで元に戻せます。" data-en="Still fixing names like &quot;DSC00184.JPG&quot; one by one? Pick your files, set a rule, and rename them all while watching a live preview of the new names. Changed your mind? Undo in one tap.">
+        「DSC00184.JPG」のような名前の写真を、ひとつずつ直していませんか。
+        Renameは、ファイルを選んでルールを決めるだけで、変更後の名前を見ながらまとめてリネームできるアプリです。やっぱりやめたい時も、ワンタップで元に戻せます。
+      </p>
+      <div class="badges">
+        <span class="badge" data-ja="実行前にプレビュー" data-en="Preview before you rename">実行前にプレビュー</span>
+        <span class="badge" data-ja="ワンタップで元に戻す" data-en="One-tap undo">ワンタップで元に戻す</span>
+        <span class="badge" data-ja="すべて端末内で処理" data-en="Runs entirely on your device">すべて端末内で処理</span>
+        <span class="badge" data-ja="無料で使える" data-en="Free to use">無料で使える</span>
+      </div>
+      <a class="cta" href="https://play.google.com/store/apps/details?id=fyi.nukoapps.rename" data-ja="Google Play で手に入れよう" data-en="Get it on Google Play">Google Play で手に入れよう</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/feature-1-prefix_preview.png"
+           data-ja-src="assets/feature-1-prefix_preview.png" data-en-src="assets/en/feature-1-prefix_preview.png"
+           alt="Renameの画面。変更後の名前をプレビュー"
+           data-ja-alt="Renameの画面。変更後の名前をプレビュー"
+           data-en-alt="Rename app showing a preview of every new name">
+    </div>
+  </div>
+</div>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="主な機能" data-en="Key features">主な機能</h2>
+    <p class="section-sub" data-ja="ルールを決めて、確認して、実行するだけ。" data-en="Set a rule, check the preview, rename.">ルールを決めて、確認して、実行するだけ。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="実行前にプレビュー" data-en="Live preview">実行前にプレビュー</h3>
+        <p data-ja="すべてのファイルの「今の名前」と「変更後の名前」を並べて表示。「リネーム」を押すまで、ファイルには一切触れません。" data-en="Every file shows its current and new name side by side. Nothing is touched until you tap Rename.">すべてのファイルの「今の名前」と「変更後の名前」を並べて表示。「リネーム」を押すまで、ファイルには一切触れません。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="先頭・末尾に文字を追加" data-en="Prefix and suffix">先頭・末尾に文字を追加</h3>
+        <p data-ja="全ファイル名の先頭または末尾に好きな文字を追加。拡張子はそのまま保たれます。" data-en="Add text to the start or the end of every name. The file extension is always kept.">全ファイル名の先頭または末尾に好きな文字を追加。拡張子はそのまま保たれます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="検索と置換" data-en="Find &amp; replace">検索と置換</h3>
+        <p data-ja="ファイル名の一部をまとめて置き換え。「DSC00184.JPG」を「Kyoto_184.JPG」に、のように。拡張子は変わりません。" data-en="Replace part of every file name at once — turn &quot;DSC00184.JPG&quot; into &quot;Kyoto_184.JPG&quot;. The extension is never touched.">ファイル名の一部をまとめて置き換え。「DSC00184.JPG」を「Kyoto_184.JPG」に、のように。拡張子は変わりません。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="連番" data-en="Sequential numbering">連番</h3>
+        <p data-ja="開始番号、桁数(001、002…)、番号を名前の先頭に付けるか末尾に付けるかを選んで、順番に番号を振れます。" data-en="Choose the start number, the digits (001, 002…) and whether the number goes at the start or the end of the name.">開始番号、桁数(001、002…)、番号を名前の先頭に付けるか末尾に付けるかを選んで、順番に番号を振れます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="重複・空の名前を防止" data-en="Duplicate &amp; empty-name guard">重複・空の名前を防止</h3>
+        <p data-ja="同じ名前になるファイルや、名前が空になるファイルがあると、その場で警告して実行を止めます。上書きや事故を防げます。" data-en="If two files would get the same name, or a name would be empty, you get a warning and the batch is blocked until you fix it.">同じ名前になるファイルや、名前が空になるファイルがあると、その場で警告して実行を止めます。上書きや事故を防げます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="ワンタップで元に戻す" data-en="One-tap undo">ワンタップで元に戻す</h3>
+        <p data-ja="直前のバッチは、ワンタップで元のファイル名に戻せます。写真・動画・書類・音楽など、どのファイル形式でも使えます。" data-en="Restore the last batch to the original names in one tap. Works with photos, videos, documents, music — any file type.">直前のバッチは、ワンタップで元のファイル名に戻せます。写真・動画・書類・音楽など、どのファイル形式でも使えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="アプリの画面" data-en="Screenshots">アプリの画面</h2>
+    <p class="section-sub" data-ja="プレビュー、置換、連番、重複の警告、そして元に戻す。" data-en="Preview, replace, number, duplicate warning — and undo.">プレビュー、置換、連番、重複の警告、そして元に戻す。</p>
+    <div class="shots">
+      <img src="assets/feature-2-find_replace.png" loading="lazy" data-ja-src="assets/feature-2-find_replace.png" data-en-src="assets/en/feature-2-find_replace.png"
+           alt="ファイル名の一部をまとめて置換" data-ja-alt="ファイル名の一部をまとめて置換" data-en-alt="Find and replace in file names">
+      <img src="assets/feature-3-numbering.png" loading="lazy" data-ja-src="assets/feature-3-numbering.png" data-en-src="assets/en/feature-3-numbering.png"
+           alt="連番もワンタップで付与" data-ja-alt="連番もワンタップで付与" data-en-alt="Sequential numbers in one tap">
+      <img src="assets/feature-4-duplicate_warning.png" loading="lazy" data-ja-src="assets/feature-4-duplicate_warning.png" data-en-src="assets/en/feature-4-duplicate_warning.png"
+           alt="名前の重複は実行前にお知らせ" data-ja-alt="名前の重複は実行前にお知らせ" data-en-alt="Duplicate names are caught before they happen">
+      <img src="assets/feature-5-rename_done.png" loading="lazy" data-ja-src="assets/feature-5-rename_done.png" data-en-src="assets/en/feature-5-rename_done.png"
+           alt="実行後はいつでも元に戻せる" data-ja-alt="実行後はいつでも元に戻せる" data-en-alt="Undo anytime after renaming">
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="無料版とPro版(買い切り)" data-en="Free and Pro (one-time purchase)">無料版とPro版(買い切り)</h2>
+    <p class="section-sub" data-ja="基本機能は無料。たくさんのファイルを扱う方にProを用意しています。" data-en="The core features are free. Pro is there for people who handle lots of files.">基本機能は無料。たくさんのファイルを扱う方にProを用意しています。</p>
+    <ul class="pro-list">
+      <li data-ja="無料版:1回のバッチで最大50ファイルまで" data-en="Free: up to 50 files per batch">無料版:1回のバッチで最大50ファイルまで</li>
+      <li data-ja="Pro:1回あたりのファイル数が無制限" data-en="Pro: unlimited files per batch">Pro:1回あたりのファイル数が無制限</li>
+      <li data-ja="Pro:フォルダを選んで、中のファイルを一括追加" data-en="Pro: add every file in a folder at once">Pro:フォルダを選んで、中のファイルを一括追加</li>
+      <li data-ja="Pro:広告なし" data-en="Pro: no ads">Pro:広告なし</li>
+    </ul>
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div class="section-inner">
+    <h2 data-ja="プライバシーについて" data-en="Privacy">プライバシーについて</h2>
+    <p class="section-sub" data-ja="ファイルの名前も中身も、端末の外には出ません。" data-en="Neither your file names nor their contents ever leave your device.">ファイルの名前も中身も、端末の外には出ません。</p>
+    <div class="privacy-note" data-ja="リネームの処理はすべて端末内で行われます。ファイル名や中身がサーバーに送信されることはなく、アプリ自体が個人情報を収集することもありません。通信が発生するのは、Google Play(Pro購入時)と、無料版のGoogle AdMob(画面下部の小さな広告バナーの表示のため。端末の広告IDが使われる場合があります)のみです。買い切りのProにアップグレードすると広告は表示されなくなります。" data-en="All renaming happens on your device. File names and contents are never sent to any server, and the app does not collect personal data itself. The only network activity comes from Google Play (for the Pro purchase) and, in the free version, Google AdMob (which shows the small ad banner at the bottom and may use your device's advertising ID). Upgrading to the one-time Pro purchase removes the ads.">
+      リネームの処理はすべて端末内で行われます。ファイル名や中身がサーバーに送信されることはなく、アプリ自体が個人情報を収集することもありません。
+      通信が発生するのは、Google Play(Pro購入時)と、無料版のGoogle AdMob(画面下部の小さな広告バナーの表示のため。端末の広告IDが使われる場合があります)のみです。買い切りのProにアップグレードすると広告は表示されなくなります。
+    </div>
+    <div class="privacy-note" data-ja="Androidのバージョンによっては、メディアフォルダにある写真・動画のリネーム時に、システムのダイアログで1回限りの許可を求められることがあります。" data-en="On some Android versions, renaming photos and videos in media folders may ask for a one-time permission in a system dialog.">
+      Androidのバージョンによっては、メディアフォルダにある写真・動画のリネーム時に、システムのダイアログで1回限りの許可を求められることがあります。
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="今すぐ試してみる" data-en="Try it now">今すぐ試してみる</h2>
+    <p class="section-sub" data-ja="面倒なファイル名の整理を、数秒で。" data-en="Tidy up your file names in seconds.">面倒なファイル名の整理を、数秒で。</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=fyi.nukoapps.rename" data-ja="Google Play で手に入れよう" data-en="Get it on Google Play">Google Play で手に入れよう</a>
+  </div>
+</section>
+
+<footer>
+  <p>Rename</p>
+  <p>
+    <a href="rename-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+</body>
+</html>
