@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ja="NukoSync — NASへバックアップ・同期" data-en="NukoSync — NAS Backup &amp; Sync">NukoSync — NASへバックアップ・同期</title>
+<meta name="description" data-ja="NukoSyncは、スマホのフォルダを自宅のNASやPCへバックアップ・同期するAndroidアプリです。変更されたファイルだけを高速にコピーし、途中で切れても続きから再開します。SMB・SFTP・WebDAV・FTPに対応。" data-en="NukoSync backs up and syncs phone folders with your home NAS or PC on Android. It copies only what changed, fast, and resumes where it stopped. Works with SMB, SFTP, WebDAV and FTP." content="NukoSyncは、スマホのフォルダを自宅のNASやPCへバックアップ・同期するAndroidアプリです。変更されたファイルだけを高速にコピーし、途中で切れても続きから再開します。SMB・SFTP・WebDAV・FTPに対応。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --green-deep: #0C3324;
+    --green: #1F6B4A;
+    --green-soft: #2E7D5B;
+    --green-bright: #7FD3A8;
+    --lavender: #C9BEEA;
+    --cream: #F4F1E8;
+    --ink: #222222;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--green-soft); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--green-deep);
+    color: var(--cream);
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--cream); color: var(--green-deep); font-weight: bold; border-color: var(--cream); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-deep) 45%, var(--green) 120%);
+    color: var(--cream);
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 44px; margin: 0 0 8px; }
+  .hero .tagline { font-size: 20px; opacity: 0.9; margin: 0 0 20px; }
+  .hero p.desc { font-size: 16px; opacity: 0.85; max-width: 46ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--green-soft);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .cta[aria-disabled="true"] { cursor: default; opacity: 0.85; }
+  .hero-art {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-art img {
+    max-height: 520px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--green-deep); }
+  .section-sub { text-align: center; color: #555; margin: 0 0 40px; }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    justify-content: center;
+    scroll-snap-type: x mandatory;
+  }
+  .screens img {
+    scroll-snap-align: start;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    height: 420px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--green-deep); }
+  .feature-card p { margin: 0; font-size: 14px; color: #555; }
+
+  .feature-shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    margin-top: 48px;
+    justify-items: center;
+  }
+  .feature-shots img {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .proto-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .proto {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    min-width: 200px;
+    text-align: center;
+  }
+  .proto b { display: block; color: var(--green-deep); font-size: 17px; }
+  .proto span { font-size: 13px; color: #555; }
+
+  .pro-list { max-width: 640px; margin: 0 auto; padding-left: 22px; color: #444; }
+  .pro-list li { margin: 4px 0; }
+
+  .privacy-section {
+    text-align: center;
+    background: var(--cream);
+  }
+  .privacy-note {
+    max-width: 640px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #444;
+    text-align: left;
+  }
+  .privacy-note + .privacy-note { margin-top: 16px; }
+
+  .cta-section {
+    text-align: center;
+    background: var(--cream);
+  }
+  .cta-section .cta { background: var(--green-deep); }
+
+  footer {
+    background: var(--green-deep);
+    color: rgba(244,241,232,0.7);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: var(--cream); }
+
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    header { flex-wrap: wrap; gap: 10px; }
+    .screens { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="NukoSync icon">
+    NukoSync
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <a href="sync-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>NukoSync</h1>
+      <p class="tagline" data-ja="スマホのフォルダを、自宅のNASへ" data-en="Your phone's folders, on your home NAS">スマホのフォルダを、自宅のNASへ</p>
+      <p class="desc" data-ja="ファイルマネージャーでのコピーが遅い、途中で止まってどこまで進んだか分からない、毎回フォルダ全体をコピーし直している——そんな悩みを解消するバックアップ・同期アプリです。変更されたファイルだけを高速にコピーし、途中で切れても続きから再開します。" data-en="Slow copies in file managers, transfers that die halfway without telling you how far they got, whole folders copied again every time — NukoSync fixes all of that. It copies only what changed, fast, and picks up where it stopped.">
+        ファイルマネージャーでのコピーが遅い、途中で止まってどこまで進んだか分からない、毎回フォルダ全体をコピーし直している——そんな悩みを解消するバックアップ・同期アプリです。変更されたファイルだけを高速にコピーし、途中で切れても続きから再開します。
+      </p>
+      <div class="badges">
+        <span class="badge" data-ja="差分だけコピー" data-en="Copies only changes">差分だけコピー</span>
+        <span class="badge" data-ja="途中から再開" data-en="Resumes where it stopped">途中から再開</span>
+        <span class="badge" data-ja="SMB・SFTP・WebDAV・FTP" data-en="SMB, SFTP, WebDAV, FTP">SMB・SFTP・WebDAV・FTP</span>
+        <span class="badge" data-ja="無料で使える" data-en="Free to use">無料で使える</span>
+      </div>
+      <a class="cta" href="#" aria-disabled="true" data-ja="Google Play で手に入れよう(近日公開)" data-en="Get it on Google Play (coming soon)">Google Play で手に入れよう(近日公開)</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/feature-1-jobs.png"
+           data-ja-src="assets/feature-1-jobs.png" data-en-src="assets/en/feature-1-jobs.png"
+           alt="NukoSyncのジョブ一覧"
+           data-ja-alt="NukoSyncのジョブ一覧"
+           data-en-alt="Job list of the NukoSync app">
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="アプリの画面" data-en="Screenshots">アプリの画面</h2>
+    <p class="section-sub" data-ja="ジョブごとにコピー元とコピー先を固定。どこに入るかは保存前に分かります。" data-en="Each job keeps its own source and destination, and you see where files land before you save.">ジョブごとにコピー元とコピー先を固定。どこに入るかは保存前に分かります。</p>
+    <div class="screens">
+      <img src="assets/screenshot-jobs.png" alt="ジョブの一覧"
+           data-ja-src="assets/screenshot-jobs.png" data-en-src="assets/en/screenshot-jobs.png"
+           data-ja-alt="ジョブの一覧" data-en-alt="List of jobs">
+      <img src="assets/screenshot-destination.png" alt="コピー先のプレビュー"
+           data-ja-src="assets/screenshot-destination.png" data-en-src="assets/en/screenshot-destination.png"
+           data-ja-alt="コピー先のプレビュー" data-en-alt="Preview of the destination">
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="主な機能" data-en="Key features">主な機能</h2>
+    <p class="section-sub" data-ja="速く、確実に、取り違えずに。" data-en="Fast, reliable, and never mixed up.">速く、確実に、取り違えずに。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="速くて、差分だけ" data-en="Fast, and only what changed">速くて、差分だけ</h3>
+        <p data-ja="新しいファイルと変更されたファイルだけをコピー。大きな単位で転送するので、Wi-Fiでも速い。" data-en="Only new and changed files are copied, in large blocks that stay fast over Wi-Fi.">新しいファイルと変更されたファイルだけをコピー。大きな単位で転送するので、Wi-Fiでも速い。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="途中で切れても続きから" data-en="Picks up where it stopped">途中で切れても続きから</h3>
+        <p data-ja="Wi-Fiが切れても、Androidに止められても、次の実行で続きから。中途半端なファイルは残りません。" data-en="Wi-Fi lost or stopped by Android, the next run continues. No half-copied files are left behind.">Wi-Fiが切れても、Androidに止められても、次の実行で続きから。中途半端なファイルは残りません。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="進み具合と残り時間" data-en="Progress and time left">進み具合と残り時間</h3>
+        <p data-ja="通知とアプリに、ファイル数・転送量・速度・残り時間を表示。一時停止と再開もボタンひとつ。" data-en="Files, bytes, speed and time left in the notification and the app. Pause and resume with one tap.">通知とアプリに、ファイル数・転送量・速度・残り時間を表示。一時停止と再開もボタンひとつ。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="コピー先がひと目で" data-en="See where files land">コピー先がひと目で</h3>
+        <p data-ja="フォルダごとコピーか中身だけか、新しいフォルダか既存のフォルダかを、保存前にプレビュー。" data-en="Folder itself or just its contents, new folder or existing one: all shown in a preview before you save.">フォルダごとコピーか中身だけか、新しいフォルダか既存のフォルダかを、保存前にプレビュー。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="自動で実行" data-en="Runs on its own">自動で実行</h3>
+        <p data-ja="N時間ごと・毎日・毎週・毎月。Wi-Fiのときだけ、充電中だけも選べます。外出先では無駄に再試行しません。" data-en="Every N hours, daily, weekly or monthly, on Wi-Fi or while charging. Away from home it does not retry in vain.">N時間ごと・毎日・毎週・毎月。Wi-Fiのときだけ、充電中だけも選べます。外出先では無駄に再試行しません。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="失敗の理由まで分かる履歴" data-en="A history that explains">失敗の理由まで分かる履歴</h3>
+        <p data-ja="ファイルごとの結果と、サーバーが見つからない・通信が切れた・容量不足などの理由を表示。" data-en="Per-file results, and reasons like server not found, connection lost or disk full.">ファイルごとの結果と、サーバーが見つからない・通信が切れた・容量不足などの理由を表示。</p>
+      </div>
+    </div>
+    <div class="feature-shots">
+      <img src="assets/feature-2-destination.png" loading="lazy" data-ja-src="assets/feature-2-destination.png" data-en-src="assets/en/feature-2-destination.png"
+           alt="どこにコピーされるか保存前にひと目で" data-ja-alt="どこにコピーされるか保存前にひと目で" data-en-alt="See exactly where your files will land">
+      <img src="assets/feature-3-schedule.png" loading="lazy" data-ja-src="assets/feature-3-schedule.png" data-en-src="assets/en/feature-3-schedule.png"
+           alt="毎日・毎週・毎月スケジュールで自動実行" data-ja-alt="毎日・毎週・毎月スケジュールで自動実行" data-en-alt="Run daily, weekly or monthly, automatically">
+      <img src="assets/feature-4-history.png" loading="lazy" data-ja-src="assets/feature-4-history.png" data-en-src="assets/en/feature-4-history.png"
+           alt="結果も失敗の理由も履歴でしっかり確認" data-ja-alt="結果も失敗の理由も履歴でしっかり確認" data-en-alt="Results and reasons for every run">
+      <img src="assets/feature-5-details.png" loading="lazy" data-ja-src="assets/feature-5-details.png" data-en-src="assets/en/feature-5-details.png"
+           alt="転送したファイルを1つずつ確認・検索" data-ja-alt="転送したファイルを1つずつ確認・検索" data-en-alt="Check and search every transferred file">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="対応するサーバー" data-en="Supported servers">対応するサーバー</h2>
+    <p class="section-sub" data-ja="家庭用NAS、Windowsの共有フォルダ、Raspberry Piなど。" data-en="Home NAS, Windows shared folders, a Raspberry Pi and more.">家庭用NAS、Windowsの共有フォルダ、Raspberry Piなど。</p>
+    <div class="proto-list">
+      <div class="proto"><b>SMB 2/3</b><span data-ja="Windows・Samba・多くのNAS" data-en="Windows, Samba, most NAS">Windows・Samba・多くのNAS</span></div>
+      <div class="proto"><b>SFTP / SCP</b><span data-ja="Raspberry Pi・Linux" data-en="Raspberry Pi, Linux">Raspberry Pi・Linux</span></div>
+      <div class="proto"><b>WebDAV</b><span>HTTP / HTTPS</span></div>
+      <div class="proto"><b>FTP / FTPS</b><span data-ja="パッシブモード" data-en="Passive mode">パッシブモード</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="Pro版(買い切り)" data-en="Pro (one-time purchase)">Pro版(買い切り)</h2>
+    <p class="section-sub" data-ja="バックアップの基本機能はすべて無料。もっと使いこなしたい方にProを用意しています。" data-en="Every basic backup feature is free. Pro is there when you want more.">バックアップの基本機能はすべて無料。もっと使いこなしたい方にProを用意しています。</p>
+    <ul class="pro-list">
+      <li data-ja="定期実行のジョブ数が無制限(無料版は1件)" data-en="Unlimited scheduled jobs (free: 1)">定期実行のジョブ数が無制限(無料版は1件)</li>
+      <li data-ja="双方向同期" data-en="Two-way sync">双方向同期</li>
+      <li data-ja="ファイルフィルタ(種類・除外パターン・サイズ)" data-en="File filters (types, exclude patterns, size)">ファイルフィルタ(種類・除外パターン・サイズ)</li>
+      <li data-ja="1つのジョブに複数のフォルダ" data-en="Several folders in one job">1つのジョブに複数のフォルダ</li>
+      <li data-ja="並列転送(最大4)" data-en="Parallel transfers (up to 4)">並列転送(最大4)</li>
+      <li data-ja="チェックサム(SHA-256)で検証" data-en="Checksum verification (SHA-256)">チェックサム(SHA-256)で検証</li>
+      <li data-ja="ホーム画面ウィジェットとクイック設定タイル" data-en="Home screen widget and quick settings tile">ホーム画面ウィジェットとクイック設定タイル</li>
+      <li data-ja="設定のエクスポート/インポート" data-en="Export / import settings">設定のエクスポート/インポート</li>
+      <li data-ja="広告なし" data-en="No ads">広告なし</li>
+    </ul>
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div class="section-inner">
+    <h2 data-ja="プライバシーについて" data-en="Privacy">プライバシーについて</h2>
+    <p class="section-sub" data-ja="ファイルは、あなたのスマホとあなたのサーバーの間だけ。" data-en="Your files go only between your phone and your server.">ファイルは、あなたのスマホとあなたのサーバーの間だけ。</p>
+    <div class="privacy-note" data-ja="ファイルは、スマホとあなたが登録したサーバーの間だけでやり取りされ、開発者に送られることはありません。サーバーのパスワードはAndroid Keystoreで暗号化して端末内に保存します。スマホ側は、あなたが選んだフォルダにだけアクセスします。無料版には画面下部に小さな広告(Google AdMob)が表示されます。買い切りのProにアップグレードすると広告は表示されなくなります。" data-en="Files travel only between your phone and the servers you register, and are never sent to the developer. Server passwords are encrypted on the device with the Android Keystore, and the app only sees the phone folders you pick. The free version shows a small ad (Google AdMob) at the bottom of the screen; upgrading to the one-time Pro purchase removes it.">
+      ファイルは、スマホとあなたが登録したサーバーの間だけでやり取りされ、開発者に送られることはありません。サーバーのパスワードはAndroid Keystoreで暗号化して端末内に保存します。スマホ側は、あなたが選んだフォルダにだけアクセスします。
+      無料版には画面下部に小さな広告(Google AdMob)が表示されます。買い切りのProにアップグレードすると広告は表示されなくなります。
+    </div>
+    <div class="privacy-note" data-ja="Windowsの共有フォルダを使う場合:パスワード保護共有にはローカルアカウントが必要です。Microsoftアカウントだけのパソコンでは、パスワード保護共有をオフにして、アプリのユーザー名を空欄にしてください。" data-en="Using a Windows shared folder: password-protected sharing needs a local account. On a PC with only a Microsoft account, turn password-protected sharing off and leave the user name empty in the app.">
+      Windowsの共有フォルダを使う場合:パスワード保護共有にはローカルアカウントが必要です。Microsoftアカウントだけのパソコンでは、パスワード保護共有をオフにして、アプリのユーザー名を空欄にしてください。
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="今すぐ試してみる" data-en="Try it now">今すぐ試してみる</h2>
+    <p class="section-sub" data-ja="今夜から、スマホのバックアップは自動で。" data-en="Starting tonight, your phone backs itself up.">今夜から、スマホのバックアップは自動で。</p>
+    <a class="cta" href="#" aria-disabled="true" data-ja="Google Play で手に入れよう(近日公開)" data-en="Get it on Google Play (coming soon)">Google Play で手に入れよう(近日公開)</a>
+  </div>
+</section>
+
+<footer>
+  <p>NukoSync</p>
+  <p>
+    <a href="sync-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+</body>
+</html>

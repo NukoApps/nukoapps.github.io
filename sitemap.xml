@@ -88,4 +88,12 @@
     <loc>https://nukoapps.fyi/trip/trip-privacy.html</loc>
     <lastmod>2026-10-13</lastmod>
   </url>
+  <url>
+    <loc>https://nukoapps.fyi/sync/</loc>
+    <lastmod>2026-10-21</lastmod>
+  </url>
+  <url>
+    <loc>https://nukoapps.fyi/sync/sync-privacy.html</loc>
+    <lastmod>2026-10-21</lastmod>
+  </url>
 </urlset>
