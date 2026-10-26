@@ -47,7 +47,7 @@
 </div>
 
 <h1 data-ja="NukoSync プライバシーポリシー" data-en="Privacy Policy for NukoSync">Privacy Policy for NukoSync</h1>
-<p class="updated" data-ja="最終更新日: 2026年10月21日" data-en="Last updated: 21 Oct 2026">Last updated: 21 Oct 2026</p>
+<p class="updated" data-ja="最終更新日: 2026年10月26日" data-en="Last updated: 26 Oct 2026">Last updated: 26 Oct 2026</p>
 
 <p data-ja="NukoSync(以下「本アプリ」)は、Nuko(以下「当方」)が開発する、スマホのファイルを自宅のNASやPCへバックアップ・同期するAndroid向けアプリです。このページでは、本アプリがどのようなデータを扱い、また収集しないかについて説明します。" data-en="NukoSync (&quot;the app&quot;) is an Android app that backs up and syncs files between your phone and your own NAS or PC, developed by Nuko (&quot;we&quot;, &quot;our&quot;). This page explains what data the app handles — and what it does not collect.">
   NukoSync ("the app") is an Android app that backs up and syncs files between your phone and
@@ -75,6 +75,13 @@
   <li data-ja="<b>スマホ側のファイル</b>: Androidのフォルダ/ファイル選択画面であなたが選んだフォルダやファイルだけを読み書きします。端末全体のストレージへのアクセス権限は使いません。" data-en="<b>Files on the phone</b>: the app reads and writes only the folders and files you pick in Android's folder/file picker. It does not use the &quot;all files access&quot; permission.">
     <b>Files on the phone</b>: the app reads and writes only the folders and files you pick in
     Android's folder/file picker. It does not use the "all files access" permission.
+  </li>
+  <li data-ja="<b>写真の位置情報</b>: 写真や動画に記録された撮影場所(EXIFなどの位置情報)を消さずにそのままコピーするため、「写真の位置情報へのアクセス」を許可していただきます。位置情報はファイルの一部としてあなたのサーバーにだけ送られ、当方に送られることはありません。本アプリがファイルの外で位置情報を読み取ったり保存したりすることはなく、端末の現在地も使いません。許可しない場合も、位置情報が消えたコピーになるだけで、その他の機能は使えます。" data-en="<b>Photo locations</b>: to copy photos and videos with the place they were taken (location metadata such as EXIF) intact, the app asks for access to photo locations. The location travels only as part of the file to your own server and is never sent to us. The app does not read or store locations outside the files, and never uses your device's current location. If you deny it, the copies simply lose their location; everything else still works.">
+    <b>Photo locations</b>: to copy photos and videos with the place they were taken (location
+    metadata such as EXIF) intact, the app asks for access to photo locations. The location travels
+    only as part of the file to your own server and is never sent to us. The app does not read or
+    store locations outside the files, and never uses your device's current location. If you deny
+    it, the copies simply lose their location; everything else still works.
   </li>
   <li data-ja="<b>ネットワークの確認</b>: 予定の実行の前に、サーバーに短く接続できるかと、同じネットワーク(サブネット)にいるかを確認し、外出中なら転送をスキップします。Wi-FiのSSIDや位置情報は使いません。" data-en="<b>Network check</b>: before a scheduled run, the app briefly checks whether the server can be reached and whether the phone is on the same network (subnet), and skips the run when you are away from home. It does not use the Wi-Fi name (SSID) or your location.">
     <b>Network check</b>: before a scheduled run, the app briefly checks whether the server can be
@@ -137,8 +144,12 @@
     <code>POST_NOTIFICATIONS</code>: to keep a transfer running with the screen off, and to show
     its progress and result as a notification.
   </li>
-  <li data-ja="本アプリは位置情報・カメラ・連絡先・全ファイルへのアクセス権限を持ちません。" data-en="The app has no location, camera, contacts or all-files-access permission.">
-    The app has no location, camera, contacts or all-files-access permission.
+  <li data-ja="<code>ACCESS_MEDIA_LOCATION</code>: コピーする写真・動画の位置情報を消さずに残すため(上記「写真の位置情報」)。" data-en="<code>ACCESS_MEDIA_LOCATION</code>: to keep the location metadata of the photos and videos being copied (see &quot;Photo locations&quot; above).">
+    <code>ACCESS_MEDIA_LOCATION</code>: to keep the location metadata of the photos and videos being
+    copied (see "Photo locations" above).
+  </li>
+  <li data-ja="本アプリは端末の現在地・カメラ・連絡先・全ファイルへのアクセス権限を持ちません。" data-en="The app has no current-location, camera, contacts or all-files-access permission.">
+    The app has no current-location, camera, contacts or all-files-access permission.
   </li>
 </ul>
 
