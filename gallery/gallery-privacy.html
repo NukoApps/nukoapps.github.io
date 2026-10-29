@@ -67,18 +67,18 @@
 
 <h2 data-ja="サーバーとのやり取りについて" data-en="How the app uses your servers">How the app uses your servers</h2>
 <ul>
-  <li data-ja="<b>読み込み</b>: あなたが登録したサーバーから、あなたが選んだプロトコル(SMB、SFTP、WebDAV、FTP/FTPS)で直接、フォルダの一覧と、表示するファイル(サムネイル・写真・動画)を読み込みます。経路の暗号化はプロトコルとサーバーの設定によります(SFTP・HTTPS・FTPSは暗号化されます。平文のFTPやHTTPは暗号化されないため、自宅のネットワーク内でのみ使うことをおすすめします)。" data-en="<b>Reading</b>: the app reads folder listings and the files it shows (thumbnails, photos, videos) directly from the servers you register, using the protocol you choose (SMB, SFTP, WebDAV, FTP/FTPS). Whether the connection is encrypted depends on the protocol and your server (SFTP, HTTPS and FTPS are encrypted; plain FTP and HTTP are not, so use them only inside your home network).">
+  <li data-ja-html="<b>読み込み</b>: あなたが登録したサーバーから、あなたが選んだプロトコル(SMB、SFTP、WebDAV、FTP/FTPS)で直接、フォルダの一覧と、表示するファイル(サムネイル・写真・動画)を読み込みます。経路の暗号化はプロトコルとサーバーの設定によります(SFTP・HTTPS・FTPSは暗号化されます。平文のFTPやHTTPは暗号化されないため、自宅のネットワーク内でのみ使うことをおすすめします)。" data-en-html="<b>Reading</b>: the app reads folder listings and the files it shows (thumbnails, photos, videos) directly from the servers you register, using the protocol you choose (SMB, SFTP, WebDAV, FTP/FTPS). Whether the connection is encrypted depends on the protocol and your server (SFTP, HTTPS and FTPS are encrypted; plain FTP and HTTP are not, so use them only inside your home network).">
     <b>Reading</b>: the app reads folder listings and the files it shows (thumbnails, photos,
     videos) directly from the servers you register, using the protocol you choose (SMB, SFTP,
     WebDAV, FTP/FTPS). Whether the connection is encrypted depends on the protocol and your
     server (SFTP, HTTPS and FTPS are encrypted; plain FTP and HTTP are not, so use them only
     inside your home network).
   </li>
-  <li data-ja="<b>書き込み</b>: サーバーに書き込むのは、あなたがファイルのコピー・移動・削除を選んだときだけです。それ以外にサーバー上のファイルを変更することはありません。" data-en="<b>Writing</b>: the app writes to a server only when you choose to copy, move or delete files. It never changes files on the server otherwise.">
+  <li data-ja-html="<b>書き込み</b>: サーバーに書き込むのは、あなたがファイルのコピー・移動・削除を選んだときだけです。それ以外にサーバー上のファイルを変更することはありません。" data-en-html="<b>Writing</b>: the app writes to a server only when you choose to copy, move or delete files. It never changes files on the server otherwise.">
     <b>Writing</b>: the app writes to a server only when you choose to copy, move or delete
     files. It never changes files on the server otherwise.
   </li>
-  <li data-ja="<b>外部プレイヤー</b>: 動画を別のプレイヤーアプリで開くとき、本アプリは端末内(127.0.0.1)だけで受け付ける一時的な配信を行います。端末の外からは接続できません。" data-en="<b>External players</b>: when you open a video in another player app, the app serves it through a temporary stream that only accepts connections from the device itself (127.0.0.1). Nothing outside the device can connect to it.">
+  <li data-ja-html="<b>外部プレイヤー</b>: 動画を別のプレイヤーアプリで開くとき、本アプリは端末内(127.0.0.1)だけで受け付ける一時的な配信を行います。端末の外からは接続できません。" data-en-html="<b>External players</b>: when you open a video in another player app, the app serves it through a temporary stream that only accepts connections from the device itself (127.0.0.1). Nothing outside the device can connect to it.">
     <b>External players</b>: when you open a video in another player app, the app serves it
     through a temporary stream that only accepts connections from the device itself
     (127.0.0.1). Nothing outside the device can connect to it.
@@ -87,13 +87,13 @@
 
 <h2 data-ja="地図と撮影場所について" data-en="The map and photo locations">The map and photo locations</h2>
 <ul>
-  <li data-ja="<b>撮影場所</b>: 写真・動画に記録された撮影場所(EXIFなどの位置情報)は、サムネイルを作るときや、地図の「位置情報を読み込む」を押したときに読み取り、端末内の索引にだけ保存します。当方に送られることはありません。本アプリは端末の現在地を使いません。" data-en="<b>Photo locations</b>: the place a photo or video was taken (location metadata such as EXIF) is read when its thumbnail is made, or when you tap &quot;Read locations&quot; on the map, and is kept only in the index on your device. It is never sent to us. The app never uses your device's current location.">
+  <li data-ja-html="<b>撮影場所</b>: 写真・動画に記録された撮影場所(EXIFなどの位置情報)は、サムネイルを作るときや、地図の「位置情報を読み込む」を押したときに読み取り、端末内の索引にだけ保存します。当方に送られることはありません。本アプリは端末の現在地を使いません。" data-en-html="<b>Photo locations</b>: the place a photo or video was taken (location metadata such as EXIF) is read when its thumbnail is made, or when you tap &quot;Read locations&quot; on the map, and is kept only in the index on your device. It is never sent to us. The app never uses your device's current location.">
     <b>Photo locations</b>: the place a photo or video was taken (location metadata such as
     EXIF) is read when its thumbnail is made, or when you tap "Read locations" on the map, and
     is kept only in the index on your device. It is never sent to us. The app never uses your
     device's current location.
   </li>
-  <li data-ja="<b>地図画像</b>: 地図を開くと、表示している範囲の地図画像をOpenStreetMapのタイルサーバー(tile.openstreetmap.org)から読み込みます。そのため、あなたのIPアドレスと表示している範囲がOpenStreetMap財団に伝わります。写真や撮影場所の一覧は送られません。詳しくは<a href=&quot;https://osmfoundation.org/wiki/Privacy_Policy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>OpenStreetMap財団のプライバシーポリシー</a>をご覧ください。" data-en="<b>Map images</b>: when you open the map, images for the area on screen are loaded from OpenStreetMap's tile servers (tile.openstreetmap.org), so your IP address and the area you are viewing reach the OpenStreetMap Foundation. Your photos and the list of their locations are not sent. See the <a href=&quot;https://osmfoundation.org/wiki/Privacy_Policy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>OpenStreetMap Foundation's privacy policy</a>.">
+  <li data-ja-html="<b>地図画像</b>: 地図を開くと、表示している範囲の地図画像をOpenStreetMapのタイルサーバー(tile.openstreetmap.org)から読み込みます。そのため、あなたのIPアドレスと表示している範囲がOpenStreetMap財団に伝わります。写真や撮影場所の一覧は送られません。詳しくは<a href=&quot;https://osmfoundation.org/wiki/Privacy_Policy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>OpenStreetMap財団のプライバシーポリシー</a>をご覧ください。" data-en-html="<b>Map images</b>: when you open the map, images for the area on screen are loaded from OpenStreetMap's tile servers (tile.openstreetmap.org), so your IP address and the area you are viewing reach the OpenStreetMap Foundation. Your photos and the list of their locations are not sent. See the <a href=&quot;https://osmfoundation.org/wiki/Privacy_Policy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>OpenStreetMap Foundation's privacy policy</a>.">
     <b>Map images</b>: when you open the map, images for the area on screen are loaded from
     OpenStreetMap's tile servers (tile.openstreetmap.org), so your IP address and the area you
     are viewing reach the OpenStreetMap Foundation. Your photos and the list of their locations
@@ -104,22 +104,22 @@
 
 <h2 data-ja="端末内に保存されるもの" data-en="What is stored on your device">What is stored on your device</h2>
 <ul>
-  <li data-ja="<b>サーバーの設定</b>: ホスト名・ポート・共有名・ユーザー名、SFTPサーバーのホスト鍵の指紋。" data-en="<b>Server settings</b>: host name, port, share name, user name, and the host key fingerprint of SFTP servers.">
+  <li data-ja-html="<b>サーバーの設定</b>: ホスト名・ポート・共有名・ユーザー名、SFTPサーバーのホスト鍵の指紋。" data-en-html="<b>Server settings</b>: host name, port, share name, user name, and the host key fingerprint of SFTP servers.">
     <b>Server settings</b>: host name, port, share name, user name, and the host key fingerprint
     of SFTP servers.
   </li>
-  <li data-ja="<b>パスワード</b>: Android Keystoreの取り出せない鍵で暗号化して保存します。" data-en="<b>Passwords</b>: encrypted with a non-exportable key held by the Android Keystore.">
+  <li data-ja-html="<b>パスワード</b>: Android Keystoreの取り出せない鍵で暗号化して保存します。" data-en-html="<b>Passwords</b>: encrypted with a non-exportable key held by the Android Keystore.">
     <b>Passwords</b>: encrypted with a non-exportable key held by the Android Keystore.
   </li>
-  <li data-ja="<b>索引</b>: 選んだフォルダ内のフォルダ名・ファイル名・サイズ・日時、写真の解像度・撮影日時・撮影場所、動画の長さ、再生位置。素早く一覧を表示し、NASへのアクセスを減らすために使います。" data-en="<b>Index</b>: names, sizes and dates of the folders and files in the folders you chose, plus photo dimensions, dates and locations, video lengths and playback positions. It is used to show lists quickly and to reduce reads from your NAS.">
+  <li data-ja-html="<b>索引</b>: 選んだフォルダ内のフォルダ名・ファイル名・サイズ・日時、写真の解像度・撮影日時・撮影場所、動画の長さ、再生位置。素早く一覧を表示し、NASへのアクセスを減らすために使います。" data-en-html="<b>Index</b>: names, sizes and dates of the folders and files in the folders you chose, plus photo dimensions, dates and locations, video lengths and playback positions. It is used to show lists quickly and to reduce reads from your NAS.">
     <b>Index</b>: names, sizes and dates of the folders and files in the folders you chose, plus
     photo dimensions, dates and locations, video lengths and playback positions. It is used to
     show lists quickly and to reduce reads from your NAS.
   </li>
-  <li data-ja="<b>あなたが付けた情報</b>: ギャラリー、お気に入り、タグ、スマートアルバム、非公開アルバムの設定。" data-en="<b>What you add</b>: galleries, favorites, tags, smart albums and which albums are private.">
+  <li data-ja-html="<b>あなたが付けた情報</b>: ギャラリー、お気に入り、タグ、スマートアルバム、非公開アルバムの設定。" data-en-html="<b>What you add</b>: galleries, favorites, tags, smart albums and which albums are private.">
     <b>What you add</b>: galleries, favorites, tags, smart albums and which albums are private.
   </li>
-  <li data-ja="<b>キャッシュ</b>: サムネイル、写真のプレビュー、再生した動画の一部。設定で上限を決めたり、消去したりできます。" data-en="<b>Caches</b>: thumbnails, photo previews and the parts of videos you played. You can set their limits or clear them in Settings.">
+  <li data-ja-html="<b>キャッシュ</b>: サムネイル、写真のプレビュー、再生した動画の一部。設定で上限を決めたり、消去したりできます。" data-en-html="<b>Caches</b>: thumbnails, photo previews and the parts of videos you played. You can set their limits or clear them in Settings.">
     <b>Caches</b>: thumbnails, photo previews and the parts of videos you played. You can set
     their limits or clear them in Settings.
   </li>
@@ -136,7 +136,7 @@
 </p>
 
 <h2 data-ja="広告について(無料版)" data-en="Advertising (free version)">Advertising (free version)</h2>
-<p data-ja="無料版では、一覧画面の下部にGoogle AdMobによる小さなバナー広告を表示します(写真・動画の表示中は出ません)。AdMobは、広告の配信・効果測定・不正防止のために、広告識別子(広告ID)、端末情報、おおまかな位置情報(IPアドレスから推定)などを収集・利用することがあります。欧州経済領域(EEA)・英国などの利用者には、GoogleのUser Messaging Platformで同意を確認し、設定の「広告のプライバシー設定」からいつでも変更できます。Googleによるデータの扱いについては<a href=&quot;https://policies.google.com/technologies/ads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Googleの広告に関するポリシー</a>をご覧ください。広告IDは端末の設定からリセットまたは削除できます。" data-en="The free version shows a small banner ad from Google AdMob at the bottom of list screens (never while a photo or video is shown). AdMob may collect and use the advertising ID, device information and approximate location (inferred from the IP address) to serve and measure ads and to prevent fraud. Users in the EEA, the UK and similar regions are asked for consent through Google's User Messaging Platform, and can change it at any time from &quot;Ad privacy options&quot; in Settings. See <a href=&quot;https://policies.google.com/technologies/ads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>how Google uses information from apps that use its services</a>. You can reset or delete the advertising ID in your device settings.">
+<p data-ja-html="無料版では、一覧画面の下部にGoogle AdMobによる小さなバナー広告を表示します(写真・動画の表示中は出ません)。AdMobは、広告の配信・効果測定・不正防止のために、広告識別子(広告ID)、端末情報、おおまかな位置情報(IPアドレスから推定)などを収集・利用することがあります。欧州経済領域(EEA)・英国などの利用者には、GoogleのUser Messaging Platformで同意を確認し、設定の「広告のプライバシー設定」からいつでも変更できます。Googleによるデータの扱いについては<a href=&quot;https://policies.google.com/technologies/ads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Googleの広告に関するポリシー</a>をご覧ください。広告IDは端末の設定からリセットまたは削除できます。" data-en-html="The free version shows a small banner ad from Google AdMob at the bottom of list screens (never while a photo or video is shown). AdMob may collect and use the advertising ID, device information and approximate location (inferred from the IP address) to serve and measure ads and to prevent fraud. Users in the EEA, the UK and similar regions are asked for consent through Google's User Messaging Platform, and can change it at any time from &quot;Ad privacy options&quot; in Settings. See <a href=&quot;https://policies.google.com/technologies/ads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>how Google uses information from apps that use its services</a>. You can reset or delete the advertising ID in your device settings.">
   The free version shows a small banner ad from Google AdMob at the bottom of list screens
   (never while a photo or video is shown). AdMob may collect and use the advertising ID, device
   information and approximate location (inferred from the IP address) to serve and measure ads
@@ -154,26 +154,26 @@
 
 <h2 data-ja="権限について" data-en="Permissions">Permissions</h2>
 <ul>
-  <li data-ja="<code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>: あなたのサーバーとの通信、地図画像、広告、アプリ内課金のため。" data-en="<code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>: to talk to your servers, and for map images, ads and the in-app purchase.">
+  <li data-ja-html="<code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>: あなたのサーバーとの通信、地図画像、広告、アプリ内課金のため。" data-en-html="<code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>: to talk to your servers, and for map images, ads and the in-app purchase.">
     <code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>: to talk to your servers, and for
     map images, ads and the in-app purchase.
   </li>
-  <li data-ja="<code>ACCESS_LOCAL_NETWORK</code>: 自宅などのローカルネットワーク上のNASに接続するため(Android 17以降)。接続先は登録したサーバーだけで、ネットワーク上の機器を探したり記録したりしません。" data-en="<code>ACCESS_LOCAL_NETWORK</code>: to connect to a NAS on your home (local) network, on Android 17 and later. The app only connects to the servers you register; it doesn't scan for or record other devices on the network.">
+  <li data-ja-html="<code>ACCESS_LOCAL_NETWORK</code>: 自宅などのローカルネットワーク上のNASに接続するため(Android 17以降)。接続先は登録したサーバーだけで、ネットワーク上の機器を探したり記録したりしません。" data-en-html="<code>ACCESS_LOCAL_NETWORK</code>: to connect to a NAS on your home (local) network, on Android 17 and later. The app only connects to the servers you register; it doesn't scan for or record other devices on the network.">
     <code>ACCESS_LOCAL_NETWORK</code>: to connect to a NAS on your home (local) network, on
     Android 17 and later. The app only connects to the servers you register; it doesn't scan for
     or record other devices on the network.
   </li>
-  <li data-ja="<code>FOREGROUND_SERVICE_DATA_SYNC</code> / <code>POST_NOTIFICATIONS</code>: 動画を別のプレイヤーで見ている間、配信を続け、その旨を通知で表示するため。" data-en="<code>FOREGROUND_SERVICE_DATA_SYNC</code> / <code>POST_NOTIFICATIONS</code>: to keep streaming while you watch a video in another player, with a notification saying so.">
+  <li data-ja-html="<code>FOREGROUND_SERVICE_DATA_SYNC</code> / <code>POST_NOTIFICATIONS</code>: 動画を別のプレイヤーで見ている間、配信を続け、その旨を通知で表示するため。" data-en-html="<code>FOREGROUND_SERVICE_DATA_SYNC</code> / <code>POST_NOTIFICATIONS</code>: to keep streaming while you watch a video in another player, with a notification saying so.">
     <code>FOREGROUND_SERVICE_DATA_SYNC</code> / <code>POST_NOTIFICATIONS</code>: to keep
     streaming while you watch a video in another player, with a notification saying so.
   </li>
-  <li data-ja="<code>MODIFY_AUDIO_SETTINGS</code>: 内蔵プレイヤーで音量を100%より大きくするため。" data-en="<code>MODIFY_AUDIO_SETTINGS</code>: to boost the volume above 100% in the built-in player.">
+  <li data-ja-html="<code>MODIFY_AUDIO_SETTINGS</code>: 内蔵プレイヤーで音量を100%より大きくするため。" data-en-html="<code>MODIFY_AUDIO_SETTINGS</code>: to boost the volume above 100% in the built-in player.">
     <code>MODIFY_AUDIO_SETTINGS</code>: to boost the volume above 100% in the built-in player.
   </li>
-  <li data-ja="<code>USE_BIOMETRIC</code>: アプリのロック(Pro)で端末の画面ロックを確認するため。" data-en="<code>USE_BIOMETRIC</code>: to check your screen lock for the app lock (Pro).">
+  <li data-ja-html="<code>USE_BIOMETRIC</code>: アプリのロック(Pro)で端末の画面ロックを確認するため。" data-en-html="<code>USE_BIOMETRIC</code>: to check your screen lock for the app lock (Pro).">
     <code>USE_BIOMETRIC</code>: to check your screen lock for the app lock (Pro).
   </li>
-  <li data-ja="<code>AD_ID</code>: 無料版の広告のため(上記「広告について」)。" data-en="<code>AD_ID</code>: for ads in the free version (see &quot;Advertising&quot; above).">
+  <li data-ja-html="<code>AD_ID</code>: 無料版の広告のため(上記「広告について」)。" data-en-html="<code>AD_ID</code>: for ads in the free version (see &quot;Advertising&quot; above).">
     <code>AD_ID</code>: for ads in the free version (see "Advertising" above).
   </li>
   <li data-ja="本アプリは端末の現在地・カメラ・連絡先・端末内の写真や全ファイルへのアクセス権限を持ちません。" data-en="The app has no current-location, camera, contacts, on-device photos or all-files-access permission.">
