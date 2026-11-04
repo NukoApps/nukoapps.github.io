@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ja="Tidy — スマホのファイル自動整理" data-en="Tidy — Auto File Organizer">Tidy — スマホのファイル自動整理</title>
+<meta name="description" data-ja="Tidyは、スマホの中に散らばったファイルをルールで自動整理するAndroidアプリです。アプリごとにバラバラの画像を1つのフォルダにまとめ、年や月が変わったらCameraフォルダを自動で切り替え。すべての操作は元に戻せます。" data-en="Tidy is an Android app that organizes the files scattered across your phone automatically, by rules. Gather the images every app saves into one folder, and switch the Camera folder each year or month. Every move can be undone." content="Tidyは、スマホの中に散らばったファイルをルールで自動整理するAndroidアプリです。アプリごとにバラバラの画像を1つのフォルダにまとめ、年や月が変わったらCameraフォルダを自動で切り替え。すべての操作は元に戻せます。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --deep: #0B3B41;
+    --deep-2: #16646E;
+    --teal: #2A8C97;
+    --teal-soft: #CBEBEF;
+    --violet: #C9BEEA;
+    --cream: #F4F8F8;
+    --ink: #222222;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--deep-2); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--deep);
+    color: white;
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: white; text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: white;
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: white; color: var(--deep); font-weight: bold; border-color: white; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--deep) 0%, var(--deep) 35%, var(--deep-2) 80%, var(--teal) 130%);
+    color: white;
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 44px; margin: 0 0 8px; }
+  .hero .tagline { font-size: 20px; color: var(--teal-soft); margin: 0 0 20px; }
+  .hero p.desc { font-size: 16px; opacity: 0.9; max-width: 46ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(203,235,239,0.14);
+    border: 1px solid rgba(203,235,239,0.45);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--teal-soft);
+    color: var(--deep);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .cta[aria-disabled="true"] { cursor: default; opacity: 0.85; }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art img {
+    max-height: 540px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--deep); }
+  .section-sub { text-align: center; color: #555; margin: 0 0 40px; }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    justify-content: center;
+    scroll-snap-type: x mandatory;
+  }
+  .screens img {
+    scroll-snap-align: start;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    height: 440px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--teal);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--deep); }
+  .feature-card p { margin: 0; font-size: 14px; color: #555; }
+
+  .feature-shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    margin-top: 48px;
+    justify-items: center;
+  }
+  .feature-shots img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .example {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .example b { display: block; color: var(--deep); font-size: 17px; margin-bottom: 6px; }
+  .example code { background: #EEF5F6; padding: 1px 6px; border-radius: 4px; font-size: 14px; }
+  .example span { font-size: 14px; color: #555; }
+
+  .pro-list { max-width: 640px; margin: 0 auto; padding-left: 22px; color: #444; }
+  .pro-list li { margin: 4px 0; }
+
+  .privacy-section { text-align: center; background: var(--cream); }
+  .privacy-note {
+    max-width: 640px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #444;
+    text-align: left;
+  }
+  .privacy-note + .privacy-note { margin-top: 16px; }
+
+  .cta-section { text-align: center; background: var(--cream); }
+  .cta-section .cta { background: var(--deep-2); color: white; }
+
+  footer {
+    background: var(--deep);
+    color: rgba(255,255,255,0.7);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: white; }
+
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    header { flex-wrap: wrap; gap: 10px; }
+    .screens { justify-content: flex-start; }
+    .screens img { height: 380px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="Tidy icon">
+    Tidy
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <a href="tidy-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Tidy</h1>
+      <p class="tagline" data-ja="スマホのファイルを、ルールで自動整理" data-en="Organize your phone's files automatically, by rules">スマホのファイルを、ルールで自動整理</p>
+      <p class="desc" data-ja="アプリごとに画像の保存先がバラバラ、Cameraフォルダに何千枚もたまって開くのが遅い、Downloadが散らかっている——そんな悩みを、一度ルールを作るだけで解消します。ファイルが増えたら数秒後に、または定期的に、Tidyがバックグラウンドで片付けます。" data-en="Every app saves pictures to its own folder, the Camera folder grows to thousands of photos and opens slowly, Download is a mess — set up a rule once and that's handled. A few seconds after new files appear, or on a schedule, Tidy tidies up in the background.">
+        アプリごとに画像の保存先がバラバラ、Cameraフォルダに何千枚もたまって開くのが遅い、Downloadが散らかっている——そんな悩みを、一度ルールを作るだけで解消します。ファイルが増えたら数秒後に、または定期的に、Tidyがバックグラウンドで片付けます。
+      </p>
+      <div class="badges">
+        <span class="badge" data-ja="散らばったファイルを集める" data-en="Gather scattered files">散らばったファイルを集める</span>
+        <span class="badge" data-ja="年・月でフォルダを切り替え" data-en="New folder each year or month">年・月でフォルダを切り替え</span>
+        <span class="badge" data-ja="すべて元に戻せる" data-en="Every move can be undone">すべて元に戻せる</span>
+        <span class="badge" data-ja="無料で使える" data-en="Free to use">無料で使える</span>
+      </div>
+      <a class="cta" aria-disabled="true" data-ja="Google Play で近日公開" data-en="Coming soon to Google Play">Google Play で近日公開</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/screenshot-home.jpg"
+           data-ja-src="assets/screenshot-home.jpg" data-en-src="assets/en/screenshot-home.jpg"
+           alt="Tidyのルール一覧"
+           data-ja-alt="Tidyのルール一覧"
+           data-en-alt="Rules in the Tidy app">
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="こんなふうに使えます" data-en="What you can do">こんなふうに使えます</h2>
+    <p class="section-sub" data-ja="ルールは2種類。組み合わせて、フォルダをすっきり保ちます。" data-en="Two kinds of rules. Combine them to keep your folders tidy.">ルールは2種類。組み合わせて、フォルダをすっきり保ちます。</p>
+    <div class="examples">
+      <div class="example">
+        <b data-ja="画像を1か所にまとめる" data-en="Gather images in one place">画像を1か所にまとめる</b>
+        <span data-ja-html="<code>Pictures/LINE</code>・<code>Pictures/Instagram</code>・<code>Pictures/X</code> → <code>Pictures/まとめ/2026-11</code>。ファイルが保存されたら数秒後に移動。" data-en-html="<code>Pictures/LINE</code>, <code>Pictures/Instagram</code>, <code>Pictures/X</code> → <code>Pictures/Collected/2026-11</code>, a few seconds after each file is saved."><code>Pictures/LINE</code>・<code>Pictures/Instagram</code>・<code>Pictures/X</code> → <code>Pictures/まとめ/2026-11</code>。ファイルが保存されたら数秒後に移動。</span>
+      </div>
+      <div class="example">
+        <b data-ja="年が変わったらCameraを切り替え" data-en="A new Camera folder each year">年が変わったらCameraを切り替え</b>
+        <span data-ja-html="2027年になったら <code>DCIM/Camera</code> を <code>Camera2026</code> に名前変更して、空の <code>Camera</code> を作成。数千枚あっても一瞬。" data-en-html="When 2027 starts, <code>DCIM/Camera</code> is renamed to <code>Camera2026</code> and an empty <code>Camera</code> is created. Instant, even with thousands of photos.">2027年になったら <code>DCIM/Camera</code> を <code>Camera2026</code> に名前変更して、空の <code>Camera</code> を作成。数千枚あっても一瞬。</span>
+      </div>
+      <div class="example">
+        <b data-ja="たまったら別フォルダへ" data-en="Archive when it fills up">たまったら別フォルダへ</b>
+        <span data-ja-html="<code>Screenshots</code> が1000枚になったら <code>Screenshots_20261104</code> に切り替え。表示が重くなる前に。" data-en-html="When <code>Screenshots</code> reaches 1000 files it becomes <code>Screenshots_20261104</code>, before it gets slow to open."><code>Screenshots</code> が1000枚になったら <code>Screenshots_20261104</code> に切り替え。表示が重くなる前に。</span>
+      </div>
+      <div class="example">
+        <b data-ja="古いダウンロードを片付ける" data-en="Clear out old downloads">古いダウンロードを片付ける</b>
+        <span data-ja-html="<code>Download</code> の30日以上前のPDFを、毎日 <code>Documents/Archive/2026</code> へ。" data-en-html="Every day, PDFs in <code>Download</code> older than 30 days move to <code>Documents/Archive/2026</code>."><code>Download</code> の30日以上前のPDFを、毎日 <code>Documents/Archive/2026</code> へ。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="主な機能" data-en="Key features">主な機能</h2>
+    <p class="section-sub" data-ja="任せきりにできて、いつでも確かめられる。" data-en="Leave it running, and check on it any time.">任せきりにできて、いつでも確かめられる。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="移動・コピー" data-en="Move or copy">移動・コピー</h3>
+        <p data-ja="複数のフォルダ(サブフォルダも可)から1か所へ。種類・拡張子・ファイル名のパターン・「○日以上前」で絞り込み、日付ごとのフォルダに自動で振り分け。" data-en="From several folders (sub folders too) into one. Filter by type, extension, name pattern or age, and sort into date folders automatically.">複数のフォルダ(サブフォルダも可)から1か所へ。種類・拡張子・ファイル名のパターン・「○日以上前」で絞り込み、日付ごとのフォルダに自動で振り分け。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="フォルダの自動切り替え" data-en="Folder rollover">フォルダの自動切り替え</h3>
+        <p data-ja="年・月が変わったら、またはファイル数が多くなったら。名前を変えて作り直すか、中のファイルを月・年ごとの保管フォルダへ移すかを選べます。" data-en="When the year or month changes, or when a folder holds too many files. Rename and recreate it, or move its files into an archive per month or year.">年・月が変わったら、またはファイル数が多くなったら。名前を変えて作り直すか、中のファイルを月・年ごとの保管フォルダへ移すかを選べます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="バックグラウンドで自動実行" data-en="Runs in the background">バックグラウンドで自動実行</h3>
+        <p data-ja="ファイルが追加されてから数秒後、または15分〜毎日の定期実行。常駐通知は出さず、電池にもやさしい仕組みです。" data-en="A few seconds after new files appear, or every 15 minutes to once a day. No resident notification, and easy on the battery.">ファイルが追加されてから数秒後、または15分〜毎日の定期実行。常駐通知は出さず、電池にもやさしい仕組みです。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="実行前にプレビュー" data-en="Preview first">実行前にプレビュー</h3>
+        <p data-ja="どのファイルがどこへ行くのか、実行する前に一覧で確認できます。" data-en="See exactly which files go where before anything runs.">どのファイルがどこへ行くのか、実行する前に一覧で確認できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="履歴と元に戻す" data-en="History and undo">履歴と元に戻す</h3>
+        <p data-ja="すべての操作を履歴に記録。移動もフォルダの切り替えも、ワンタップで元に戻せます。" data-en="Every operation is logged, and moves and folder switches can be undone with one tap.">すべての操作を履歴に記録。移動もフォルダの切り替えも、ワンタップで元に戻せます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="9か国語に対応" data-en="9 languages">9か国語に対応</h3>
+        <p data-ja="日本語・English・Español・Français・ภาษาไทย・Tiếng Việt・简体中文・繁體中文・한국어。" data-en="English, 日本語, Español, Français, ภาษาไทย, Tiếng Việt, 简体中文, 繁體中文 and 한국어.">日本語・English・Español・Français・ภาษาไทย・Tiếng Việt・简体中文・繁體中文・한국어。</p>
+      </div>
+    </div>
+    <div class="feature-shots">
+      <img src="assets/feature-1-home.jpg" loading="lazy" data-ja-src="assets/feature-1-home.jpg" data-en-src="assets/en/feature-1-home.jpg"
+           alt="ルールを作ればファイル整理はおまかせ" data-ja-alt="ルールを作ればファイル整理はおまかせ" data-en-alt="Set up rules once, your files tidy themselves">
+      <img src="assets/feature-2-gather.jpg" loading="lazy" data-ja-src="assets/feature-2-gather.jpg" data-en-src="assets/en/feature-2-gather.jpg"
+           alt="アプリごとにバラバラの画像を1つのフォルダにまとめる" data-ja-alt="アプリごとにバラバラの画像を1つのフォルダにまとめる" data-en-alt="Gather the images every app saves into one folder">
+      <img src="assets/feature-3-rollover.jpg" loading="lazy" data-ja-src="assets/feature-3-rollover.jpg" data-en-src="assets/en/feature-3-rollover.jpg"
+           alt="年が変わったらCameraをCamera2026に自動で切り替え" data-ja-alt="年が変わったらCameraをCamera2026に自動で切り替え" data-en-alt="New year? Camera becomes Camera2026 by itself">
+      <img src="assets/feature-4-preview.jpg" loading="lazy" data-ja-src="assets/feature-4-preview.jpg" data-en-src="assets/en/feature-4-preview.jpg"
+           alt="実行前にプレビュー" data-ja-alt="実行前にプレビュー" data-en-alt="Preview every move before it happens">
+      <img src="assets/feature-5-history.jpg" loading="lazy" data-ja-src="assets/feature-5-history.jpg" data-en-src="assets/en/feature-5-history.jpg"
+           alt="バックグラウンドで実行した履歴" data-ja-alt="バックグラウンドで実行した履歴" data-en-alt="History of background runs">
+      <img src="assets/feature-6-undo.jpg" loading="lazy" data-ja-src="assets/feature-6-undo.jpg" data-en-src="assets/en/feature-6-undo.jpg"
+           alt="すべての操作を記録してワンタップで元に戻せる" data-ja-alt="すべての操作を記録してワンタップで元に戻せる" data-en-alt="Every move is logged and can be undone">
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="Pro版(買い切り)" data-en="Pro (one-time purchase)">Pro版(買い切り)</h2>
+    <p class="section-sub" data-ja="機能はすべて無料版でも使えます。ルールをたくさん作りたい方にProを用意しています。" data-en="Every feature works in the free version. Pro is there when you want more rules.">機能はすべて無料版でも使えます。ルールをたくさん作りたい方にProを用意しています。</p>
+    <ul class="pro-list">
+      <li data-ja="ルール数が無制限(無料版は2つ)" data-en="Unlimited rules (free: 2)">ルール数が無制限(無料版は2つ)</li>
+      <li data-ja="広告なし" data-en="No ads">広告なし</li>
+    </ul>
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div class="section-inner">
+    <h2 data-ja="プライバシーについて" data-en="Privacy">プライバシーについて</h2>
+    <p class="section-sub" data-ja="ファイルは、あなたのスマホの外に出ません。" data-en="Your files never leave your phone.">ファイルは、あなたのスマホの外に出ません。</p>
+    <div class="privacy-note" data-ja="ファイルの移動・コピー・フォルダ名の変更はすべて端末の中で行われ、ファイルやファイル名が開発者に送られることはありません。ルールと履歴も端末内だけに保存します。無料版には画面下部に小さな広告(Google AdMob)が表示されます。買い切りのProにアップグレードすると広告は表示されなくなります。" data-en="Moving and copying files and renaming folders all happen on the device; no file or file name is ever sent to the developer. Rules and history stay on the device too. The free version shows a small ad (Google AdMob) at the bottom of the screen; upgrading to the one-time Pro purchase removes it.">
+      ファイルの移動・コピー・フォルダ名の変更はすべて端末の中で行われ、ファイルやファイル名が開発者に送られることはありません。ルールと履歴も端末内だけに保存します。
+      無料版には画面下部に小さな広告(Google AdMob)が表示されます。買い切りのProにアップグレードすると広告は表示されなくなります。
+    </div>
+    <div class="privacy-note" data-ja="他のアプリが保存したフォルダの間でファイルを自動で移動するため、Androidの「全ファイルへのアクセス」の許可が必要です。この許可はあなたが作ったルールのためだけに使われます。" data-en="To move files automatically between folders other apps save to, Tidy needs Android's &quot;All files access&quot; permission. It is used only for the rules you create.">
+      他のアプリが保存したフォルダの間でファイルを自動で移動するため、Androidの「全ファイルへのアクセス」の許可が必要です。この許可はあなたが作ったルールのためだけに使われます。
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="もうすぐ公開" data-en="Coming soon">もうすぐ公開</h2>
+    <p class="section-sub" data-ja="散らかったフォルダを、もう手で片付けなくていい。" data-en="No more tidying folders by hand.">散らかったフォルダを、もう手で片付けなくていい。</p>
+    <a class="cta" aria-disabled="true" data-ja="Google Play で近日公開" data-en="Coming soon to Google Play">Google Play で近日公開</a>
+  </div>
+</section>
+
+<footer>
+  <p>Tidy</p>
+  <p>
+    <a href="tidy-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+</body>
+</html>
