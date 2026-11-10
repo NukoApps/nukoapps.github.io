@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://nukoapps.fyi/localgallery/localgallery-privacy">
+<title data-ja="Gallery プライバシーポリシー" data-en="Gallery Privacy Policy">Gallery Privacy Policy</title>
+<script src="../assets/i18n.js" defer></script>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    line-height: 1.6;
+    color: #222;
+  }
+  .lang-toggle { display: flex; gap: 6px; justify-content: flex-end; margin-bottom: 16px; }
+  .lang-toggle button {
+    background: white;
+    border: 1px solid #ccc;
+    color: #444;
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: #2F64CF; color: white; border-color: #2F64CF; font-weight: bold; }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  .updated { color: #666; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { font-size: 16px; }
+  ul { padding-left: 22px; }
+  code {
+    background: #f2f2f2;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  a { color: #2F64CF; }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button type="button" data-lang-btn="ja">日本語</button>
+  <button type="button" data-lang-btn="en">EN</button>
+</div>
+
+<h1 data-ja="Gallery プライバシーポリシー" data-en="Privacy Policy for Gallery">Privacy Policy for Gallery</h1>
+<p class="updated" data-ja="最終更新日: 2026年11月10日" data-en="Last updated: 10 Nov 2026">Last updated: 10 Nov 2026</p>
+
+<p data-ja="Gallery(以下「本アプリ」)は、Nuko(以下「当方」)が開発する、スマホ内の写真・動画をフォルダごとのギャラリーにまとめて見るAndroid向けアプリです。このページでは、本アプリがどのようなデータを扱い、また収集しないかについて説明します。" data-en="Gallery (&quot;the app&quot;) is an Android app, developed by Nuko (&quot;we&quot;, &quot;our&quot;), for viewing the photos and videos on your phone in galleries made from the folders you choose. This page explains what data the app handles — and what it does not collect.">
+  Gallery ("the app") is an Android app, developed by Nuko ("we", "our"), for viewing the photos
+  and videos on your phone in galleries made from the folders you choose. This page explains what
+  data the app handles — and what it does not collect.
+</p>
+
+<h2 data-ja="概要" data-en="Short version">Short version</h2>
+<p data-ja="写真や動画はスマホの中だけで扱い、当方に送られることはありません(当方はサーバーを運用していません)。索引・ギャラリー・お気に入り・タグは端末内にのみ保存されます。地図を開いたときはOpenStreetMapから地図画像を読み込みます。無料版では広告を表示するため、Googleの広告SDK(AdMob)が広告識別子などのデータを扱います(詳しくは下記)。Pro版(買い切り)では広告は表示されません。" data-en="Your photos and videos are handled only on your phone; they are never sent to us (we do not run any server). The index, galleries, favorites and tags are stored only on your device. When you open the map, map images are loaded from OpenStreetMap. The free version shows ads, so Google's ad SDK (AdMob) handles data such as the advertising ID (details below). The Pro version (one-time purchase) shows no ads.">
+  Your photos and videos are handled only on your phone; they are never sent to us (we do not run
+  any server). The index, galleries, favorites and tags are stored only on your device. When you
+  open the map, map images are loaded from OpenStreetMap. The free version shows ads, so Google's
+  ad SDK (AdMob) handles data such as the advertising ID (details below). The Pro version
+  (one-time purchase) shows no ads.
+</p>
+
+<h2 data-ja="写真・動画の扱いについて" data-en="How the app uses your photos and videos">How the app uses your photos and videos</h2>
+<ul>
+  <li data-ja-html="<b>読み込み</b>: Androidのメディアストア(MediaStore)を通じて、端末内の写真・動画の一覧(フォルダ・ファイル名・サイズ・日時など)とサムネイル・本体を読み込みます。Android 14以降で「一部の写真のみ許可」を選んだ場合は、許可された写真・動画だけを扱います。" data-en-html="<b>Reading</b>: through Android's MediaStore, the app reads the list of photos and videos on your device (folders, file names, sizes, dates and so on) and their thumbnails and contents. If you allow access to selected photos only (Android 14 and later), the app handles only the ones you allowed.">
+    <b>Reading</b>: through Android's MediaStore, the app reads the list of photos and videos on
+    your device (folders, file names, sizes, dates and so on) and their thumbnails and contents.
+    If you allow access to selected photos only (Android 14 and later), the app handles only the
+    ones you allowed.
+  </li>
+  <li data-ja-html="<b>書き込み</b>: ファイルを変更するのは、あなたがコピー・移動・削除を選んだときだけです。移動と削除は、Androidの確認画面であなたが許可したときに行います(削除はAndroidのゴミ箱に移ります)。" data-en-html="<b>Writing</b>: the app changes files only when you choose to copy, move or delete them. Moves and deletions happen only after you allow them in Android's own confirmation dialog (deleted items go to Android's trash).">
+    <b>Writing</b>: the app changes files only when you choose to copy, move or delete them. Moves
+    and deletions happen only after you allow them in Android's own confirmation dialog (deleted
+    items go to Android's trash).
+  </li>
+  <li data-ja-html="<b>共有</b>: 共有ボタンを押したときだけ、選んだ写真・動画を、あなたが選んだアプリに渡します。" data-en-html="<b>Sharing</b>: only when you tap Share, the photos and videos you selected are handed to the app you pick.">
+    <b>Sharing</b>: only when you tap Share, the photos and videos you selected are handed to the
+    app you pick.
+  </li>
+  <li data-ja-html="<b>新しいフォルダの検出</b>: 写真・動画が追加・移動されたときに端末内で一覧を更新し、新しいフォルダができたら(アプリを閉じているときは通知で)お知らせします。この処理はすべて端末内で行われます。" data-en-html="<b>New-folder detection</b>: when photos or videos are added or moved, the app updates its list on the device and tells you about new folders (with a notification while the app is closed). All of this happens on your device.">
+    <b>New-folder detection</b>: when photos or videos are added or moved, the app updates its
+    list on the device and tells you about new folders (with a notification while the app is
+    closed). All of this happens on your device.
+  </li>
+</ul>
+
+<h2 data-ja="地図と撮影場所について" data-en="The map and photo locations">The map and photo locations</h2>
+<ul>
+  <li data-ja-html="<b>撮影場所</b>: 写真・動画に記録された撮影場所(EXIFなどの位置情報)は、地図を開いたときなどに読み取り、端末内の索引にだけ保存します。当方に送られることはありません。本アプリは端末の現在地を使いません。" data-en-html="<b>Photo locations</b>: the place a photo or video was taken (location metadata such as EXIF) is read when you open the map and similar, and is kept only in the index on your device. It is never sent to us. The app never uses your device's current location.">
+    <b>Photo locations</b>: the place a photo or video was taken (location metadata such as EXIF)
+    is read when you open the map and similar, and is kept only in the index on your device. It is
+    never sent to us. The app never uses your device's current location.
+  </li>
+  <li data-ja-html="<b>地図画像</b>: 地図を開くと、表示している範囲の地図画像をOpenStreetMapのタイルサーバー(tile.openstreetmap.org)から読み込みます。そのため、あなたのIPアドレスと表示している範囲がOpenStreetMap財団に伝わります。写真や撮影場所の一覧は送られません。詳しくは<a href=&quot;https://osmfoundation.org/wiki/Privacy_Policy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>OpenStreetMap財団のプライバシーポリシー</a>をご覧ください。" data-en-html="<b>Map images</b>: when you open the map, images for the area on screen are loaded from OpenStreetMap's tile servers (tile.openstreetmap.org), so your IP address and the area you are viewing reach the OpenStreetMap Foundation. Your photos and the list of their locations are not sent. See the <a href=&quot;https://osmfoundation.org/wiki/Privacy_Policy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>OpenStreetMap Foundation's privacy policy</a>.">
+    <b>Map images</b>: when you open the map, images for the area on screen are loaded from
+    OpenStreetMap's tile servers (tile.openstreetmap.org), so your IP address and the area you are
+    viewing reach the OpenStreetMap Foundation. Your photos and the list of their locations are not
+    sent. See the
+    <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">OpenStreetMap Foundation's privacy policy</a>.
+  </li>
+</ul>
+
+<h2 data-ja="端末内に保存されるもの" data-en="What is stored on your device">What is stored on your device</h2>
+<ul>
+  <li data-ja-html="<b>索引</b>: 写真・動画のフォルダ名・ファイル名・サイズ・日時、写真の解像度・撮影場所、動画の長さ、再生位置。素早く一覧を表示するために使います。" data-en-html="<b>Index</b>: folder names, file names, sizes and dates of your photos and videos, plus photo dimensions and locations, video lengths and playback positions. It is used to show lists quickly.">
+    <b>Index</b>: folder names, file names, sizes and dates of your photos and videos, plus photo
+    dimensions and locations, video lengths and playback positions. It is used to show lists
+    quickly.
+  </li>
+  <li data-ja-html="<b>あなたが付けた情報</b>: ギャラリーとそのフォルダ、隠したギャラリー、お気に入り、タグ、スマートアルバム、非公開アルバムの設定。" data-en-html="<b>What you add</b>: galleries and their folders, which galleries are hidden, favorites, tags, smart albums and which albums are private.">
+    <b>What you add</b>: galleries and their folders, which galleries are hidden, favorites, tags,
+    smart albums and which albums are private.
+  </li>
+  <li data-ja="これらのデータはAndroidのクラウドバックアップの対象外にしてあります。アプリをアンインストールすると削除されます(写真・動画そのものは削除されません)。" data-en="This data is excluded from Android's cloud backup and is deleted when you uninstall the app (your photos and videos themselves are not deleted).">
+    This data is excluded from Android's cloud backup and is deleted when you uninstall the app
+    (your photos and videos themselves are not deleted).
+  </li>
+</ul>
+
+<h2 data-ja="ギャラリーを隠す機能とアプリのロックについて" data-en="Hidden galleries and the app lock">Hidden galleries and the app lock</h2>
+<p data-ja="隠したギャラリーや「すべて」を再表示するとき、アプリのロック(Pro)、非公開アルバムの表示には、Androidの標準機能(BiometricPrompt)を通じて端末の画面ロック(指紋・顔・PIN・パターン)を使います。本アプリがパスワードや生体情報を受け取ったり保存したりすることはありません。" data-en="Showing a hidden gallery or the All tab again, the app lock (Pro) and showing private albums use your device's own screen lock (fingerprint, face, PIN or pattern) through Android's standard BiometricPrompt. The app never receives or stores a password or biometric data.">
+  Showing a hidden gallery or the All tab again, the app lock (Pro) and showing private albums use
+  your device's own screen lock (fingerprint, face, PIN or pattern) through Android's standard
+  BiometricPrompt. The app never receives or stores a password or biometric data.
+</p>
+
+<h2 data-ja="広告について(無料版)" data-en="Advertising (free version)">Advertising (free version)</h2>
+<p data-ja-html="無料版では、一覧画面の下部にGoogle AdMobによる小さなバナー広告を表示します(写真・動画の表示中は出ません)。AdMobは、広告の配信・効果測定・不正防止のために、広告識別子(広告ID)、端末情報、おおまかな位置情報(IPアドレスから推定)などを収集・利用することがあります。欧州経済領域(EEA)・英国などの利用者には、GoogleのUser Messaging Platformで同意を確認し、設定の「広告のプライバシー設定」からいつでも変更できます。Googleによるデータの扱いについては<a href=&quot;https://policies.google.com/technologies/ads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Googleの広告に関するポリシー</a>をご覧ください。広告IDは端末の設定からリセットまたは削除できます。" data-en-html="The free version shows a small banner ad from Google AdMob at the bottom of list screens (never while a photo or video is shown). AdMob may collect and use the advertising ID, device information and approximate location (inferred from the IP address) to serve and measure ads and to prevent fraud. Users in the EEA, the UK and similar regions are asked for consent through Google's User Messaging Platform, and can change it at any time from &quot;Ad privacy options&quot; in Settings. See <a href=&quot;https://policies.google.com/technologies/ads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>how Google uses information from apps that use its services</a>. You can reset or delete the advertising ID in your device settings.">
+  The free version shows a small banner ad from Google AdMob at the bottom of list screens (never
+  while a photo or video is shown). AdMob may collect and use the advertising ID, device
+  information and approximate location (inferred from the IP address) to serve and measure ads and
+  to prevent fraud. Users in the EEA, the UK and similar regions are asked for consent through
+  Google's User Messaging Platform, and can change it at any time from "Ad privacy options" in
+  Settings. See
+  <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">how Google uses information from apps that use its services</a>.
+  You can reset or delete the advertising ID in your device settings.
+</p>
+
+<h2 data-ja="アプリ内課金について" data-en="In-app purchase">In-app purchase</h2>
+<p data-ja="Pro版の購入はGoogle Playが処理します。支払い情報が当方に渡ることはありません。" data-en="Purchasing Pro is handled entirely by Google Play. Payment details never reach us.">
+  Purchasing Pro is handled entirely by Google Play. Payment details never reach us.
+</p>
+
+<h2 data-ja="権限について" data-en="Permissions">Permissions</h2>
+<ul>
+  <li data-ja-html="<code>READ_MEDIA_IMAGES</code> / <code>READ_MEDIA_VIDEO</code> / <code>READ_MEDIA_VISUAL_USER_SELECTED</code>: 端末内の写真・動画を一覧・表示するため。これが本アプリの中心機能です。" data-en-html="<code>READ_MEDIA_IMAGES</code> / <code>READ_MEDIA_VIDEO</code> / <code>READ_MEDIA_VISUAL_USER_SELECTED</code>: to list and show the photos and videos on your device. This is the app's core feature.">
+    <code>READ_MEDIA_IMAGES</code> / <code>READ_MEDIA_VIDEO</code> /
+    <code>READ_MEDIA_VISUAL_USER_SELECTED</code>: to list and show the photos and videos on your
+    device. This is the app's core feature.
+  </li>
+  <li data-ja-html="<code>ACCESS_MEDIA_LOCATION</code>: 写真の撮影場所を地図に表示するため。端末の現在地は使いません。" data-en-html="<code>ACCESS_MEDIA_LOCATION</code>: to show where photos were taken on the map. The device's current location is not used.">
+    <code>ACCESS_MEDIA_LOCATION</code>: to show where photos were taken on the map. The device's
+    current location is not used.
+  </li>
+  <li data-ja-html="<code>POST_NOTIFICATIONS</code>: 新しいフォルダができたことをお知らせするため(設定でオフにできます)。" data-en-html="<code>POST_NOTIFICATIONS</code>: to tell you about new folders (can be turned off in Settings).">
+    <code>POST_NOTIFICATIONS</code>: to tell you about new folders (can be turned off in Settings).
+  </li>
+  <li data-ja-html="<code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>: 地図画像、広告、アプリ内課金のため。写真・動画の送信には使いません。" data-en-html="<code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>: for map images, ads and the in-app purchase. Never used to send your photos or videos.">
+    <code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>: for map images, ads and the in-app
+    purchase. Never used to send your photos or videos.
+  </li>
+  <li data-ja-html="<code>MODIFY_AUDIO_SETTINGS</code>: 内蔵プレイヤーで音量を100%より大きくするため。" data-en-html="<code>MODIFY_AUDIO_SETTINGS</code>: to boost the volume above 100% in the built-in player.">
+    <code>MODIFY_AUDIO_SETTINGS</code>: to boost the volume above 100% in the built-in player.
+  </li>
+  <li data-ja-html="<code>USE_BIOMETRIC</code>: 隠したギャラリーの再表示やアプリのロックで、端末の画面ロックを確認するため。" data-en-html="<code>USE_BIOMETRIC</code>: to check your screen lock when showing hidden galleries again and for the app lock.">
+    <code>USE_BIOMETRIC</code>: to check your screen lock when showing hidden galleries again and
+    for the app lock.
+  </li>
+  <li data-ja-html="<code>AD_ID</code>: 無料版の広告のため(上記「広告について」)。" data-en-html="<code>AD_ID</code>: for ads in the free version (see &quot;Advertising&quot; above).">
+    <code>AD_ID</code>: for ads in the free version (see "Advertising" above).
+  </li>
+  <li data-ja="本アプリは端末の現在地・カメラ・連絡先・全ファイルへのアクセス権限を持ちません。" data-en="The app has no current-location, camera, contacts or all-files-access permission.">
+    The app has no current-location, camera, contacts or all-files-access permission.
+  </li>
+</ul>
+
+<h2 data-ja="当方が収集しないもの" data-en="What we do not collect">What we do not collect</h2>
+<ul>
+  <li data-ja="あなたの写真・動画や、その名前・内容・撮影場所" data-en="Your photos and videos, their names, contents or locations">Your photos and videos, their names, contents or locations</li>
+  <li data-ja="ギャラリーやフォルダの名前・構成" data-en="The names or layout of your galleries and folders">The names or layout of your galleries and folders</li>
+  <li data-ja="氏名・メールアドレスなどの個人情報" data-en="Personal information such as your name or e-mail">Personal information such as your name or e-mail</li>
+  <li data-ja="当方のサーバーに送られる利用状況の解析やクラッシュレポート" data-en="Usage analytics or crash reports sent to us">Usage analytics or crash reports sent to us</li>
+</ul>
+
+<h2 data-ja="お子様のプライバシーについて" data-en="Children's privacy">Children's privacy</h2>
+<p data-ja="本アプリは13歳未満のお子様(またはお住まいの国で定められた年齢未満の方)を対象としておらず、そうした方から意図的に情報を収集することはありません。" data-en="The app is not directed at children under 13 (or the relevant age in your country) and does not knowingly collect information from them.">
+  The app is not directed at children under 13 (or the relevant age in your country) and
+  does not knowingly collect information from them.
+</p>
+
+<h2 data-ja="本ポリシーの変更について" data-en="Changes to this policy">Changes to this policy</h2>
+<p data-ja="本ポリシーの内容に変更があった場合、このページを更新し、上記の「最終更新日」も合わせて更新します。" data-en="If this policy ever changes, this page will be updated and the &quot;Last updated&quot; date above will change accordingly.">
+  If this policy ever changes, this page will be updated and the "Last updated" date above
+  will change accordingly.
+</p>
+
+<h2 data-ja="お問い合わせ" data-en="Contact">Contact</h2>
+<p data-ja="本ポリシーやアプリに関するご質問は、以下までお送りください:" data-en="Questions about this policy or the app can be sent to:">
+  Questions about this policy or the app can be sent to:
+</p>
+<p><a href="mailto:contact@nukoapps.fyi">contact@nukoapps.fyi</a></p>
+
+</body>
+</html>
