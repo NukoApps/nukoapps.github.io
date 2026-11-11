@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://nukoapps.fyi/localgallery/">
+<title data-ja="Gallery — フォルダ別アルバムの写真・動画アプリ" data-en="Gallery — Folder Photo Albums">Gallery — フォルダ別アルバムの写真・動画アプリ</title>
+<meta name="description" data-ja="Galleryは、スマホの写真・動画を、選んだフォルダごとのギャラリーで見るAndroidアプリです。新しいフォルダができたらお知らせ、人に見せたくないギャラリーは隠しておけます。" data-en="Gallery is an Android app that shows your phone's photos and videos in galleries made from the folders you choose. It tells you when new folders appear, and lets you hide the galleries you'd rather not show." content="Galleryは、スマホの写真・動画を、選んだフォルダごとのギャラリーで見るAndroidアプリです。新しいフォルダができたらお知らせ、人に見せたくないギャラリーは隠しておけます。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --night: #0E1633;
+    --night-2: #1D3F9E;
+    --violet: #BFD4FF;
+    --violet-deep: #2F64CF;
+    --amber: #8FB8FF;
+    --amber-deep: #4D8DF0;
+    --cream: #F6F3EC;
+    --ink: #222222;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--violet-deep); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--night);
+    color: var(--cream);
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--cream); color: var(--night); font-weight: bold; border-color: var(--cream); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--night) 0%, var(--night) 40%, var(--night-2) 85%, var(--amber-deep) 140%);
+    color: var(--cream);
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 44px; margin: 0 0 8px; }
+  .hero .tagline { font-size: 20px; color: var(--amber); margin: 0 0 20px; }
+  .hero p.desc { font-size: 16px; opacity: 0.85; max-width: 46ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(191,212,255,0.14);
+    border: 1px solid rgba(191,212,255,0.4);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--violet);
+    color: var(--night);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .cta[aria-disabled="true"] { cursor: default; opacity: 0.85; }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art img {
+    max-height: 540px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--night-2); }
+  .section-sub { text-align: center; color: #555; margin: 0 0 40px; }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    justify-content: center;
+    scroll-snap-type: x mandatory;
+  }
+  .screens img {
+    scroll-snap-align: start;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    height: 440px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--amber);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--night-2); }
+  .feature-card p { margin: 0; font-size: 14px; color: #555; }
+
+  .feature-shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    margin-top: 48px;
+    justify-items: center;
+  }
+  .feature-shots img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .pro-list { max-width: 640px; margin: 0 auto; padding-left: 22px; color: #444; }
+  .pro-list li { margin: 4px 0; }
+
+  .privacy-section { text-align: center; background: var(--cream); }
+  .privacy-note {
+    max-width: 640px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #444;
+    text-align: left;
+  }
+  .privacy-note + .privacy-note { margin-top: 16px; }
+
+  .cta-section { text-align: center; background: var(--cream); }
+  .cta-section .cta { background: var(--night-2); color: var(--cream); }
+
+  footer {
+    background: var(--night);
+    color: rgba(246,243,236,0.7);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: var(--cream); }
+
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    header { flex-wrap: wrap; gap: 10px; }
+    .screens { justify-content: flex-start; }
+    .screens img { height: 380px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="Gallery icon">
+    Gallery
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <a href="localgallery-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Gallery</h1>
+      <p class="tagline" data-ja="選んだフォルダで、自分だけのギャラリーに" data-en="Your own galleries, from the folders you choose">選んだフォルダで、自分だけのギャラリーに</p>
+      <p class="desc" data-ja="普通のギャラリーアプリは、スマホの写真を全部ずらっと並べるだけ。Galleryでは、カメラ・スクショ・旅行・趣味など、見たいフォルダだけを選んでギャラリーを作れます。新しいフォルダができたらお知らせするので、整理したフォルダもすぐに追いかけられます。" data-en="Most gallery apps pour every photo on your phone into one long grid. With Gallery you pick the folders you want — camera, screenshots, trips, hobbies — and make your own galleries. When a new folder appears, Gallery tells you, so your tidy folders never go missing.">
+        普通のギャラリーアプリは、スマホの写真を全部ずらっと並べるだけ。Galleryでは、カメラ・スクショ・旅行・趣味など、見たいフォルダだけを選んでギャラリーを作れます。新しいフォルダができたらお知らせするので、整理したフォルダもすぐに追いかけられます。
+      </p>
+      <div class="badges">
+        <span class="badge" data-ja="フォルダ別ギャラリー" data-en="Galleries by folder">フォルダ別ギャラリー</span>
+        <span class="badge" data-ja="新しいフォルダをお知らせ" data-en="New-folder notices">新しいフォルダをお知らせ</span>
+        <span class="badge" data-ja="人に見せるときも安心" data-en="Safe to hand over">人に見せるときも安心</span>
+        <span class="badge" data-ja="無料で使える" data-en="Free to use">無料で使える</span>
+      </div>
+      <a class="cta" href="https://play.google.com/store/apps/details?id=fyi.nukoapps.localgallery" data-ja="Google Play で手に入れよう" data-en="Get it on Google Play">Google Play で手に入れよう</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/screenshot-home.jpg"
+           data-ja-src="assets/screenshot-home.jpg" data-en-src="assets/en/screenshot-home.jpg"
+           alt="Galleryのアルバム一覧"
+           data-ja-alt="Galleryのアルバム一覧"
+           data-en-alt="Albums in the Gallery app">
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="アプリの画面" data-en="Screenshots">アプリの画面</h2>
+    <p class="section-sub" data-ja="スマホ内のすべてのフォルダから、長押しでギャラリーに追加。" data-en="Every folder on your phone in one list — long-press to add one to a gallery.">スマホ内のすべてのフォルダから、長押しでギャラリーに追加。</p>
+    <div class="screens">
+      <img src="assets/screenshot-all.jpg" alt="すべてのフォルダ" loading="lazy"
+           data-ja-src="assets/screenshot-all.jpg" data-en-src="assets/en/screenshot-all.jpg"
+           data-ja-alt="すべてのフォルダ" data-en-alt="All folders">
+      <img src="assets/screenshot-map.jpg" alt="撮影場所の地図" loading="lazy"
+           data-ja-src="assets/screenshot-map.jpg" data-en-src="assets/en/screenshot-map.jpg"
+           data-ja-alt="撮影場所の地図" data-en-alt="Map of where photos were taken">
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="主な機能" data-en="Key features">主な機能</h2>
+    <p class="section-sub" data-ja="見たいフォルダだけを、見たい順に。" data-en="Just the folders you want, in the order you want.">見たいフォルダだけを、見たい順に。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="フォルダを選んでギャラリーに" data-en="Galleries from your folders">フォルダを選んでギャラリーに</h3>
+        <p data-ja="「写真」「旅行」「趣味」など、ギャラリーを左右スワイプで切り替え。サブフォルダも含められ、いらないフォルダは除外。アルバム表示と日付順、並び順もギャラリーごとに。" data-en="Swipe between galleries such as Photos, Trips or Hobbies. Subfolders can come along and unwanted ones can be left out. Albums or by date, and the sort order, are set per gallery.">「写真」「旅行」「趣味」など、ギャラリーを左右スワイプで切り替え。サブフォルダも含められ、いらないフォルダは除外。アルバム表示と日付順、並び順もギャラリーごとに。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="新しいフォルダをお知らせ" data-en="New-folder notices">新しいフォルダをお知らせ</h3>
+        <p data-ja="Camera が Camera2026 に切り替わったときなど、新しいフォルダができたらお知らせ。元の写真が入っていたギャラリーをおすすめし、ワンタップで追加できます。" data-en="When a new folder appears — say Camera turns into Camera2026 — Gallery tells you and suggests the gallery the photos were in before. One tap adds it.">Camera が Camera2026 に切り替わったときなど、新しいフォルダができたらお知らせ。元の写真が入っていたギャラリーをおすすめし、ワンタップで追加できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="人に見せるときも安心" data-en="Safe to hand your phone over">人に見せるときも安心</h3>
+        <p data-ja="ギャラリーや「すべて」タブを隠しておけます。隠したものは検索やお気に入りにも出ず、再表示には端末の画面ロックが必要です。" data-en="Hide galleries or the All tab. Hidden ones stay out of search and favorites too, and showing them again needs your screen lock.">ギャラリーや「すべて」タブを隠しておけます。隠したものは検索やお気に入りにも出ず、再表示には端末の画面ロックが必要です。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="なぞって選んで整理" data-en="Select and sort with ease">なぞって選んで整理</h3>
+        <p data-ja="長押ししてそのままなぞると複数選択。選択中も矢印で大きく確認できます。共有・コピー・移動・削除(Androidのゴミ箱へ)もアプリから。" data-en="Long-press and drag to select many at once, and check any one large with its arrow while selecting. Share, copy, move and delete (to Android's trash) from the app.">長押ししてそのままなぞると複数選択。選択中も矢印で大きく確認できます。共有・コピー・移動・削除(Androidのゴミ箱へ)もアプリから。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="隠れたフォルダも" data-en="Hidden folders too">隠れたフォルダも</h3>
+        <p data-ja="ほかのアプリが「.nomedia」で隠したフォルダも、フォルダを選んで追加すれば表示できます。" data-en="Folders other apps hid with a .nomedia file can be shown too — just pick the folder to add it.">ほかのアプリが「.nomedia」で隠したフォルダも、フォルダを選んで追加すれば表示できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="振り返りも気軽に" data-en="Look back with ease">振り返りも気軽に</h3>
+        <p data-ja="日付順と高速スクロール、お気に入り、タグ、検索、撮影場所の地図、スライドショー。動画プレイヤーはジェスチャー操作と回転固定に対応。" data-en="By date with fast scrolling, favorites, tags, search, a map of where photos were taken and slideshows. The video player has gestures and rotation lock.">日付順と高速スクロール、お気に入り、タグ、検索、撮影場所の地図、スライドショー。動画プレイヤーはジェスチャー操作と回転固定に対応。</p>
+      </div>
+    </div>
+    <div class="feature-shots">
+      <img src="assets/feature-1-home.jpg" loading="lazy" data-ja-src="assets/feature-1-home.jpg" data-en-src="assets/en/feature-1-home.jpg"
+           alt="選んだフォルダでギャラリーを作る" data-ja-alt="選んだフォルダでギャラリーを作る" data-en-alt="Make galleries from the folders you choose">
+      <img src="assets/feature-2-all.jpg" loading="lazy" data-ja-src="assets/feature-2-all.jpg" data-en-src="assets/en/feature-2-all.jpg"
+           alt="すべてのフォルダから長押しでギャラリーに追加" data-ja-alt="すべてのフォルダから長押しでギャラリーに追加" data-en-alt="Long-press any folder to add it to a gallery">
+      <img src="assets/feature-3-notice.jpg" loading="lazy" data-ja-src="assets/feature-3-notice.jpg" data-en-src="assets/en/feature-3-notice.jpg"
+           alt="新しいフォルダができたらお知らせ" data-ja-alt="新しいフォルダができたらお知らせ" data-en-alt="Get told when new folders appear">
+      <img src="assets/feature-4-select.jpg" loading="lazy" data-ja-src="assets/feature-4-select.jpg" data-en-src="assets/en/feature-4-select.jpg"
+           alt="なぞって複数選択" data-ja-alt="なぞって複数選択" data-en-alt="Drag to select many">
+      <img src="assets/feature-5-hide.jpg" loading="lazy" data-ja-src="assets/feature-5-hide.jpg" data-en-src="assets/en/feature-5-hide.jpg"
+           alt="見せたくないギャラリーは隠しておける" data-ja-alt="見せたくないギャラリーは隠しておける" data-en-alt="Hide the galleries you'd rather not show">
+      <img src="assets/feature-6-map.jpg" loading="lazy" data-ja-src="assets/feature-6-map.jpg" data-en-src="assets/en/feature-6-map.jpg"
+           alt="撮影場所を地図でたどる" data-ja-alt="撮影場所を地図でたどる" data-en-alt="See where your photos were taken">
+      <img src="assets/feature-7-by-date.jpg" loading="lazy" data-ja-src="assets/feature-7-by-date.jpg" data-en-src="assets/en/feature-7-by-date.jpg"
+           alt="日付順でまとめて振り返り" data-ja-alt="日付順でまとめて振り返り" data-en-alt="Look back by date">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="Pro版(買い切り)" data-en="Pro (one-time purchase)">Pro版(買い切り)</h2>
+    <p class="section-sub" data-ja="見る・整理する・隠す機能は無料。もっと使いこなしたい方にProを用意しています。" data-en="Viewing, organizing and hiding are free. Pro is there when you want more.">見る・整理する・隠す機能は無料。もっと使いこなしたい方にProを用意しています。</p>
+    <ul class="pro-list">
+      <li data-ja="ギャラリーを複数作れる(無料版は1つ)" data-en="Multiple galleries (free: 1)">ギャラリーを複数作れる(無料版は1つ)</li>
+      <li data-ja="広告なし" data-en="No ads">広告なし</li>
+      <li data-ja="アプリのロックと非公開アルバム(端末の画面ロックを使用)" data-en="App lock and private albums (with your phone's screen lock)">アプリのロックと非公開アルバム(端末の画面ロックを使用)</li>
+      <li data-ja="スマートアルバム(名前・タグ・写真/動画の条件で自動で集める)" data-en="Smart albums (collect items by name, tags, photos or videos)">スマートアルバム(名前・タグ・写真/動画の条件で自動で集める)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="privacy-section" style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="プライバシーについて" data-en="Privacy">プライバシーについて</h2>
+    <p class="section-sub" data-ja="写真や動画は、スマホの外に出ません。" data-en="Your photos and videos never leave your phone.">写真や動画は、スマホの外に出ません。</p>
+    <div class="privacy-note" data-ja="写真や動画、撮影場所、タグやお気に入りは端末の中だけで扱い、開発者に送られることはありません。共有するのは、あなたが共有先に選んだアプリへだけです。地図を開いたときは、地図の画像をOpenStreetMapから読み込みます。" data-en="Photos, videos, where they were taken, tags and favorites stay on the device and are never sent to the developer. Sharing goes only to the app you pick. When you open the map, its images are loaded from OpenStreetMap.">
+      写真や動画、撮影場所、タグやお気に入りは端末の中だけで扱い、開発者に送られることはありません。共有するのは、あなたが共有先に選んだアプリへだけです。地図を開いたときは、地図の画像をOpenStreetMapから読み込みます。
+    </div>
+    <div class="privacy-note" data-ja="無料版には一覧画面の下部に小さな広告(Google AdMob)が表示されます(写真・動画の表示中は出ません)。買い切りのProにアップグレードすると広告は表示されなくなります。" data-en="The free version shows a small ad (Google AdMob) at the bottom of list screens, never while a photo or video is open. Upgrading to the one-time Pro purchase removes it.">
+      無料版には一覧画面の下部に小さな広告(Google AdMob)が表示されます(写真・動画の表示中は出ません)。買い切りのProにアップグレードすると広告は表示されなくなります。
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="section-inner">
+    <h2 data-ja="今すぐ試してみる" data-en="Try it now">今すぐ試してみる</h2>
+    <p class="section-sub" data-ja="スマホの写真を、見たいフォルダごとに。" data-en="Your phone's photos, folder by folder.">スマホの写真を、見たいフォルダごとに。</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=fyi.nukoapps.localgallery" data-ja="Google Play で手に入れよう" data-en="Get it on Google Play">Google Play で手に入れよう</a>
+    <p style="margin-top:28px;font-size:14px;color:#555;" data-ja-html="自宅のNASの写真・動画を見るなら &lt;a href=&quot;../gallery/&quot;&gt;NukoGallery&lt;/a&gt; もどうぞ。" data-en-html="For photos and videos on your home NAS, try &lt;a href=&quot;../gallery/&quot;&gt;NukoGallery&lt;/a&gt;.">自宅のNASの写真・動画を見るなら <a href="../gallery/">NukoGallery</a> もどうぞ。</p>
+  </div>
+</section>
+
+<footer>
+  <p>Gallery</p>
+  <p>
+    <a href="localgallery-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+</body>
+</html>
