@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://nukoapps.fyi/chineseruby/">
+<title data-ja="中国語ルビ — 貼り付けるだけで、注音・ピンイン。" data-en="Chinese Ruby — Paste Chinese, get zhuyin & pinyin.">中国語ルビ — 貼り付けるだけで、注音・ピンイン。</title>
+<meta name="description" data-ja="中国語ルビ(Chinese Ruby)は、中国語のテキストを貼り付けるだけで注音・ピンインを自動で振るAndroidアプリ。オフライン辞書でもオンラインでも使え、台湾華語/普通話の読み分けと読み上げにも対応。" data-en="Chinese Ruby is an Android app that adds zhuyin and pinyin to any Chinese text you paste. It works offline or online, follows Taiwan Mandarin or Putonghua, and reads the text aloud." content="中国語ルビ(Chinese Ruby)は、中国語のテキストを貼り付けるだけで注音・ピンインを自動で振るAndroidアプリ。オフライン辞書でもオンラインでも使え、台湾華語/普通話の読み分けと読み上げにも対応。">
+<link rel="icon" href="assets/icon.png">
+<script src="../assets/i18n.js" defer></script>
+<style>
+  :root {
+    --dark: #0F2622;
+    --jade: #0E6F62;
+    --jade-deep: #0B4A41;
+    --mint: #5CC4B1;
+    --cream: #F8E9D4;
+    --paper: #F3F8F6;
+    --ink: #18211E;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  a { color: var(--jade); }
+  img { max-width: 100%; display: block; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--dark);
+    color: var(--cream);
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 20px; }
+  header .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  header nav { display: flex; align-items: center; gap: 18px; }
+  header nav a { color: var(--cream); text-decoration: none; font-size: 14px; opacity: 0.85; }
+  header nav a:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle { display: flex; gap: 6px; }
+  .lang-toggle button {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--cream); color: var(--dark); font-weight: bold; border-color: var(--cream); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--jade) 60%, var(--mint) 135%);
+    color: var(--cream);
+    padding: 64px 24px 80px;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 44px; margin: 0 0 8px; line-height: 1.2; }
+  .hero .tagline { font-size: 20px; opacity: 0.95; margin: 0 0 20px; color: #B9EDE1; }
+  .hero p.desc { font-size: 16px; opacity: 0.9; max-width: 46ch; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--mint);
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .cta[aria-disabled="true"] { cursor: default; opacity: 0.85; }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art img {
+    max-height: 520px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  h2 { font-size: 30px; text-align: center; margin: 0 0 12px; color: var(--dark); }
+  .section-sub { text-align: center; color: #4a6159; margin: 0 0 40px; }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 14px;
+    scroll-snap-type: x mandatory;
+  }
+  .screens img {
+    scroll-snap-align: start;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    height: 480px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  }
+  .feature-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--jade-deep); }
+  .feature-card p { margin: 0; font-size: 14px; color: #4a6159; }
+  .fine-print { max-width: 760px; margin: 32px auto 0; text-align: center; font-size: 13px; color: #5d7269; }
+
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .plan {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  }
+  .plan.pro { border: 2px solid var(--mint); }
+  .plan h3 { margin: 0 0 10px; font-size: 18px; color: var(--dark); }
+  .plan ul { margin: 0; padding-left: 20px; font-size: 14px; color: #34463f; }
+  .plan li { margin-bottom: 4px; }
+
+  .privacy-section { text-align: center; background: var(--cream); }
+  .privacy-note {
+    max-width: 680px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #34463f;
+    text-align: left;
+  }
+
+  .cta-section { text-align: center; background: var(--paper); }
+  .cta-section .cta { background: var(--dark); color: var(--cream); }
+
+  footer {
+    background: var(--dark);
+    color: rgba(248,233,212,0.7);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer a { color: var(--cream); }
+
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    .screens img { height: 400px; }
+    header { flex-wrap: wrap; gap: 10px 16px; padding: 14px 16px; }
+    header nav { flex-wrap: wrap; gap: 8px 14px; }
+    header nav a { white-space: nowrap; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/chineseruby/#app",
+      "@type" : "SoftwareApplication",
+      "alternateName" : "中国語ルビ",
+      "applicationCategory" : "EducationalApplication",
+      "description" : "中国語のテキストを貼り付けるだけで注音・ピンインを自動で振るAndroidアプリ。オフライン辞書でもオンラインでも使え、台湾華語/普通話の読み分けと読み上げにも対応。",
+      "image" : "https://nukoapps.fyi/chineseruby/assets/icon.png",
+      "isAccessibleForFree" : true,
+      "name" : "Chinese Ruby",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(機能はすべて無料、画面上部に小さな広告)。広告を消すProは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/chineseruby/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/chineseruby/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "中国語ルビ(Chinese Ruby)は、中国語のテキストを貼り付けるだけで、すべての漢字に注音(ボポモフォ)とピンインを振って表示するAndroidアプリです。台湾の教科書と同じ縦書きの注音、漢字の上のピンイン、両方の同時表示を切り替えられます。"
+          },
+          "name" : "中国語の文章に注音やピンインを自動で振れるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "使えます。オフラインではアプリ内の辞書だけで読みを振り、通信は一切しません。オンラインにすると pinyin-pro で多音字を文脈から判定します。ご自身のGemini APIキーを入れれば、AIで読みを確認することもできます(任意)。"
+          },
+          "name" : "オフラインでも使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "どちらも選べます。垃圾や星期のように読みが異なる語は選んだ基準に従い、台湾式では東西のような語の軽声を本来の声調で表示します。一・不の変調も教科書どおりに表示します。"
+          },
+          "name" : "台湾華語と普通話のどちらの読みですか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Google Playで近日公開予定です。機能はすべて無料で使え、無料版には画面上部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)で広告が消えます。"
+          },
+          "name" : "無料で使えますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/chineseruby/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="assets/icon.png" alt="Chinese Ruby icon">
+    <span data-ja="中国語ルビ" data-en="Chinese Ruby">中国語ルビ</span>
+  </div>
+  <nav>
+    <a href="../">NukoApps</a>
+    <a href="chineseruby-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+    <div class="lang-toggle">
+      <button type="button" data-lang-btn="ja">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1 data-ja="中国語ルビ" data-en="Chinese Ruby">中国語ルビ</h1>
+      <p class="tagline" data-ja="貼り付けるだけで、注音・ピンイン。" data-en="Paste Chinese, get zhuyin & pinyin.">貼り付けるだけで、注音・ピンイン。</p>
+      <p class="desc" data-ja="教科書、ニュース、SNSの投稿、歌詞。読みたい中国語を貼り付けるだけで、すべての漢字に注音とピンインが付きます。オフラインでもオンラインでも使え、そのまま読み上げも。" data-en="A textbook passage, a news article, a post, a song. Paste any Chinese text and every character gets zhuyin and pinyin. It works offline or online, and reads the text aloud.">
+        教科書、ニュース、SNSの投稿、歌詞。読みたい中国語を貼り付けるだけで、すべての漢字に注音とピンインが付きます。
+        オフラインでもオンラインでも使え、そのまま読み上げも。
+      </p>
+      <div class="badges">
+        <span class="badge" data-ja="オフラインで動作" data-en="Works offline">オフラインで動作</span>
+        <span class="badge" data-ja="台湾華語・普通話を選択" data-en="Taiwan Mandarin or Putonghua">台湾華語・普通話を選択</span>
+        <span class="badge" data-ja="繁体字・簡体字" data-en="Traditional & simplified">繁体字・簡体字</span>
+        <span class="badge" data-ja="機能はすべて無料" data-en="Every feature free">機能はすべて無料</span>
+      </div>
+      <a class="cta" aria-disabled="true" data-ja="Google Play で近日公開" data-en="Coming soon to Google Play">Google Play で近日公開</a>
+    </div>
+    <div class="hero-art">
+      <img src="assets/screenshot_1_zhuyin.jpg"
+           data-ja-src="assets/screenshot_1_zhuyin.jpg" data-en-src="assets/en/screenshot_1_zhuyin.jpg"
+           alt="中国語ルビの画面: 漢字の右に縦書きの注音"
+           data-ja-alt="中国語ルビの画面: 漢字の右に縦書きの注音"
+           data-en-alt="Chinese Ruby screen: vertical zhuyin next to each character">
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="アプリの画面" data-en="Screenshots">アプリの画面</h2>
+    <p class="section-sub" data-ja="サンプルは自作の会話文と、李白の「靜夜思」です。" data-en="Samples: everyday sentences and Li Bai's poem 靜夜思.">サンプルは自作の会話文と、李白の「靜夜思」です。</p>
+    <div class="screens">
+      <img src="assets/screenshot_1_zhuyin.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_1_zhuyin.jpg" data-en-src="assets/en/screenshot_1_zhuyin.jpg"
+           alt="貼り付けるだけで注音" data-ja-alt="貼り付けるだけで注音" data-en-alt="Paste and get zhuyin">
+      <img src="assets/screenshot_2_poem.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_2_poem.jpg" data-en-src="assets/en/screenshot_2_poem.jpg"
+           alt="注音とピンインを同時に、声調で色分け" data-ja-alt="注音とピンインを同時に、声調で色分け" data-en-alt="Zhuyin and pinyin together, colored by tone">
+      <img src="assets/screenshot_3_simplified_play.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_3_simplified_play.jpg" data-en-src="assets/en/screenshot_3_simplified_play.jpg"
+           alt="簡体字表示と読み上げ" data-ja-alt="簡体字表示と読み上げ" data-en-alt="Simplified characters, read aloud">
+      <img src="assets/screenshot_4_edit.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_4_edit.jpg" data-en-src="assets/en/screenshot_4_edit.jpg"
+           alt="多音字の読みを選び直す" data-ja-alt="多音字の読みを選び直す" data-en-alt="Pick another reading for a polyphonic character">
+      <img src="assets/screenshot_5_settings.jpg" loading="lazy"
+           data-ja-src="assets/screenshot_5_settings.jpg" data-en-src="assets/en/screenshot_5_settings.jpg"
+           alt="台湾華語・普通話の読み分け" data-ja-alt="台湾華語・普通話の読み分け" data-en-alt="Taiwan or Mainland readings">
+    </div>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="section-inner">
+    <h2 data-ja="主な機能" data-en="Key features">主な機能</h2>
+    <p class="section-sub" data-ja="読むための発音記号を、必要な形で。" data-en="Pronunciation, shown the way you need it.">読むための発音記号を、必要な形で。</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 data-ja="注音もピンインも" data-en="Zhuyin and pinyin">注音もピンインも</h3>
+        <p data-ja="台湾の教科書と同じく漢字の右に縦書きの注音、漢字の上にピンイン。両方の同時表示や、表記なしにも切り替えられます。" data-en="Vertical zhuyin on the right of each character, as in Taiwanese textbooks, and pinyin above. Show both at once, or neither.">台湾の教科書と同じく漢字の右に縦書きの注音、漢字の上にピンイン。両方の同時表示や、表記なしにも切り替えられます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="オフラインで動作" data-en="Works offline">オフラインで動作</h3>
+        <p data-ja="アプリ内の辞書だけで読みを振り、通信は一切しません。多音字は語単位で判定します(銀行 yínháng、重新 chóngxīn など)。" data-en="Readings come from dictionaries inside the app, with no network at all. Polyphonic characters are read by word (銀行 yínháng, 重新 chóngxīn…).">アプリ内の辞書だけで読みを振り、通信は一切しません。多音字は語単位で判定します(銀行 yínháng、重新 chóngxīn など)。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="オンラインで文脈判定" data-en="Online, in context">オンラインで文脈判定</h3>
+        <p data-ja="オンラインにすると pinyin-pro で多音字を文脈から判定します。処理は端末の中で行い、テキストは送信しません。" data-en="Online mode uses pinyin-pro to read polyphonic characters from context. It runs on your device; the text is not sent anywhere.">オンラインにすると pinyin-pro で多音字を文脈から判定します。処理は端末の中で行い、テキストは送信しません。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="台湾華語・普通話を選べる" data-en="Taiwan Mandarin or Putonghua">台湾華語・普通話を選べる</h3>
+        <p data-ja="垃圾・星期のように読みが異なる語は選んだ基準に従います。台湾式では東西のような語も本来の声調で表示します。" data-en="Words read differently, such as 垃圾 and 星期, follow the standard you choose. In Taiwan mode, words like 東西 keep their full tones.">垃圾・星期のように読みが異なる語は選んだ基準に従います。台湾式では東西のような語も本来の声調で表示します。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="声調ごとに色分け" data-en="Colored by tone">声調ごとに色分け</h3>
+        <p data-ja="漢字を声調ごとに色分け。一・不の変調も教科書どおりに表示します。繁体字・簡体字の表示も切り替えられます。" data-en="Characters are colored by tone, with the tone sandhi of 一 and 不 shown as in textbooks. Switch between traditional and simplified characters.">漢字を声調ごとに色分け。一・不の変調も教科書どおりに表示します。繁体字・簡体字の表示も切り替えられます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="タップで読み上げ" data-en="Tap to listen">タップで読み上げ</h3>
+        <p data-ja="文をタップするとその文を読み上げ。通して再生、1文リピート、速度の切り替えもできます。" data-en="Tap a sentence to hear it. Play the whole text, repeat one sentence, or change the speed.">文をタップするとその文を読み上げ。通して再生、1文リピート、速度の切り替えもできます。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="読みを選び直せる" data-en="Fix any reading">読みを選び直せる</h3>
+        <p data-ja="多音字は漢字をタップして読みを選び直せます。ご自身のGemini APIキーを入れれば、AIで読みを確認することも(任意)。" data-en="Tap a polyphonic character to pick another reading. With your own Gemini API key, you can also have AI check the readings (optional).">多音字は漢字をタップして読みを選び直せます。ご自身のGemini APIキーを入れれば、AIで読みを確認することも(任意)。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-ja="どのアプリからでも" data-en="From any app">どのアプリからでも</h3>
+        <p data-ja="他のアプリから共有したテキストや、選択したテキストをそのまま開けます。拼音付き・注音付きでコピーや共有も。" data-en="Open text shared from other apps, or selected anywhere. Copy or share it with pinyin or zhuyin.">他のアプリから共有したテキストや、選択したテキストをそのまま開けます。拼音付き・注音付きでコピーや共有も。</p>
+      </div>
+    </div>
+    <p class="fine-print" data-ja="※読みは辞書や pinyin-pro による自動判定で、常に正しいことを保証するものではありません。読み上げは端末の音声合成を使うため、発音は表示した読みとは独立して端末側が決めます。" data-en="Readings are decided automatically from dictionaries or pinyin-pro and are not guaranteed to always be correct. Reading aloud uses the device's text-to-speech, which decides its pronunciation independently of the readings shown.">
+      ※読みは辞書や pinyin-pro による自動判定で、常に正しいことを保証するものではありません。読み上げは端末の音声合成を使うため、発音は表示した読みとは独立して端末側が決めます。
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <h2 data-ja="無料版とPro版" data-en="Free and Pro">無料版とPro版</h2>
+    <p class="section-sub" data-ja="機能はすべて無料。Proは広告を消す買い切りで、定期購入ではありません。" data-en="Every feature is free. Pro is a one-time purchase that removes ads, not a subscription.">機能はすべて無料。Proは広告を消す買い切りで、定期購入ではありません。</p>
+    <div class="plans">
+      <div class="plan">
+        <h3 data-ja="無料版" data-en="Free">無料版</h3>
+        <ul>
+          <li data-ja="すべての機能が使える" data-en="Every feature included">すべての機能が使える</li>
+          <li data-ja="画面上部に小さな広告バナー(Google AdMob)" data-en="Small ad banner at the top (Google AdMob)">画面上部に小さな広告バナー(Google AdMob)</li>
+        </ul>
+      </div>
+      <div class="plan pro">
+        <h3 data-ja="Pro版(買い切り)" data-en="Pro (one-time purchase)">Pro版(買い切り)</h3>
+        <ul>
+          <li data-ja="広告なし" data-en="No ads">広告なし</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div class="section-inner">
+    <h2 data-ja="プライバシーについて" data-en="About privacy">プライバシーについて</h2>
+    <p class="section-sub" data-ja="入力したテキストは、あなたの端末の中で処理されます。" data-en="The text you enter is processed on your device.">入力したテキストは、あなたの端末の中で処理されます。</p>
+    <div class="privacy-note" data-ja="登録は不要で、開発者は独自のサーバーを持たず、入力したテキストを受け取ることはありません。オンラインモードで取得するのは pinyin-pro のスクリプトだけで、テキストは送りません。端末の外にテキストが送られるのは、ご自身のGemini APIキーでAIチェックを使ったときだけです。無料版の広告はGoogle AdMobが配信し、購入の処理はGoogle Playが行います。詳しくはプライバシーポリシーをご覧ください。" data-en="No sign-up is required. We run no server of our own and never receive the text you enter. Online mode downloads only the pinyin-pro script and sends no text. Your text leaves the device only when you use the AI check with your own Gemini API key. Ads in the free version are served by Google AdMob, and purchases are handled by Google Play. See the Privacy Policy for details.">
+      登録は不要で、開発者は独自のサーバーを持たず、入力したテキストを受け取ることはありません。
+      オンラインモードで取得するのは pinyin-pro のスクリプトだけで、テキストは送りません。
+      端末の外にテキストが送られるのは、ご自身のGemini APIキーでAIチェックを使ったときだけです。
+      無料版の広告はGoogle AdMobが配信し、購入の処理はGoogle Playが行います。詳しくはプライバシーポリシーをご覧ください。
+    </div>
+    <p style="margin-top:20px;"><a href="chineseruby-privacy" data-ja="プライバシーポリシーを読む" data-en="Read the Privacy Policy">プライバシーポリシーを読む</a></p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="中国語の文章に注音やピンインを自動で振れるアプリはありますか？" data-en="Is there an app that adds zhuyin or pinyin to Chinese text automatically?">中国語の文章に注音やピンインを自動で振れるアプリはありますか？</summary>
+        <p data-ja="中国語ルビ(Chinese Ruby)は、中国語のテキストを貼り付けるだけで、すべての漢字に注音(ボポモフォ)とピンインを振って表示するAndroidアプリです。台湾の教科書と同じ縦書きの注音、漢字の上のピンイン、両方の同時表示を切り替えられます。" data-en="Chinese Ruby is an Android app that adds zhuyin (bopomofo) and pinyin to every character of any Chinese text you paste. Switch between vertical zhuyin as in Taiwanese textbooks, pinyin above the characters, or both.">中国語ルビ(Chinese Ruby)は、中国語のテキストを貼り付けるだけで、すべての漢字に注音(ボポモフォ)とピンインを振って表示するAndroidアプリです。台湾の教科書と同じ縦書きの注音、漢字の上のピンイン、両方の同時表示を切り替えられます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="オフラインでも使えますか？" data-en="Does it work offline?">オフラインでも使えますか？</summary>
+        <p data-ja="使えます。オフラインではアプリ内の辞書だけで読みを振り、通信は一切しません。オンラインにすると pinyin-pro で多音字を文脈から判定します。ご自身のGemini APIキーを入れれば、AIで読みを確認することもできます(任意)。" data-en="Yes. Offline mode adds readings from dictionaries inside the app, with no network at all. Online mode uses pinyin-pro to read polyphonic characters from context. With your own Gemini API key you can also have AI check the readings (optional).">使えます。オフラインではアプリ内の辞書だけで読みを振り、通信は一切しません。オンラインにすると pinyin-pro で多音字を文脈から判定します。ご自身のGemini APIキーを入れれば、AIで読みを確認することもできます(任意)。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="台湾華語と普通話のどちらの読みですか？" data-en="Does it follow Taiwan Mandarin or Putonghua?">台湾華語と普通話のどちらの読みですか？</summary>
+        <p data-ja="どちらも選べます。垃圾や星期のように読みが異なる語は選んだ基準に従い、台湾式では東西のような語の軽声を本来の声調で表示します。一・不の変調も教科書どおりに表示します。" data-en="You can choose either. Words read differently, such as 垃圾 and 星期, follow your choice, and in Taiwan mode words like 東西 keep their full tones. The tone sandhi of 一 and 不 is shown as in textbooks.">どちらも選べます。垃圾や星期のように読みが異なる語は選んだ基準に従い、台湾式では東西のような語の軽声を本来の声調で表示します。一・不の変調も教科書どおりに表示します。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="Google Playで近日公開予定です。機能はすべて無料で使え、無料版には画面上部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)で広告が消えます。" data-en="It is coming soon to Google Play. Every feature is free; the free version shows a small ad at the top. The one-time Pro purchase (not a subscription) removes the ads.">Google Playで近日公開予定です。機能はすべて無料で使え、無料版には画面上部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)で広告が消えます。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="section-inner">
+    <h2 data-ja="もうすぐ公開" data-en="Coming soon">もうすぐ公開</h2>
+    <p class="section-sub" data-ja="機能はすべて無料。貼り付けて、その場で読み方を確認。" data-en="Every feature is free. Paste and see how to read it, right away.">機能はすべて無料。貼り付けて、その場で読み方を確認。</p>
+    <a class="cta" aria-disabled="true" data-ja="Google Play で近日公開" data-en="Coming soon to Google Play">Google Play で近日公開</a>
+  </div>
+</section>
+
+<footer>
+  <p data-ja="中国語ルビ(Chinese Ruby)" data-en="Chinese Ruby">中国語ルビ(Chinese Ruby)</p>
+  <p>
+    <a href="chineseruby-privacy" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a> ·
+    <a href="mailto:contact@nukoapps.fyi" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a> ·
+    <a href="../">NukoApps</a>
+  </p>
+</footer>
+
+</body>
+</html>
