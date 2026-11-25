@@ -205,6 +205,86 @@
     .screens img { height: 380px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/estate/#app",
+      "@type" : "SoftwareApplication",
+      "alternateName" : "Landlord Note",
+      "applicationCategory" : "FinanceApplication",
+      "description" : "大家ノートは、区分マンションなど投資用不動産のオーナー向けAndroidアプリです。ローン・家賃・経費・書類をまとめて記録し、毎月のキャッシュフローと税金の目安を自動で計算。繰上返済・借り換え・売却のシミュレーション、12か国の税制に対応。",
+      "image" : "https://nukoapps.fyi/estate/assets/icon.png",
+      "name" : "大家ノート",
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/estate/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/estate/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "大家ノートは、区分マンションなど投資用不動産のオーナー向けのAndroidアプリです。家賃・共益費・管理費・修繕積立金・管理委託料を毎月自動で記帳し、ローン返済も含めたキャッシュフローを確認できます。銀行の返済予定表(PDF・写真・CSV)を取り込んで、アプリの計算と照合することもできます。"
+          },
+          "name" : "区分マンション投資の収支やローンを管理できるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "減価償却を自動で計算し、不動産所得を青色申告決算書の科目別に集計します。ただし、税金などの数値は一般的なルールにもとづく目安で、正確性は保証されません。"
+          },
+          "name" : "確定申告に使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "期間短縮型と返済額軽減型の比較、諸費用込みの借り換え効果、売却時の譲渡所得税と手取りまで試算できます。"
+          },
+          "name" : "繰上返済や売却のシミュレーションはできますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "物件ごとに通貨を設定でき、月ごとの為替レート(ECB参考レート)で換算して合算します。税金を払う国を選ぶと、減価償却のルールと課税年度がその国の制度になり、12か国の税制に対応しています。"
+          },
+          "name" : "海外の物件にも使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Android版をGoogle Playで近日公開予定で、Windows版も予定しています。1物件ならすべての機能が無料で、2物件目からは買い切りのProが必要です。データはすべて端末の中に保存され、開発者のサーバーに送られることはありません。"
+          },
+          "name" : "料金といつ使えるかを教えてください。"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/estate/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 <header>
@@ -350,6 +430,34 @@
     </div>
     <div class="privacy-note" data-ja="税金・減価償却・売却益・利回りなどの数値は、一般的なルールにもとづく目安です。正確性は保証されず、計算結果の利用による損害について開発者は責任を負いません。実際の申告は、税務署や税理士などの専門家に確認したうえで行ってください。" data-en="Tax, depreciation, sale-gain and yield figures are estimates based on general rules. Their accuracy is not guaranteed and the developer accepts no liability for any loss from using them. Check with your tax authority or a qualified professional before filing.">
       税金・減価償却・売却益・利回りなどの数値は、一般的なルールにもとづく目安です。正確性は保証されず、計算結果の利用による損害について開発者は責任を負いません。実際の申告は、税務署や税理士などの専門家に確認したうえで行ってください。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="区分マンション投資の収支やローンを管理できるアプリはありますか？" data-en="Is there an app for tracking income and loans on a rental condo investment?">区分マンション投資の収支やローンを管理できるアプリはありますか？</summary>
+        <p data-ja="大家ノートは、区分マンションなど投資用不動産のオーナー向けのAndroidアプリです。家賃・共益費・管理費・修繕積立金・管理委託料を毎月自動で記帳し、ローン返済も含めたキャッシュフローを確認できます。銀行の返済予定表(PDF・写真・CSV)を取り込んで、アプリの計算と照合することもできます。" data-en="Landlord Note is an Android app for owners of investment property such as rental condo units. It records rent, management fees and repair reserves automatically every month, and shows cash flow including loan repayments. You can also import the bank's repayment schedule (PDF, photo or CSV) and check it against the app's calculation.">大家ノートは、区分マンションなど投資用不動産のオーナー向けのAndroidアプリです。家賃・共益費・管理費・修繕積立金・管理委託料を毎月自動で記帳し、ローン返済も含めたキャッシュフローを確認できます。銀行の返済予定表(PDF・写真・CSV)を取り込んで、アプリの計算と照合することもできます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="確定申告に使えますか？" data-en="Can it help with my tax return?">確定申告に使えますか？</summary>
+        <p data-ja="減価償却を自動で計算し、不動産所得を青色申告決算書の科目別に集計します。ただし、税金などの数値は一般的なルールにもとづく目安で、正確性は保証されません。" data-en="It calculates depreciation automatically and totals rental income by the line items of Japan's blue return statement. Tax figures are estimates based on general rules and are not guaranteed to be accurate.">減価償却を自動で計算し、不動産所得を青色申告決算書の科目別に集計します。ただし、税金などの数値は一般的なルールにもとづく目安で、正確性は保証されません。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="繰上返済や売却のシミュレーションはできますか？" data-en="Can it simulate prepayment or a sale?">繰上返済や売却のシミュレーションはできますか？</summary>
+        <p data-ja="期間短縮型と返済額軽減型の比較、諸費用込みの借り換え効果、売却時の譲渡所得税と手取りまで試算できます。" data-en="It compares shortening the term with lowering the payment, estimates refinancing benefits including costs, and estimates capital gains tax and net proceeds on a sale.">期間短縮型と返済額軽減型の比較、諸費用込みの借り換え効果、売却時の譲渡所得税と手取りまで試算できます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="海外の物件にも使えますか？" data-en="Does it work for property abroad?">海外の物件にも使えますか？</summary>
+        <p data-ja="物件ごとに通貨を設定でき、月ごとの為替レート(ECB参考レート)で換算して合算します。税金を払う国を選ぶと、減価償却のルールと課税年度がその国の制度になり、12か国の税制に対応しています。" data-en="Each property can have its own currency, converted with monthly ECB reference rates. Choosing the country you pay tax in applies that country's depreciation rules and tax year; 12 countries are supported.">物件ごとに通貨を設定でき、月ごとの為替レート(ECB参考レート)で換算して合算します。税金を払う国を選ぶと、減価償却のルールと課税年度がその国の制度になり、12か国の税制に対応しています。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="料金といつ使えるかを教えてください。" data-en="How much is it, and when is it available?">料金といつ使えるかを教えてください。</summary>
+        <p data-ja="Android版をGoogle Playで近日公開予定で、Windows版も予定しています。1物件ならすべての機能が無料で、2物件目からは買い切りのProが必要です。データはすべて端末の中に保存され、開発者のサーバーに送られることはありません。" data-en="The Android version is coming soon to Google Play, and a Windows version is planned. All features are free for one property; two or more need the one-time Pro purchase. All data stays on the device and is never sent to the developer.">Android版をGoogle Playで近日公開予定で、Windows版も予定しています。1物件ならすべての機能が無料で、2物件目からは買い切りのProが必要です。データはすべて端末の中に保存され、開発者のサーバーに送られることはありません。</p>
+      </details>
     </div>
   </div>
 </section>

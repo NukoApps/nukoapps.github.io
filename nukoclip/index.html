@@ -166,6 +166,85 @@
     .hero h1 { font-size: 34px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/nukoclip/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "DesignApplication",
+      "description" : "NukoClipは、レイヤー機能や豊富な描画ツールを備えた、Android向けの基本無料お絵描きアプリです。広告なし・個人情報の収集なし。追加機能は買い切りのProで解放できます。",
+      "image" : "https://nukoapps.fyi/nukoclip/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.nukoclip",
+      "isAccessibleForFree" : true,
+      "name" : "NukoClip",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "基本無料・広告なし。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/nukoclip/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/nukoclip/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "NukoClipは、レイヤー機能が充実したAndroid向けのお絵描きアプリです。合成モード18種類、レイヤーマスク、アルファロック、クリッピング、フォルダ管理に対応し、選択範囲(矩形・楕円・投げ縄・自動選択)と自由変形・ゆがみ変形、色調補正も使えます。"
+          },
+          "name" : "Androidで使えるレイヤー機能付きのお絵描きアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ペン・ブラシ・エアブラシ・消しゴム・ぼかし・指先の6種類のブラシが筆圧に対応し、手ブレ補正もあります。画面上に十字キー＋ABXYボタンの左手デバイス風コントローラーを置け、物理キーボードのショートカットも使えます。ProではBluetoothゲームパッドでも操作できます。"
+          },
+          "name" : "筆圧や左手デバイスには対応していますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "基本機能は無料で、広告はありません。個人情報の収集もせず、描画はオフラインでできます。買い切りのProでは、ブラシの詳細設定、PSDの書き出し・読み込み、Bluetoothゲームパッド対応が使えます。"
+          },
+          "name" : "無料ですか？広告は出ますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "作品は.nkcl形式で保存し、PNG・JPGで書き出せます。ProではPSD形式で他のペイントソフトとやり取りできます。"
+          },
+          "name" : "どんな形式で保存できますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/nukoclip/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 
@@ -298,6 +377,30 @@
     </div>
 
     <p class="section-sub" style="margin-top:24px;" data-ja="Proは買い切りです。購入はGoogle Playで行います。" data-en="Pro is a one-time purchase, made through Google Play.">Proは買い切りです。購入はGoogle Playで行います。</p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="Androidで使えるレイヤー機能付きのお絵描きアプリはありますか？" data-en="Is there a drawing app for Android with full layer support?">Androidで使えるレイヤー機能付きのお絵描きアプリはありますか？</summary>
+        <p data-ja="NukoClipは、レイヤー機能が充実したAndroid向けのお絵描きアプリです。合成モード18種類、レイヤーマスク、アルファロック、クリッピング、フォルダ管理に対応し、選択範囲(矩形・楕円・投げ縄・自動選択)と自由変形・ゆがみ変形、色調補正も使えます。" data-en="NukoClip is an Android drawing app with rich layer features: 18 blend modes, layer masks, alpha lock, clipping and folders. It also has rectangle, ellipse, lasso and magic-wand selections, free and warp transforms, and color adjustments.">NukoClipは、レイヤー機能が充実したAndroid向けのお絵描きアプリです。合成モード18種類、レイヤーマスク、アルファロック、クリッピング、フォルダ管理に対応し、選択範囲(矩形・楕円・投げ縄・自動選択)と自由変形・ゆがみ変形、色調補正も使えます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="筆圧や左手デバイスには対応していますか？" data-en="Does it support pen pressure and a left-hand device?">筆圧や左手デバイスには対応していますか？</summary>
+        <p data-ja="ペン・ブラシ・エアブラシ・消しゴム・ぼかし・指先の6種類のブラシが筆圧に対応し、手ブレ補正もあります。画面上に十字キー＋ABXYボタンの左手デバイス風コントローラーを置け、物理キーボードのショートカットも使えます。ProではBluetoothゲームパッドでも操作できます。" data-en="Six brush types (pen, brush, airbrush, eraser, blur and smudge) respond to pressure, with stroke stabilization. An on-screen left-hand controller with a D-pad and ABXY buttons can be customized, and physical keyboard shortcuts work. Pro adds Bluetooth gamepad support.">ペン・ブラシ・エアブラシ・消しゴム・ぼかし・指先の6種類のブラシが筆圧に対応し、手ブレ補正もあります。画面上に十字キー＋ABXYボタンの左手デバイス風コントローラーを置け、物理キーボードのショートカットも使えます。ProではBluetoothゲームパッドでも操作できます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料ですか？広告は出ますか？" data-en="Is it free? Are there ads?">無料ですか？広告は出ますか？</summary>
+        <p data-ja="基本機能は無料で、広告はありません。個人情報の収集もせず、描画はオフラインでできます。買い切りのProでは、ブラシの詳細設定、PSDの書き出し・読み込み、Bluetoothゲームパッド対応が使えます。" data-en="The core features are free and there are no ads. The app collects no personal data and drawing works offline. The one-time Pro purchase adds detailed brush settings, PSD import and export, and Bluetooth gamepad support.">基本機能は無料で、広告はありません。個人情報の収集もせず、描画はオフラインでできます。買い切りのProでは、ブラシの詳細設定、PSDの書き出し・読み込み、Bluetoothゲームパッド対応が使えます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="どんな形式で保存できますか？" data-en="Which file formats can it save?">どんな形式で保存できますか？</summary>
+        <p data-ja="作品は.nkcl形式で保存し、PNG・JPGで書き出せます。ProではPSD形式で他のペイントソフトとやり取りできます。" data-en="Artwork is saved as .nkcl and can be exported as PNG or JPG. Pro adds PSD, for exchanging work with other painting software.">作品は.nkcl形式で保存し、PNG・JPGで書き出せます。ProではPSD形式で他のペイントソフトとやり取りできます。</p>
+      </details>
+    </div>
   </div>
 </section>
 

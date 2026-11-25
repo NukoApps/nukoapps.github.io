@@ -175,6 +175,70 @@
     .hero h1 { font-size: 34px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/nukostash/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "MultimediaApplication",
+      "description" : "Stashは、X(Twitter)のタイムラインから写真・動画だけを効率よく閲覧・保存できるビューワーアプリです。",
+      "downloadUrl" : "https://github.com/NukoApps/stash/releases/latest",
+      "image" : "https://nukoapps.fyi/nukostash/assets/icon.svg",
+      "name" : "Stash",
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/nukostash/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/nukostash/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Stashは、Xのおすすめ・フォロー中・リストのタイムラインから、写真・動画の投稿だけをグリッドで一覧できるAndroid向けのビューワーアプリです。気に入った写真・動画はワンタップで端末に保存したり、他のアプリへ共有したりできます。"
+          },
+          "name" : "X(Twitter)のタイムラインから画像や動画だけを見たり保存したりできるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Google Playなどのストアでは配布しておらず、GitHubからAPKをダウンロードしてインストールするサイドロード配布です。Stashは非公式のXクライアントで、X Corp.とは一切関係ありません。"
+          },
+          "name" : "どこで入手できますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ログインセッションはこの端末内にのみ保存され、X(Twitter)以外のサーバーに送信されることはありません。"
+          },
+          "name" : "ログイン情報は安全ですか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/nukostash/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 
@@ -293,6 +357,26 @@
     <div class="privacy-note" data-ja="ログインセッションは、この端末内にのみ保存されます。X(Twitter)以外のサーバーに送信されることは一切ありません。広告や解析用のトラッキングも組み込んでいません。" data-en="Your login session is stored only on this device. It is never sent anywhere other than X (Twitter). No ads or analytics tracking are built in.">
       ログインセッションは、この端末内にのみ保存されます。X(Twitter)以外のサーバーに送信されることは一切ありません。
       広告や解析用のトラッキングも組み込んでいません。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="X(Twitter)のタイムラインから画像や動画だけを見たり保存したりできるアプリはありますか？" data-en="Is there an app for viewing and saving only the images and videos from an X (Twitter) timeline?">X(Twitter)のタイムラインから画像や動画だけを見たり保存したりできるアプリはありますか？</summary>
+        <p data-ja="Stashは、Xのおすすめ・フォロー中・リストのタイムラインから、写真・動画の投稿だけをグリッドで一覧できるAndroid向けのビューワーアプリです。気に入った写真・動画はワンタップで端末に保存したり、他のアプリへ共有したりできます。" data-en="Stash is an Android viewer that shows only the photo and video posts from your X For You, Following and List timelines in a grid. You can save a photo or video to your device or share it to another app in one tap.">Stashは、Xのおすすめ・フォロー中・リストのタイムラインから、写真・動画の投稿だけをグリッドで一覧できるAndroid向けのビューワーアプリです。気に入った写真・動画はワンタップで端末に保存したり、他のアプリへ共有したりできます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="どこで入手できますか？" data-en="Where can I get it?">どこで入手できますか？</summary>
+        <p data-ja="Google Playなどのストアでは配布しておらず、GitHubからAPKをダウンロードしてインストールするサイドロード配布です。Stashは非公式のXクライアントで、X Corp.とは一切関係ありません。" data-en="It is not on Google Play or other stores; you download the APK from GitHub and install it yourself. Stash is an unofficial X client and has no affiliation with X Corp.">Google Playなどのストアでは配布しておらず、GitHubからAPKをダウンロードしてインストールするサイドロード配布です。Stashは非公式のXクライアントで、X Corp.とは一切関係ありません。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="ログイン情報は安全ですか？" data-en="Is my login safe?">ログイン情報は安全ですか？</summary>
+        <p data-ja="ログインセッションはこの端末内にのみ保存され、X(Twitter)以外のサーバーに送信されることはありません。" data-en="Your login session is stored only on this device and is never sent to any server other than X (Twitter).">ログインセッションはこの端末内にのみ保存され、X(Twitter)以外のサーバーに送信されることはありません。</p>
+      </details>
     </div>
   </div>
 </section>

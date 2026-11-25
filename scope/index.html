@@ -186,6 +186,85 @@
     header nav a { white-space: nowrap; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/scope/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "EducationalApplication",
+      "description" : "Scopeは、カメラをかざすだけで中国語(繁体字・簡体字)に拼音・注音を重ねて表示するAndroidアプリ。台湾華語/普通話を選べて、オフラインでも使えます。",
+      "image" : "https://nukoapps.fyi/scope/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.scope",
+      "isAccessibleForFree" : true,
+      "name" : "Scope",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(読み取り機能はすべて無料、画面上部に小さな広告)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/scope/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/scope/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Scopeは、カメラをかざすだけで、画面に映った中国語(繁体字・簡体字)の漢字にリアルタイムで拼音・注音を重ねて表示するAndroidアプリです。台湾でよく見る縦書きの看板やメニューの読み取りにも挑戦します。シャッターで画面を止めて、漢字と発音を1文字ずつ並べた一覧で確認することもできます。"
+          },
+          "name" : "中国語の看板やメニューの読み方(ピンイン・注音)をカメラで調べられるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "どちらも選べます。垃圾や星期のように読みが異なる語は選んだ基準に従い、多音字を含む語は文脈に合わせて読みます。簡体字の学習者にはピンイン、繁体字の学習者には注音(ボポモフォ)をワンタップで切り替えられます。"
+          },
+          "name" : "台湾華語と普通話のどちらに対応していますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "発音の変換は内蔵辞書ベースで完全にオフラインです。ご自身のGemini APIキーを設定すると、撮影画面から画像をAIで再解析して精度を上げることもできます(任意)。"
+          },
+          "name" : "オフラインでも使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "読み取り機能はすべて無料で、無料版には画面上部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)では広告が消え、スキャン結果を記録として保存して後から見返せます。"
+          },
+          "name" : "無料で使えますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/scope/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 
@@ -338,6 +417,30 @@
       購入の処理はGoogle Playが行います。詳しくはプライバシーポリシーをご覧ください。
     </div>
     <p style="margin-top:20px;"><a href="scope-privacy" data-ja="プライバシーポリシーを読む" data-en="Read the Privacy Policy">プライバシーポリシーを読む</a></p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="中国語の看板やメニューの読み方(ピンイン・注音)をカメラで調べられるアプリはありますか？" data-en="Is there an app that shows the Pinyin or Zhuyin of Chinese signs and menus through the camera?">中国語の看板やメニューの読み方(ピンイン・注音)をカメラで調べられるアプリはありますか？</summary>
+        <p data-ja="Scopeは、カメラをかざすだけで、画面に映った中国語(繁体字・簡体字)の漢字にリアルタイムで拼音・注音を重ねて表示するAndroidアプリです。台湾でよく見る縦書きの看板やメニューの読み取りにも挑戦します。シャッターで画面を止めて、漢字と発音を1文字ずつ並べた一覧で確認することもできます。" data-en="Scope is an Android app that overlays Pinyin and Zhuyin in real time on the Chinese characters (Traditional or Simplified) seen through your camera. It also attempts vertical signs and menus common in Taiwan, and you can freeze the frame to see each character lined up with its pronunciation.">Scopeは、カメラをかざすだけで、画面に映った中国語(繁体字・簡体字)の漢字にリアルタイムで拼音・注音を重ねて表示するAndroidアプリです。台湾でよく見る縦書きの看板やメニューの読み取りにも挑戦します。シャッターで画面を止めて、漢字と発音を1文字ずつ並べた一覧で確認することもできます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="台湾華語と普通話のどちらに対応していますか？" data-en="Does it follow Taiwan Mandarin or Putonghua?">台湾華語と普通話のどちらに対応していますか？</summary>
+        <p data-ja="どちらも選べます。垃圾や星期のように読みが異なる語は選んだ基準に従い、多音字を含む語は文脈に合わせて読みます。簡体字の学習者にはピンイン、繁体字の学習者には注音(ボポモフォ)をワンタップで切り替えられます。" data-en="You can choose either. Words read differently in the two standards, such as 垃圾 and 星期, follow your choice, and words with multi-reading characters are read in context. Switch between Pinyin and Zhuyin (Bopomofo) in one tap.">どちらも選べます。垃圾や星期のように読みが異なる語は選んだ基準に従い、多音字を含む語は文脈に合わせて読みます。簡体字の学習者にはピンイン、繁体字の学習者には注音(ボポモフォ)をワンタップで切り替えられます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="オフラインでも使えますか？" data-en="Does it work offline?">オフラインでも使えますか？</summary>
+        <p data-ja="発音の変換は内蔵辞書ベースで完全にオフラインです。ご自身のGemini APIキーを設定すると、撮影画面から画像をAIで再解析して精度を上げることもできます(任意)。" data-en="Pronunciation conversion uses a built-in dictionary and works fully offline. Optionally, with your own Gemini API key, you can have a captured image re-analyzed by AI for better accuracy.">発音の変換は内蔵辞書ベースで完全にオフラインです。ご自身のGemini APIキーを設定すると、撮影画面から画像をAIで再解析して精度を上げることもできます(任意)。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="読み取り機能はすべて無料で、無料版には画面上部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)では広告が消え、スキャン結果を記録として保存して後から見返せます。" data-en="All reading features are free; the free version shows a small ad at the top. The one-time Pro purchase (not a subscription) removes ads and lets you save scan results to review later.">読み取り機能はすべて無料で、無料版には画面上部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)では広告が消え、スキャン結果を記録として保存して後から見返せます。</p>
+      </details>
+    </div>
   </div>
 </section>
 

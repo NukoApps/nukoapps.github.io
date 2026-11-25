@@ -206,6 +206,93 @@
     .screens img { height: 380px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/gallery/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "MultimediaApplication",
+      "description" : "NukoGalleryは、自宅のNASやPCの共有フォルダにある写真・動画を、スマホのギャラリーのようにサクサク閲覧するAndroidアプリです。一覧はすぐ表示、大きな動画もシークが速い。SMB・SFTP・WebDAV・FTPに対応。",
+      "image" : "https://nukoapps.fyi/gallery/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.gallery",
+      "isAccessibleForFree" : true,
+      "name" : "NukoGallery",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(閲覧機能はすべて無料)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/gallery/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/gallery/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "NukoGalleryは、自宅のNASやPCの共有フォルダにある写真・動画を、スマホのギャラリーのように閲覧できるAndroidアプリです。フォルダの中身とサムネイルを端末に覚えておくので2回目からはNASを待たずに表示され、大きな動画も必要な部分だけ読むのでシークや次の動画への切り替えがすぐです。"
+          },
+          "name" : "NASの写真や動画をスマホでサクサク見られるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "SMB・SFTP・WebDAV・FTPに対応しています。Synologyなどの家庭用NAS、Windowsの共有フォルダ、Raspberry Piなどで使えます。"
+          },
+          "name" : "どのNASやサーバーに対応していますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "見られます。ただし、自宅の外から見るには、VPN(Tailscaleなど)でスマホが自宅のネットワークにつながっている必要があります。"
+          },
+          "name" : "外出先からも自宅のNASの写真を見られますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "閲覧の機能はすべて無料です。買い切りのProでは、ギャラリーを複数作れる(無料版は1つ)、サムネイルの先読み、アプリのロックと非公開アルバム、スマートアルバムが使え、広告も表示されなくなります。"
+          },
+          "name" : "無料で使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ありません。写真や動画はスマホとあなたが登録したサーバーの間だけでやり取りされます。サーバーのパスワードはAndroid Keystoreで暗号化して端末内に保存します。"
+          },
+          "name" : "写真が開発者や外部のサーバーに送られることはありますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/gallery/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 <header>
@@ -349,6 +436,34 @@
     </div>
     <div class="privacy-note" data-ja="自宅の外からNASを見るには、VPN(Tailscaleなど)で自宅のネットワークにつながっている必要があります。" data-en="To browse your NAS away from home, the phone needs to reach your home network through a VPN (Tailscale and the like).">
       自宅の外からNASを見るには、VPN(Tailscaleなど)で自宅のネットワークにつながっている必要があります。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="NASの写真や動画をスマホでサクサク見られるアプリはありますか？" data-en="Is there an app for browsing NAS photos and videos smoothly on a phone?">NASの写真や動画をスマホでサクサク見られるアプリはありますか？</summary>
+        <p data-ja="NukoGalleryは、自宅のNASやPCの共有フォルダにある写真・動画を、スマホのギャラリーのように閲覧できるAndroidアプリです。フォルダの中身とサムネイルを端末に覚えておくので2回目からはNASを待たずに表示され、大きな動画も必要な部分だけ読むのでシークや次の動画への切り替えがすぐです。" data-en="NukoGallery is an Android app that lets you browse the photos and videos in your home NAS or PC shared folders like your phone's gallery. It remembers folder contents and thumbnails on the device, so from the second visit lists appear without waiting for the NAS, and it reads only the parts of a video it needs, so seeking in large videos is fast.">NukoGalleryは、自宅のNASやPCの共有フォルダにある写真・動画を、スマホのギャラリーのように閲覧できるAndroidアプリです。フォルダの中身とサムネイルを端末に覚えておくので2回目からはNASを待たずに表示され、大きな動画も必要な部分だけ読むのでシークや次の動画への切り替えがすぐです。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="どのNASやサーバーに対応していますか？" data-en="Which NAS and servers does it support?">どのNASやサーバーに対応していますか？</summary>
+        <p data-ja="SMB・SFTP・WebDAV・FTPに対応しています。Synologyなどの家庭用NAS、Windowsの共有フォルダ、Raspberry Piなどで使えます。" data-en="It supports SMB, SFTP, WebDAV and FTP, so it works with home NAS units such as Synology, Windows shared folders, a Raspberry Pi and more.">SMB・SFTP・WebDAV・FTPに対応しています。Synologyなどの家庭用NAS、Windowsの共有フォルダ、Raspberry Piなどで使えます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="外出先からも自宅のNASの写真を見られますか？" data-en="Can I view my home NAS while I'm away?">外出先からも自宅のNASの写真を見られますか？</summary>
+        <p data-ja="見られます。ただし、自宅の外から見るには、VPN(Tailscaleなど)でスマホが自宅のネットワークにつながっている必要があります。" data-en="Yes, as long as your phone can reach your home network through a VPN such as Tailscale.">見られます。ただし、自宅の外から見るには、VPN(Tailscaleなど)でスマホが自宅のネットワークにつながっている必要があります。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="閲覧の機能はすべて無料です。買い切りのProでは、ギャラリーを複数作れる(無料版は1つ)、サムネイルの先読み、アプリのロックと非公開アルバム、スマートアルバムが使え、広告も表示されなくなります。" data-en="All viewing features are free. The one-time Pro purchase adds multiple galleries (the free version has one), thumbnail pre-generation, app lock with private albums and smart albums, and removes ads.">閲覧の機能はすべて無料です。買い切りのProでは、ギャラリーを複数作れる(無料版は1つ)、サムネイルの先読み、アプリのロックと非公開アルバム、スマートアルバムが使え、広告も表示されなくなります。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="写真が開発者や外部のサーバーに送られることはありますか？" data-en="Are my photos ever sent to the developer?">写真が開発者や外部のサーバーに送られることはありますか？</summary>
+        <p data-ja="ありません。写真や動画はスマホとあなたが登録したサーバーの間だけでやり取りされます。サーバーのパスワードはAndroid Keystoreで暗号化して端末内に保存します。" data-en="No. Photos and videos travel only between your phone and the servers you register. Server passwords are encrypted on the device with the Android Keystore.">ありません。写真や動画はスマホとあなたが登録したサーバーの間だけでやり取りされます。サーバーのパスワードはAndroid Keystoreで暗号化して端末内に保存します。</p>
+      </details>
     </div>
   </div>
 </section>

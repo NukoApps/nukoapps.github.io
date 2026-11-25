@@ -185,6 +185,85 @@
     header nav a { white-space: nowrap; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/chineseshadowing/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "EducationalApplication",
+      "description" : "ChineseShadowingは、好きな中国語の文章に拼音・注音を自動で付けてシャドウイング練習ができるAndroidアプリ。オフライン対応、録音して聞き比べ、AI発音採点(任意)。",
+      "image" : "https://nukoapps.fyi/chineseshadowing/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.chineseshadowing",
+      "isAccessibleForFree" : true,
+      "name" : "ChineseShadowing",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(文章は合計50文まで、小さな広告)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/chineseshadowing/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/chineseshadowing/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ChineseShadowingは、中国語(普通話・台湾華語)の文章を貼り付けるだけで、すべての漢字に拼音と注音を自動で付けてシャドウイング練習ができるAndroidアプリです。一文リピート、リッスン＆ポーズ、全文連続再生の3つのモードがあり、再生速度は0.5〜1.5倍で調整できます。一文ずつ自分の声を録音してお手本と聞き比べることもできます。"
+          },
+          "name" : "好きな中国語の文章でシャドウイング練習ができるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "國語(台湾華語)と普通話を設定で切り替えられ、注音・拼音・両方の表示から選べます。拼音・注音の付与は内蔵辞書でオフラインで行います。"
+          },
+          "name" : "台湾華語や注音(ボポモフォ)にも対応していますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ご自身のGemini APIキーを設定すると、単語ごとの発音・声調のフィードバックを受けられます(任意)。録音はご自身のAPIキーでGoogleのGemini APIへ直接送られ、開発者が受け取ることはありません。"
+          },
+          "name" : "発音の採点はできますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "基本機能はすべて無料で、無料版は文章が合計50文まで、画面下部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)では広告が消え、文章の登録数が無制限になり、一括バックアップ・復元も使えます。"
+          },
+          "name" : "無料で使えますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/chineseshadowing/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 
@@ -346,6 +425,30 @@
       無料版では広告(Google AdMob)が表示され、購入の処理はGoogle Playが行います。詳しくはプライバシーポリシーをご覧ください。
     </div>
     <p style="margin-top:20px;"><a href="chineseshadowing-privacy" data-ja="プライバシーポリシーを読む" data-en="Read the Privacy Policy">プライバシーポリシーを読む</a></p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="好きな中国語の文章でシャドウイング練習ができるアプリはありますか？" data-en="Is there an app for Chinese shadowing practice with any text I choose?">好きな中国語の文章でシャドウイング練習ができるアプリはありますか？</summary>
+        <p data-ja="ChineseShadowingは、中国語(普通話・台湾華語)の文章を貼り付けるだけで、すべての漢字に拼音と注音を自動で付けてシャドウイング練習ができるAndroidアプリです。一文リピート、リッスン＆ポーズ、全文連続再生の3つのモードがあり、再生速度は0.5〜1.5倍で調整できます。一文ずつ自分の声を録音してお手本と聞き比べることもできます。" data-en="ChineseShadowing is an Android app where you paste any Chinese text (Putonghua or Taiwan Mandarin) and it adds Pinyin and Zhuyin to every character for shadowing practice. It has three modes (single-sentence repeat, listen and pause, and full playback) with speed from 0.5x to 1.5x, and you can record each sentence and compare it with the model audio.">ChineseShadowingは、中国語(普通話・台湾華語)の文章を貼り付けるだけで、すべての漢字に拼音と注音を自動で付けてシャドウイング練習ができるAndroidアプリです。一文リピート、リッスン＆ポーズ、全文連続再生の3つのモードがあり、再生速度は0.5〜1.5倍で調整できます。一文ずつ自分の声を録音してお手本と聞き比べることもできます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="台湾華語や注音(ボポモフォ)にも対応していますか？" data-en="Does it support Taiwan Mandarin and Zhuyin (Bopomofo)?">台湾華語や注音(ボポモフォ)にも対応していますか？</summary>
+        <p data-ja="國語(台湾華語)と普通話を設定で切り替えられ、注音・拼音・両方の表示から選べます。拼音・注音の付与は内蔵辞書でオフラインで行います。" data-en="You can switch between Taiwan Mandarin and Putonghua, and show Zhuyin, Pinyin or both. Annotation uses a built-in dictionary and works offline.">國語(台湾華語)と普通話を設定で切り替えられ、注音・拼音・両方の表示から選べます。拼音・注音の付与は内蔵辞書でオフラインで行います。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="発音の採点はできますか？" data-en="Can it score my pronunciation?">発音の採点はできますか？</summary>
+        <p data-ja="ご自身のGemini APIキーを設定すると、単語ごとの発音・声調のフィードバックを受けられます(任意)。録音はご自身のAPIキーでGoogleのGemini APIへ直接送られ、開発者が受け取ることはありません。" data-en="Optionally, with your own Gemini API key, you get word-by-word feedback on pronunciation and tones. Recordings go directly to Google's Gemini API with your key and are never received by the developer.">ご自身のGemini APIキーを設定すると、単語ごとの発音・声調のフィードバックを受けられます(任意)。録音はご自身のAPIキーでGoogleのGemini APIへ直接送られ、開発者が受け取ることはありません。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="基本機能はすべて無料で、無料版は文章が合計50文まで、画面下部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)では広告が消え、文章の登録数が無制限になり、一括バックアップ・復元も使えます。" data-en="All core features are free; the free version holds up to 50 sentences and shows a small ad at the bottom. The one-time Pro purchase (not a subscription) removes ads, allows unlimited texts and adds backup and restore.">基本機能はすべて無料で、無料版は文章が合計50文まで、画面下部に小さな広告が表示されます。買い切りのPro(定期購入ではありません)では広告が消え、文章の登録数が無制限になり、一括バックアップ・復元も使えます。</p>
+      </details>
+    </div>
   </div>
 </section>
 

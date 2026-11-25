@@ -168,6 +168,85 @@
     .screens img { height: 380px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/doujin/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "BusinessApplication",
+      "description" : "Nukoketは、同人誌即売会・コミケ・オンリーイベントで頒布と買い物をサポートする無料Androidアプリです。レジ・お釣り計算・在庫管理・会場マップ・予算管理に対応し、オフラインで使えます。",
+      "image" : "https://nukoapps.fyi/doujin/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.doujin",
+      "isAccessibleForFree" : true,
+      "name" : "Nukoket",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "全機能無料(サブスクなし)。一部画面に小さな広告、任意のカンパあり。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/doujin/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/doujin/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Nukoketは、同人誌即売会・コミケ・オンリーイベント向けの無料Androidアプリです。お客さん向けのレジ画面で、お預かりのお札をタップするだけでおつりを自動計算します。「新刊＋ポストカード」のようなセットの在庫管理、見本誌・献本の記録、商品ごとの販売数・消化率のCSV書き出しにも対応しています。"
+          },
+          "name" : "同人誌即売会(コミケなど)でサークル参加するときに使えるレジアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "はい。サークルと欲しいものを価格と優先度つきで登録し、当日はスペース番号順に巡回しながら購入済み・売り切れ・見送りを記録できます。会場マップへのピン、予算管理、友達からの頼まれものの集計にも対応しています。"
+          },
+          "name" : "一般参加の買い物にも使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "すべての機能がオフラインで動きます。データは端末内にのみ保存され、どこにもアップロードされません。"
+          },
+          "name" : "電波の悪い会場でも使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "すべての機能を無料で使え、サブスクリプションはありません。一部の画面に小さな広告が出ますが、販売・レジ・当日の買い物画面には表示しません。イベントごとに通貨(台湾ドル・韓国ウォン・米ドルなど)を設定でき、アプリの表示は9言語に対応しています。"
+          },
+          "name" : "無料ですか？海外のイベントでも使えますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/doujin/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 
@@ -318,6 +397,30 @@
         <li data-ja="役に立ったら、アプリ内の任意のカンパで開発を応援していただけます。" data-en="If it helps you, you can support development with an optional in-app tip.">役に立ったら、アプリ内の任意のカンパで開発を応援していただけます。</li>
       </ul>
       <p style="margin:16px 0 0;"><a href="doujin-privacy" data-ja="プライバシーポリシーを見る" data-en="Read the privacy policy">プライバシーポリシーを見る</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="同人誌即売会(コミケなど)でサークル参加するときに使えるレジアプリはありますか？" data-en="Is there a register app for exhibitors at doujin events like Comiket?">同人誌即売会(コミケなど)でサークル参加するときに使えるレジアプリはありますか？</summary>
+        <p data-ja="Nukoketは、同人誌即売会・コミケ・オンリーイベント向けの無料Androidアプリです。お客さん向けのレジ画面で、お預かりのお札をタップするだけでおつりを自動計算します。「新刊＋ポストカード」のようなセットの在庫管理、見本誌・献本の記録、商品ごとの販売数・消化率のCSV書き出しにも対応しています。" data-en="Nukoket is a free Android app for doujin events, Comiket and fan conventions. Its customer-facing register calculates change when you tap the notes handed over, and it tracks stock for sets like &quot;new book + postcard&quot;, records sample and gift copies, and exports sales and sell-through per item as CSV.">Nukoketは、同人誌即売会・コミケ・オンリーイベント向けの無料Androidアプリです。お客さん向けのレジ画面で、お預かりのお札をタップするだけでおつりを自動計算します。「新刊＋ポストカード」のようなセットの在庫管理、見本誌・献本の記録、商品ごとの販売数・消化率のCSV書き出しにも対応しています。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="一般参加の買い物にも使えますか？" data-en="Can I use it as a buyer too?">一般参加の買い物にも使えますか？</summary>
+        <p data-ja="はい。サークルと欲しいものを価格と優先度つきで登録し、当日はスペース番号順に巡回しながら購入済み・売り切れ・見送りを記録できます。会場マップへのピン、予算管理、友達からの頼まれものの集計にも対応しています。" data-en="Yes. Register circles and wish-list items with prices and priorities, then on the day go round in space-number order and mark items bought, sold out or skipped. It also pins circles on the venue map, tracks your budget and totals items friends asked you to buy.">はい。サークルと欲しいものを価格と優先度つきで登録し、当日はスペース番号順に巡回しながら購入済み・売り切れ・見送りを記録できます。会場マップへのピン、予算管理、友達からの頼まれものの集計にも対応しています。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="電波の悪い会場でも使えますか？" data-en="Does it work at venues with bad reception?">電波の悪い会場でも使えますか？</summary>
+        <p data-ja="すべての機能がオフラインで動きます。データは端末内にのみ保存され、どこにもアップロードされません。" data-en="Every feature works offline. Data is stored only on the device and is never uploaded anywhere.">すべての機能がオフラインで動きます。データは端末内にのみ保存され、どこにもアップロードされません。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料ですか？海外のイベントでも使えますか？" data-en="Is it free, and does it work at events abroad?">無料ですか？海外のイベントでも使えますか？</summary>
+        <p data-ja="すべての機能を無料で使え、サブスクリプションはありません。一部の画面に小さな広告が出ますが、販売・レジ・当日の買い物画面には表示しません。イベントごとに通貨(台湾ドル・韓国ウォン・米ドルなど)を設定でき、アプリの表示は9言語に対応しています。" data-en="All features are free with no subscription. Some screens show a small ad, but never the sales, register or on-the-day shopping screens. Each event can use its own currency (Taiwan dollar, Korean won, US dollar and more), and the app is available in 9 languages.">すべての機能を無料で使え、サブスクリプションはありません。一部の画面に小さな広告が出ますが、販売・レジ・当日の買い物画面には表示しません。イベントごとに通貨(台湾ドル・韓国ウォン・米ドルなど)を設定でき、アプリの表示は9言語に対応しています。</p>
+      </details>
     </div>
   </div>
 </section>

@@ -199,6 +199,86 @@
     .screens img { height: 380px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/tidy/#app",
+      "@type" : "SoftwareApplication",
+      "alternateName" : "Tidy - Auto File Organizer",
+      "applicationCategory" : "UtilitiesApplication",
+      "description" : "Tidyは、スマホの中に散らばったファイルをルールで自動整理するAndroidアプリです。アプリごとにバラバラの画像を1つのフォルダにまとめ、年や月が変わったらCameraフォルダを自動で切り替え。すべての操作は元に戻せます。",
+      "image" : "https://nukoapps.fyi/tidy/assets/icon.png",
+      "name" : "Tidy",
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/tidy/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/tidy/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Tidyは、スマホの中に散らばったファイルをルールで自動整理するAndroidアプリです。複数のフォルダから1か所へ移動・コピーでき、種類・拡張子・ファイル名のパターン・「○日以上前」で絞り込めます。ファイルが追加されてから数秒後、または定期的にバックグラウンドで実行します。"
+          },
+          "name" : "Androidのファイルを自動で整理してくれるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Tidyなら、年・月が変わったとき、またはファイル数が多くなったときに、Cameraフォルダを自動で切り替えられます。名前を変えて作り直すか、中のファイルを月・年ごとの保管フォルダへ移すかを選べます。"
+          },
+          "name" : "Cameraフォルダに写真がたまりすぎて開くのが遅いです。"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "すべての操作を履歴に記録し、移動もフォルダの切り替えもワンタップで元に戻せます。実行前には、どのファイルがどこへ行くかをプレビューで確認できます。"
+          },
+          "name" : "間違って移動してしまったら元に戻せますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Google Playで近日公開予定です。機能はすべて無料版でも使え、買い切りのProではルール数が無制限(無料版は2つ)になり、広告も表示されなくなります。"
+          },
+          "name" : "料金といつ使えるかを教えてください。"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ありません。ファイルの移動・コピー・フォルダ名の変更はすべて端末の中で行います。他のアプリが保存したフォルダの間で移動するため、Androidの「全ファイルへのアクセス」の許可が必要です。"
+          },
+          "name" : "ファイルが外部に送られることはありますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/tidy/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 <header>
@@ -334,6 +414,34 @@
     </div>
     <div class="privacy-note" data-ja="他のアプリが保存したフォルダの間でファイルを自動で移動するため、Androidの「全ファイルへのアクセス」の許可が必要です。この許可はあなたが作ったルールのためだけに使われます。" data-en="To move files automatically between folders other apps save to, Tidy needs Android's &quot;All files access&quot; permission. It is used only for the rules you create.">
       他のアプリが保存したフォルダの間でファイルを自動で移動するため、Androidの「全ファイルへのアクセス」の許可が必要です。この許可はあなたが作ったルールのためだけに使われます。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="Androidのファイルを自動で整理してくれるアプリはありますか？" data-en="Is there an app that organizes Android files automatically?">Androidのファイルを自動で整理してくれるアプリはありますか？</summary>
+        <p data-ja="Tidyは、スマホの中に散らばったファイルをルールで自動整理するAndroidアプリです。複数のフォルダから1か所へ移動・コピーでき、種類・拡張子・ファイル名のパターン・「○日以上前」で絞り込めます。ファイルが追加されてから数秒後、または定期的にバックグラウンドで実行します。" data-en="Tidy is an Android app that organizes files scattered across your phone automatically, by rules. It moves or copies files from several folders into one, filtered by type, extension, file name pattern or age, and runs in the background a few seconds after files arrive or on a schedule.">Tidyは、スマホの中に散らばったファイルをルールで自動整理するAndroidアプリです。複数のフォルダから1か所へ移動・コピーでき、種類・拡張子・ファイル名のパターン・「○日以上前」で絞り込めます。ファイルが追加されてから数秒後、または定期的にバックグラウンドで実行します。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="Cameraフォルダに写真がたまりすぎて開くのが遅いです。" data-en="My Camera folder has so many photos that it opens slowly.">Cameraフォルダに写真がたまりすぎて開くのが遅いです。</summary>
+        <p data-ja="Tidyなら、年・月が変わったとき、またはファイル数が多くなったときに、Cameraフォルダを自動で切り替えられます。名前を変えて作り直すか、中のファイルを月・年ごとの保管フォルダへ移すかを選べます。" data-en="Tidy can switch the Camera folder automatically when the year or month changes, or when it holds too many files. It can either rename the folder and start a fresh one, or move the files into monthly or yearly archive folders.">Tidyなら、年・月が変わったとき、またはファイル数が多くなったときに、Cameraフォルダを自動で切り替えられます。名前を変えて作り直すか、中のファイルを月・年ごとの保管フォルダへ移すかを選べます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="間違って移動してしまったら元に戻せますか？" data-en="Can I undo a wrong move?">間違って移動してしまったら元に戻せますか？</summary>
+        <p data-ja="すべての操作を履歴に記録し、移動もフォルダの切り替えもワンタップで元に戻せます。実行前には、どのファイルがどこへ行くかをプレビューで確認できます。" data-en="Every operation is recorded in the history, and moves and folder switches can be undone in one tap. Before running, a preview shows which files will go where.">すべての操作を履歴に記録し、移動もフォルダの切り替えもワンタップで元に戻せます。実行前には、どのファイルがどこへ行くかをプレビューで確認できます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="料金といつ使えるかを教えてください。" data-en="How much is it, and when is it available?">料金といつ使えるかを教えてください。</summary>
+        <p data-ja="Google Playで近日公開予定です。機能はすべて無料版でも使え、買い切りのProではルール数が無制限(無料版は2つ)になり、広告も表示されなくなります。" data-en="It is coming soon to Google Play. Every feature works in the free version; the one-time Pro purchase allows unlimited rules (the free version allows two) and removes ads.">Google Playで近日公開予定です。機能はすべて無料版でも使え、買い切りのProではルール数が無制限(無料版は2つ)になり、広告も表示されなくなります。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="ファイルが外部に送られることはありますか？" data-en="Are my files ever sent anywhere?">ファイルが外部に送られることはありますか？</summary>
+        <p data-ja="ありません。ファイルの移動・コピー・フォルダ名の変更はすべて端末の中で行います。他のアプリが保存したフォルダの間で移動するため、Androidの「全ファイルへのアクセス」の許可が必要です。" data-en="No. Moving, copying and renaming folders all happen on the device. Because it moves files between folders other apps save to, it needs Android's All files access permission.">ありません。ファイルの移動・コピー・フォルダ名の変更はすべて端末の中で行います。他のアプリが保存したフォルダの間で移動するため、Androidの「全ファイルへのアクセス」の許可が必要です。</p>
+      </details>
     </div>
   </div>
 </section>

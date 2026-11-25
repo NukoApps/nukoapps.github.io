@@ -201,6 +201,85 @@
     .hero h1 { font-size: 34px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/exif/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "UtilitiesApplication",
+      "description" : "Exifは、写真に隠れたGPS位置情報・撮影日時・カメラ情報(EXIF)を確認して、ワンタップで削除できるAndroidアプリです。元の写真は変更せず、新しいコピーとして保存します。",
+      "image" : "https://nukoapps.fyi/exif/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.exif",
+      "isAccessibleForFree" : true,
+      "name" : "Exif",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(GPS削除などプライバシー保護は常に無料)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/exif/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/exif/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Exifは、写真に記録された撮影場所のGPS座標・撮影日時・カメラ情報(EXIF)を確認して、ワンタップで削除できるAndroidアプリです。位置情報だけを消すことも、メタデータをすべて消すこともできます。"
+          },
+          "name" : "写真の位置情報(GPS)を消してから共有できるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "元の写真は変更せず、きれいにした写真を新しいコピーとして保存します。書き換えるのはメタデータだけで再圧縮しないので、画質は変わりません。"
+          },
+          "name" : "元の写真や画質はどうなりますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "プライバシーの保護はずっと無料です。買い切りのProでは、たくさんの写真をまとめて処理する一括モード、フォルダの一括追加、消す項目を選べる選択的削除、プリセットが使え、広告も表示されなくなります。"
+          },
+          "name" : "無料で使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ありません。写真の処理はすべて端末内で完結し、登録やログインも不要です。写真の位置情報を表示するために「メディアの位置情報」の権限を求めますが、端末の現在地は使いません。"
+          },
+          "name" : "写真がアップロードされることはありますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/exif/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 
@@ -348,6 +427,30 @@
       写真やそのメタデータがサーバーにアップロードされることはありません。写真に記録された位置情報を表示するため、Androidの「メディアの位置情報」権限を求めますが、端末の現在地は使用しません。
       無料版には画面下部に小さな広告(Google AdMob)が表示されます。買い切りのProにアップグレードすると、広告は表示されなくなり、
       一括モード・フォルダ追加・選択的削除・プリセットも使えるようになります。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="写真の位置情報(GPS)を消してから共有できるアプリはありますか？" data-en="Is there an app that removes GPS location from photos before sharing?">写真の位置情報(GPS)を消してから共有できるアプリはありますか？</summary>
+        <p data-ja="Exifは、写真に記録された撮影場所のGPS座標・撮影日時・カメラ情報(EXIF)を確認して、ワンタップで削除できるAndroidアプリです。位置情報だけを消すことも、メタデータをすべて消すこともできます。" data-en="Exif is an Android app that shows the GPS coordinates, date and camera details (EXIF) recorded in a photo and removes them in one tap. You can remove just the location or strip all metadata.">Exifは、写真に記録された撮影場所のGPS座標・撮影日時・カメラ情報(EXIF)を確認して、ワンタップで削除できるAndroidアプリです。位置情報だけを消すことも、メタデータをすべて消すこともできます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="元の写真や画質はどうなりますか？" data-en="What happens to the original photo and its quality?">元の写真や画質はどうなりますか？</summary>
+        <p data-ja="元の写真は変更せず、きれいにした写真を新しいコピーとして保存します。書き換えるのはメタデータだけで再圧縮しないので、画質は変わりません。" data-en="The original is never modified; the cleaned photo is saved as a new copy. Only the metadata is rewritten and the image is not recompressed, so quality stays the same.">元の写真は変更せず、きれいにした写真を新しいコピーとして保存します。書き換えるのはメタデータだけで再圧縮しないので、画質は変わりません。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="プライバシーの保護はずっと無料です。買い切りのProでは、たくさんの写真をまとめて処理する一括モード、フォルダの一括追加、消す項目を選べる選択的削除、プリセットが使え、広告も表示されなくなります。" data-en="Privacy protection is always free. The one-time Pro purchase adds batch mode, whole-folder import, selective removal of chosen fields and presets, and removes ads.">プライバシーの保護はずっと無料です。買い切りのProでは、たくさんの写真をまとめて処理する一括モード、フォルダの一括追加、消す項目を選べる選択的削除、プリセットが使え、広告も表示されなくなります。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="写真がアップロードされることはありますか？" data-en="Are photos uploaded anywhere?">写真がアップロードされることはありますか？</summary>
+        <p data-ja="ありません。写真の処理はすべて端末内で完結し、登録やログインも不要です。写真の位置情報を表示するために「メディアの位置情報」の権限を求めますが、端末の現在地は使いません。" data-en="No. All processing happens on the device and no sign-up is needed. The app asks for Android's media location permission to show the location stored in photos, but never uses your current location.">ありません。写真の処理はすべて端末内で完結し、登録やログインも不要です。写真の位置情報を表示するために「メディアの位置情報」の権限を求めますが、端末の現在地は使いません。</p>
+      </details>
     </div>
   </div>
 </section>

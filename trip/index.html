@@ -192,6 +192,93 @@
     header { flex-wrap: wrap; gap: 10px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/trip/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "TravelApplication",
+      "description" : "Tripsは、乗った便と行った国を旅行ごとに記録する海外旅行ログアプリです。予約メールやスクショから便を読み取り、入国のたびにパスポート風のスタンプ帳にスタンプが押されます。",
+      "image" : "https://nukoapps.fyi/trip/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.trip",
+      "isAccessibleForFree" : true,
+      "name" : "Trips",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(旅行5件まで)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/trip/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/trip/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Tripsは、乗った便と行った国を旅行ごとに記録する海外旅行ログアプリです。1つの旅行を出国から帰国まで、飛行機のほか鉄道・船・バス・車の区間も含めて残せます。国・地域ごとの訪問回数と滞在日数の一覧や、入国した国を塗った世界地図で振り返れます。"
+          },
+          "name" : "海外旅行で行った国や乗った飛行機を記録できるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "予約メール・eチケットPDF・スクショを共有すると、便名・空港・日時を読み取って候補を出します。文字の読み取りは端末内で行います。"
+          },
+          "name" : "予約メールから便の情報を読み取れますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Tripsでは、国ごとに形とインク色が違うオリジナルのスタンプが、入国・出国のたびにパスポート風のスタンプ帳に押されていきます。スタンプのページは画像で共有でき、Proではスタンプ帳まるごとPDFに保存できます。(スタンプは本アプリのオリジナルデザインで、各国の実際の出入国スタンプではありません)"
+          },
+          "name" : "パスポートにスタンプが押されなくなったので、記念に残したいです。"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "出発・到着をそれぞれの現地時刻で登録し、所要時間や「+1日」のずれをタイムゾーンから計算します。短い乗り継ぎは自動で「乗り継ぎのみ」として扱い、乗り継ぎ中に入国した場合はワンタップで切り替えられます。"
+          },
+          "name" : "夜行便や日付変更線をまたぐフライトも正しく記録できますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "基本機能は無料で、旅行は5件まで登録できます。買い切りのProでは旅行の件数が無制限になり、スタンプ帳のPDF保存が使え、広告も表示されなくなります。データは端末内にのみ保存されます。"
+          },
+          "name" : "無料で使えますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/trip/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 <header>
@@ -328,6 +415,34 @@
     </div>
     <div class="privacy-note" data-ja="スタンプは本アプリのオリジナルデザインで、各国の実際の出入国スタンプではありません。" data-en="The stamps are original designs made for this app, not the actual border stamps of any country.">
       スタンプは本アプリのオリジナルデザインで、各国の実際の出入国スタンプではありません。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="海外旅行で行った国や乗った飛行機を記録できるアプリはありますか？" data-en="Is there an app for logging the countries I've visited and the flights I've taken?">海外旅行で行った国や乗った飛行機を記録できるアプリはありますか？</summary>
+        <p data-ja="Tripsは、乗った便と行った国を旅行ごとに記録する海外旅行ログアプリです。1つの旅行を出国から帰国まで、飛行機のほか鉄道・船・バス・車の区間も含めて残せます。国・地域ごとの訪問回数と滞在日数の一覧や、入国した国を塗った世界地図で振り返れます。" data-en="Trips is a travel log that records every flight and every country you visit, trip by trip, from departure to return, including train, ferry, bus and car legs. You can review visit counts and days spent per country, and a world map colors in the countries you've entered.">Tripsは、乗った便と行った国を旅行ごとに記録する海外旅行ログアプリです。1つの旅行を出国から帰国まで、飛行機のほか鉄道・船・バス・車の区間も含めて残せます。国・地域ごとの訪問回数と滞在日数の一覧や、入国した国を塗った世界地図で振り返れます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="予約メールから便の情報を読み取れますか？" data-en="Can it read flights from booking emails?">予約メールから便の情報を読み取れますか？</summary>
+        <p data-ja="予約メール・eチケットPDF・スクショを共有すると、便名・空港・日時を読み取って候補を出します。文字の読み取りは端末内で行います。" data-en="Share a booking email, e-ticket PDF or screenshot and it reads the flight number, airports and times and suggests the flight. Text recognition happens on the device.">予約メール・eチケットPDF・スクショを共有すると、便名・空港・日時を読み取って候補を出します。文字の読み取りは端末内で行います。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="パスポートにスタンプが押されなくなったので、記念に残したいです。" data-en="My passport doesn't get stamped anymore. Can I still keep a record?">パスポートにスタンプが押されなくなったので、記念に残したいです。</summary>
+        <p data-ja="Tripsでは、国ごとに形とインク色が違うオリジナルのスタンプが、入国・出国のたびにパスポート風のスタンプ帳に押されていきます。スタンプのページは画像で共有でき、Proではスタンプ帳まるごとPDFに保存できます。(スタンプは本アプリのオリジナルデザインで、各国の実際の出入国スタンプではありません)" data-en="In Trips, an original stamp with its own shape and ink color for each country is added to a passport-style stamp book every time you enter or leave. You can share stamp pages as images, and Pro saves the whole stamp book as a PDF. (The stamps are the app's own designs, not real immigration stamps.)">Tripsでは、国ごとに形とインク色が違うオリジナルのスタンプが、入国・出国のたびにパスポート風のスタンプ帳に押されていきます。スタンプのページは画像で共有でき、Proではスタンプ帳まるごとPDFに保存できます。(スタンプは本アプリのオリジナルデザインで、各国の実際の出入国スタンプではありません)</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="夜行便や日付変更線をまたぐフライトも正しく記録できますか？" data-en="Does it handle overnight flights and the date line?">夜行便や日付変更線をまたぐフライトも正しく記録できますか？</summary>
+        <p data-ja="出発・到着をそれぞれの現地時刻で登録し、所要時間や「+1日」のずれをタイムゾーンから計算します。短い乗り継ぎは自動で「乗り継ぎのみ」として扱い、乗り継ぎ中に入国した場合はワンタップで切り替えられます。" data-en="Departure and arrival are entered in their own local times, and duration and +1 day shifts are worked out from the time zones. Short layovers count as transit automatically, and you can switch a layover to an entry in one tap.">出発・到着をそれぞれの現地時刻で登録し、所要時間や「+1日」のずれをタイムゾーンから計算します。短い乗り継ぎは自動で「乗り継ぎのみ」として扱い、乗り継ぎ中に入国した場合はワンタップで切り替えられます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="基本機能は無料で、旅行は5件まで登録できます。買い切りのProでは旅行の件数が無制限になり、スタンプ帳のPDF保存が使え、広告も表示されなくなります。データは端末内にのみ保存されます。" data-en="The core features are free for up to 5 trips. The one-time Pro purchase allows unlimited trips, adds stamp book PDF export and removes ads. Data stays on your device.">基本機能は無料で、旅行は5件まで登録できます。買い切りのProでは旅行の件数が無制限になり、スタンプ帳のPDF保存が使え、広告も表示されなくなります。データは端末内にのみ保存されます。</p>
+      </details>
     </div>
   </div>
 </section>

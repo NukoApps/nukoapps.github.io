@@ -188,6 +188,85 @@
     .hero h1 { font-size: 34px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/compress/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "UtilitiesApplication",
+      "description" : "Compressは、写真を指定したKB/MBにぴったり圧縮できるAndroid向けの画像圧縮アプリです。一括圧縮・フォーマット変換・リサイズに対応。",
+      "image" : "https://nukoapps.fyi/compress/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.compress",
+      "isAccessibleForFree" : true,
+      "name" : "Compress",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(画面下部に小さな広告)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/compress/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/compress/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Compressは、写真を指定したサイズ(KB/MB)にぴったり圧縮できるAndroidアプリです。100KB・200KB・500KB・1MBから選ぶと、二分探索方式で画質を自動調整して目標サイズに収めます。Proでは目標サイズを自由に指定できます。"
+          },
+          "name" : "写真を200KB以下など、決まったサイズに圧縮できるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "複数の写真を選んで一度に圧縮でき、アプリを離れても処理は続きます。JPEG・WebP・PNGへの変換や、縦横比を保ったリサイズもできます。Proではバッチ枚数の上限がなくなり、フォルダの一括読み込みも使えます。"
+          },
+          "name" : "たくさんの写真をまとめて圧縮できますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ありません。圧縮処理はすべて端末内で完結します。"
+          },
+          "name" : "写真がサーバーにアップロードされることはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "無料で使えます。無料版には画面下部に小さな広告が表示され、買い切りのProにアップグレードすると広告が消え、バッチ枚数の上限解除・カスタム目標サイズ・フォルダの一括読み込みが使えます。"
+          },
+          "name" : "無料で使えますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/compress/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 
@@ -305,6 +384,30 @@
       画像の圧縮処理はすべて端末内で完結し、あなたの写真やファイルがどこかのサーバーにアップロードされることはありません。
       無料版には画面下部に小さな広告(Google AdMob)が表示されます。買い切りのProにアップグレードすると、広告は表示されなくなり、
       バッチ枚数の上限やカスタム目標サイズ、フォルダの一括読み込みも使えるようになります。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="写真を200KB以下など、決まったサイズに圧縮できるアプリはありますか？" data-en="Is there an app that compresses photos to a set size, such as under 200 KB?">写真を200KB以下など、決まったサイズに圧縮できるアプリはありますか？</summary>
+        <p data-ja="Compressは、写真を指定したサイズ(KB/MB)にぴったり圧縮できるAndroidアプリです。100KB・200KB・500KB・1MBから選ぶと、二分探索方式で画質を自動調整して目標サイズに収めます。Proでは目標サイズを自由に指定できます。" data-en="Compress is an Android app that shrinks photos to an exact target size in KB or MB. Pick 100 KB, 200 KB, 500 KB or 1 MB and it adjusts quality automatically by binary search to fit. Pro lets you set any custom target size.">Compressは、写真を指定したサイズ(KB/MB)にぴったり圧縮できるAndroidアプリです。100KB・200KB・500KB・1MBから選ぶと、二分探索方式で画質を自動調整して目標サイズに収めます。Proでは目標サイズを自由に指定できます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="たくさんの写真をまとめて圧縮できますか？" data-en="Can I compress many photos at once?">たくさんの写真をまとめて圧縮できますか？</summary>
+        <p data-ja="複数の写真を選んで一度に圧縮でき、アプリを離れても処理は続きます。JPEG・WebP・PNGへの変換や、縦横比を保ったリサイズもできます。Proではバッチ枚数の上限がなくなり、フォルダの一括読み込みも使えます。" data-en="Yes. Select several photos and compress them in one go; processing continues in the background. It can also convert to JPEG, WebP or PNG and resize while keeping the aspect ratio. Pro removes the batch limit and adds whole-folder import.">複数の写真を選んで一度に圧縮でき、アプリを離れても処理は続きます。JPEG・WebP・PNGへの変換や、縦横比を保ったリサイズもできます。Proではバッチ枚数の上限がなくなり、フォルダの一括読み込みも使えます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="写真がサーバーにアップロードされることはありますか？" data-en="Are my photos uploaded to a server?">写真がサーバーにアップロードされることはありますか？</summary>
+        <p data-ja="ありません。圧縮処理はすべて端末内で完結します。" data-en="No. All compression happens on the device.">ありません。圧縮処理はすべて端末内で完結します。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="無料で使えます。無料版には画面下部に小さな広告が表示され、買い切りのProにアップグレードすると広告が消え、バッチ枚数の上限解除・カスタム目標サイズ・フォルダの一括読み込みが使えます。" data-en="Yes. The free version shows a small banner ad at the bottom; the one-time Pro purchase removes it and adds unlimited batches, custom target sizes and whole-folder import.">無料で使えます。無料版には画面下部に小さな広告が表示され、買い切りのProにアップグレードすると広告が消え、バッチ枚数の上限解除・カスタム目標サイズ・フォルダの一括読み込みが使えます。</p>
+      </details>
     </div>
   </div>
 </section>

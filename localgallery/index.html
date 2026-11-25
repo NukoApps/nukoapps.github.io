@@ -189,6 +189,94 @@
     .screens img { height: 380px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/localgallery/#app",
+      "@type" : "SoftwareApplication",
+      "alternateName" : "Gallery by NukoApps",
+      "applicationCategory" : "MultimediaApplication",
+      "description" : "Galleryは、スマホの写真・動画を、選んだフォルダごとのギャラリーで見るAndroidアプリです。新しいフォルダができたらお知らせ、人に見せたくないギャラリーは隠しておけます。",
+      "image" : "https://nukoapps.fyi/localgallery/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.localgallery",
+      "isAccessibleForFree" : true,
+      "name" : "Gallery",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(見る・整理する・編集する・隠す機能は無料)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/localgallery/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/localgallery/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Galleryは、スマホの中から選んだフォルダだけでギャラリーを作り、左右スワイプで切り替えて見られるAndroidアプリです。サブフォルダを含めたり、いらないフォルダを外したりでき、ほかのアプリが「.nomedia」で隠したフォルダも追加できます。"
+          },
+          "name" : "スマホの写真をフォルダごとに分けて見られるギャラリーアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "はい。CameraがCamera2026に切り替わったときなど、新しいフォルダができたらお知らせします。元の写真が入っていたギャラリーをおすすめし、ワンタップで追加できます。"
+          },
+          "name" : "新しいフォルダができたときに気づけますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ギャラリーや「すべて」タブを隠しておけます。隠したものは検索やお気に入りにも出ず、再表示には端末の画面ロックが必要です。"
+          },
+          "name" : "人にスマホの写真を見せるとき、見られたくない写真を隠せますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "スクショの上下カット、トリミング、回転、指でなぞるモザイク・ぼかし、スタンプができます。元の写真はそのままで、位置情報の入らない新しい写真として保存します。"
+          },
+          "name" : "写真の編集はできますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "見る・整理する・編集する・隠す機能は無料です。買い切りのProでは、ギャラリーを複数作れる(無料版は1つ)、アプリのロックと非公開アルバム、スマートアルバムが使え、広告も表示されなくなります。写真や動画は端末の中だけで扱い、開発者に送られることはありません。"
+          },
+          "name" : "無料で使えますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/localgallery/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 <header>
@@ -324,6 +412,34 @@
     </div>
     <div class="privacy-note" data-ja="無料版には一覧画面の下部に小さな広告(Google AdMob)が表示されます(写真・動画の表示中は出ません)。買い切りのProにアップグレードすると広告は表示されなくなります。" data-en="The free version shows a small ad (Google AdMob) at the bottom of list screens, never while a photo or video is open. Upgrading to the one-time Pro purchase removes it.">
       無料版には一覧画面の下部に小さな広告(Google AdMob)が表示されます(写真・動画の表示中は出ません)。買い切りのProにアップグレードすると広告は表示されなくなります。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="スマホの写真をフォルダごとに分けて見られるギャラリーアプリはありますか？" data-en="Is there a gallery app that shows phone photos folder by folder?">スマホの写真をフォルダごとに分けて見られるギャラリーアプリはありますか？</summary>
+        <p data-ja="Galleryは、スマホの中から選んだフォルダだけでギャラリーを作り、左右スワイプで切り替えて見られるAndroidアプリです。サブフォルダを含めたり、いらないフォルダを外したりでき、ほかのアプリが「.nomedia」で隠したフォルダも追加できます。" data-en="Gallery is an Android app that builds galleries from only the folders you choose and lets you swipe between them. You can include subfolders, leave out folders you don't want, and even add folders other apps hid with .nomedia.">Galleryは、スマホの中から選んだフォルダだけでギャラリーを作り、左右スワイプで切り替えて見られるAndroidアプリです。サブフォルダを含めたり、いらないフォルダを外したりでき、ほかのアプリが「.nomedia」で隠したフォルダも追加できます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="新しいフォルダができたときに気づけますか？" data-en="Will I notice when a new folder appears?">新しいフォルダができたときに気づけますか？</summary>
+        <p data-ja="はい。CameraがCamera2026に切り替わったときなど、新しいフォルダができたらお知らせします。元の写真が入っていたギャラリーをおすすめし、ワンタップで追加できます。" data-en="Yes. When a new folder appears, for example when Camera switches to Camera2026, the app tells you, suggests the gallery that held the original photos, and adds it there in one tap.">はい。CameraがCamera2026に切り替わったときなど、新しいフォルダができたらお知らせします。元の写真が入っていたギャラリーをおすすめし、ワンタップで追加できます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="人にスマホの写真を見せるとき、見られたくない写真を隠せますか？" data-en="Can I hide photos I don't want others to see when I show my phone?">人にスマホの写真を見せるとき、見られたくない写真を隠せますか？</summary>
+        <p data-ja="ギャラリーや「すべて」タブを隠しておけます。隠したものは検索やお気に入りにも出ず、再表示には端末の画面ロックが必要です。" data-en="You can hide galleries and the All tab. Hidden items don't appear in search or favorites either, and showing them again requires your device screen lock.">ギャラリーや「すべて」タブを隠しておけます。隠したものは検索やお気に入りにも出ず、再表示には端末の画面ロックが必要です。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="写真の編集はできますか？" data-en="Can I edit photos?">写真の編集はできますか？</summary>
+        <p data-ja="スクショの上下カット、トリミング、回転、指でなぞるモザイク・ぼかし、スタンプができます。元の写真はそのままで、位置情報の入らない新しい写真として保存します。" data-en="You can crop screenshots, trim, rotate, blur or pixelate by tracing with your finger, and add stamps. The original stays untouched and the result is saved as a new photo without location data.">スクショの上下カット、トリミング、回転、指でなぞるモザイク・ぼかし、スタンプができます。元の写真はそのままで、位置情報の入らない新しい写真として保存します。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="見る・整理する・編集する・隠す機能は無料です。買い切りのProでは、ギャラリーを複数作れる(無料版は1つ)、アプリのロックと非公開アルバム、スマートアルバムが使え、広告も表示されなくなります。写真や動画は端末の中だけで扱い、開発者に送られることはありません。" data-en="Viewing, organizing, editing and hiding are free. The one-time Pro purchase adds multiple galleries (the free version has one), app lock with private albums and smart albums, and removes ads. Photos and videos stay on the device and are never sent to the developer.">見る・整理する・編集する・隠す機能は無料です。買い切りのProでは、ギャラリーを複数作れる(無料版は1つ)、アプリのロックと非公開アルバム、スマートアルバムが使え、広告も表示されなくなります。写真や動画は端末の中だけで扱い、開発者に送られることはありません。</p>
+      </details>
     </div>
   </div>
 </section>

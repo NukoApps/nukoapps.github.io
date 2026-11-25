@@ -192,6 +192,85 @@
     header { flex-wrap: wrap; gap: 10px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/lyrics/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "EntertainmentApplication",
+      "description" : "Lyricsは、好きなアーティストの歌詞を集めて覚えるための歌詞帳アプリです。暗記モード、端末の曲との再生、ライブ中にタップするだけのセトリ記録に対応。",
+      "image" : "https://nukoapps.fyi/lyrics/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.lyrics",
+      "isAccessibleForFree" : true,
+      "name" : "Lyrics",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(アーティスト3組まで)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/lyrics/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/lyrics/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Lyricsは、好きなアーティストの歌詞を集めて覚えるための歌詞帳アプリです。アーティスト→アルバム→曲の階層で整理し、暗記モードでは各行を隠してタップで答え合わせができます。端末内の音楽ファイルと紐付けて、歌詞を見ながら再生することもできます。"
+          },
+          "name" : "好きなアーティストの歌詞を覚えるためのアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ライブ中は演奏された曲を順番にタップするだけでセットリストを記録できます。ENCOREなどの区切りやリストにない曲も入れられます。Proでは、よく演奏される曲のランキングや、まだ生で聴いていない曲を表示するライブ統計が使えます。"
+          },
+          "name" : "ライブのセトリを記録できますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "本アプリは歌詞を配信・自動取得しません。手入力・貼り付けのほか、お持ちの歌詞カードをカメラで撮って文字を読み取れます(端末内で処理)。アルバムと曲目はMusicBrainzから取り込めます。"
+          },
+          "name" : "歌詞は自動で取得されますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "基本機能は無料で、アーティストは3組まで登録できます。買い切りのProでは、アーティスト数が無制限になり、A-Bリピート、再生速度の変更、バックグラウンド再生、ライブ統計、歌詞カードのPDF保存、自動バックアップが使え、広告も表示されなくなります。データは端末内にのみ保存されます。"
+          },
+          "name" : "無料で使えますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/lyrics/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 
@@ -345,6 +424,30 @@
     <div class="privacy-note" data-ja="本アプリは歌詞を配信・自動取得しません。お持ちのCDの歌詞カードなど、私的な利用の範囲でお使いください。アーティスト写真はフリーライセンスの画像(Wikimedia Commons)のみを使い、作者とライセンスをアプリ内に表示します。" data-en="The app does not provide or download lyrics. Please use it for personal purposes, e.g. with the booklets of CDs you own. Artist photos come only from freely licensed images (Wikimedia Commons), with the author and license shown in the app.">
       本アプリは歌詞を配信・自動取得しません。お持ちのCDの歌詞カードなど、私的な利用の範囲でお使いください。
       アーティスト写真はフリーライセンスの画像(Wikimedia Commons)のみを使い、作者とライセンスをアプリ内に表示します。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="好きなアーティストの歌詞を覚えるためのアプリはありますか？" data-en="Is there an app for learning my favorite artist's lyrics?">好きなアーティストの歌詞を覚えるためのアプリはありますか？</summary>
+        <p data-ja="Lyricsは、好きなアーティストの歌詞を集めて覚えるための歌詞帳アプリです。アーティスト→アルバム→曲の階層で整理し、暗記モードでは各行を隠してタップで答え合わせができます。端末内の音楽ファイルと紐付けて、歌詞を見ながら再生することもできます。" data-en="Lyrics is a lyric book app for collecting and learning your favorite artists' lyrics. It organizes them by artist, album and song, and its memorize mode hides each line until you tap to check. You can also link songs to music files on your device and play them while reading.">Lyricsは、好きなアーティストの歌詞を集めて覚えるための歌詞帳アプリです。アーティスト→アルバム→曲の階層で整理し、暗記モードでは各行を隠してタップで答え合わせができます。端末内の音楽ファイルと紐付けて、歌詞を見ながら再生することもできます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="ライブのセトリを記録できますか？" data-en="Can I log concert setlists?">ライブのセトリを記録できますか？</summary>
+        <p data-ja="ライブ中は演奏された曲を順番にタップするだけでセットリストを記録できます。ENCOREなどの区切りやリストにない曲も入れられます。Proでは、よく演奏される曲のランキングや、まだ生で聴いていない曲を表示するライブ統計が使えます。" data-en="During a show, just tap each song as it's played to log the setlist, including breaks like ENCORE and songs not on your list. Pro adds live statistics such as the most-played songs and the songs you haven't heard live yet.">ライブ中は演奏された曲を順番にタップするだけでセットリストを記録できます。ENCOREなどの区切りやリストにない曲も入れられます。Proでは、よく演奏される曲のランキングや、まだ生で聴いていない曲を表示するライブ統計が使えます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="歌詞は自動で取得されますか？" data-en="Does it fetch lyrics automatically?">歌詞は自動で取得されますか？</summary>
+        <p data-ja="本アプリは歌詞を配信・自動取得しません。手入力・貼り付けのほか、お持ちの歌詞カードをカメラで撮って文字を読み取れます(端末内で処理)。アルバムと曲目はMusicBrainzから取り込めます。" data-en="No. The app does not distribute or fetch lyrics. You type or paste them, or photograph a lyric sheet you own and have the text read on the device. Album and track lists can be imported from MusicBrainz.">本アプリは歌詞を配信・自動取得しません。手入力・貼り付けのほか、お持ちの歌詞カードをカメラで撮って文字を読み取れます(端末内で処理)。アルバムと曲目はMusicBrainzから取り込めます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="基本機能は無料で、アーティストは3組まで登録できます。買い切りのProでは、アーティスト数が無制限になり、A-Bリピート、再生速度の変更、バックグラウンド再生、ライブ統計、歌詞カードのPDF保存、自動バックアップが使え、広告も表示されなくなります。データは端末内にのみ保存されます。" data-en="The core features are free for up to 3 artists. The one-time Pro purchase adds unlimited artists, A-B repeat, playback speed, background playback, live statistics, PDF lyric cards and automatic backup, and removes ads. Data stays on your device.">基本機能は無料で、アーティストは3組まで登録できます。買い切りのProでは、アーティスト数が無制限になり、A-Bリピート、再生速度の変更、バックグラウンド再生、ライブ統計、歌詞カードのPDF保存、自動バックアップが使え、広告も表示されなくなります。データは端末内にのみ保存されます。</p>
+      </details>
     </div>
   </div>
 </section>

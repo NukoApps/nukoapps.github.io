@@ -1,0 +1,238 @@
+# NukoApps
+
+> NukoApps (ヌコアップス) is an independent developer publishing simple, privacy-focused Android apps: photo and video viewers, NAS backup and browsing, file organizing, Chinese pronunciation learning, travel and event logs, and a drawing app. Apps process data on the device and never send it to the developer. Most are free to use, with an optional one-time "Pro" in-app purchase (no subscriptions).
+>
+> NukoApps(ヌコアップス)は、個人で開発しているAndroidアプリのブランドです。写真・動画ビューア、NASのバックアップと閲覧、ファイル整理、中国語の発音学習、旅行やイベントの記録、お絵描きアプリなどを公開しています。データは端末内で処理し、開発者に送られることはありません。多くは無料で使え、任意で買い切りの「Pro」(サブスクなし)を用意しています。
+
+- Website: https://nukoapps.fyi/
+- About / 事業概要: https://nukoapps.fyi/about/
+- Contact / お問い合わせ: contact@nukoapps.fyi
+- Platform: Android (Google Play), unless noted
+
+## Photos & video / 写真・動画
+
+### NukoGallery
+
+- Page: https://nukoapps.fyi/gallery/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.gallery
+- Price: Free (all viewing features are free). Pro is a one-time in-app purchase.
+- 料金: 無料(閲覧機能はすべて無料)。Proは買い切りのアプリ内購入。
+- EN: NukoGallery lets you browse the photos and videos on your home NAS or PC like your phone's gallery, on Android. Lists show right away and big videos seek fast. Works with SMB, SFTP, WebDAV and FTP.
+- JA: NukoGalleryは、自宅のNASやPCの共有フォルダにある写真・動画を、スマホのギャラリーのようにサクサク閲覧するAndroidアプリです。一覧はすぐ表示、大きな動画もシークが速い。SMB・SFTP・WebDAV・FTPに対応。
+- Questions it answers:
+  - Is there an app for browsing NAS photos and videos smoothly on a phone?
+  - Are my photos ever sent to the developer?
+  - NASの写真や動画をスマホでサクサク見られるアプリはありますか？
+  - 写真が開発者や外部のサーバーに送られることはありますか？
+
+### Gallery (Gallery by NukoApps)
+
+- Page: https://nukoapps.fyi/localgallery/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.localgallery
+- Price: Free (viewing, organizing, editing and hiding are free). Pro is a one-time in-app purchase.
+- 料金: 無料(見る・整理する・編集する・隠す機能は無料)。Proは買い切りのアプリ内購入。
+- EN: Gallery is an Android app that shows your phone's photos and videos in galleries made from the folders you choose. It tells you when new folders appear, and lets you hide the galleries you'd rather not show.
+- JA: Galleryは、スマホの写真・動画を、選んだフォルダごとのギャラリーで見るAndroidアプリです。新しいフォルダができたらお知らせ、人に見せたくないギャラリーは隠しておけます。
+- Questions it answers:
+  - Is there a gallery app that shows phone photos folder by folder?
+  - Will I notice when a new folder appears?
+  - Can I hide photos I don't want others to see when I show my phone?
+  - スマホの写真をフォルダごとに分けて見られるギャラリーアプリはありますか？
+  - 新しいフォルダができたときに気づけますか？
+  - 人にスマホの写真を見せるとき、見られたくない写真を隠せますか？
+
+### Compress
+
+- Page: https://nukoapps.fyi/compress/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.compress
+- Price: Free with a small banner ad. Pro is a one-time in-app purchase.
+- 料金: 無料(画面下部に小さな広告)。Proは買い切りのアプリ内購入。
+- EN: Compress is an Android app that shrinks your photos to an exact target file size. Batch compression, format conversion, and resizing built in.
+- JA: Compressは、写真を指定したKB/MBにぴったり圧縮できるAndroid向けの画像圧縮アプリです。一括圧縮・フォーマット変換・リサイズに対応。
+- Questions it answers:
+  - Is there an app that compresses photos to a set size, such as under 200 KB?
+  - 写真を200KB以下など、決まったサイズに圧縮できるアプリはありますか？
+
+### Exif
+
+- Page: https://nukoapps.fyi/exif/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.exif
+- Price: Free (privacy protection such as GPS removal is always free). Pro is a one-time in-app purchase.
+- 料金: 無料(GPS削除などプライバシー保護は常に無料)。Proは買い切りのアプリ内購入。
+- EN: Exif is an Android app that shows the hidden GPS location, date and camera details (EXIF) inside your photos and removes them in one tap. Your original is never modified — the cleaned photo is saved as a new copy.
+- JA: Exifは、写真に隠れたGPS位置情報・撮影日時・カメラ情報(EXIF)を確認して、ワンタップで削除できるAndroidアプリです。元の写真は変更せず、新しいコピーとして保存します。
+- Questions it answers:
+  - Is there an app that removes GPS location from photos before sharing?
+  - What happens to the original photo and its quality?
+  - 写真の位置情報(GPS)を消してから共有できるアプリはありますか？
+  - 元の写真や画質はどうなりますか？
+
+### Stash
+
+- Page: https://nukoapps.fyi/nukostash/
+- Get it: APK on GitHub (sideload, not on Google Play): https://github.com/NukoApps/stash/releases/latest
+- Price: Distributed as an APK on GitHub (sideload). An unofficial app, not on Google Play.
+- 料金: GitHubからAPKを配布(サイドロード)。Google Playでは配布していない非公式アプリ。
+- EN: Stash is a timeline viewer that makes it easy to browse and save photos and videos from your X (Twitter) timeline.
+- JA: Stashは、X(Twitter)のタイムラインから写真・動画だけを効率よく閲覧・保存できるビューワーアプリです。
+- Questions it answers:
+  - Is there an app for viewing and saving only the images and videos from an X (Twitter) timeline?
+  - X(Twitter)のタイムラインから画像や動画だけを見たり保存したりできるアプリはありますか？
+
+## NAS backup & file management / NASバックアップ・ファイル管理
+
+### NukoSync
+
+- Page: https://nukoapps.fyi/sync/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.sync
+- Price: Free (all basic backup features are free). Pro is a one-time in-app purchase.
+- 料金: 無料(バックアップの基本機能はすべて無料)。Proは買い切りのアプリ内購入。
+- EN: NukoSync backs up and syncs phone folders with your home NAS or PC on Android. It copies only what changed, fast, and resumes where it stopped. Works with SMB, SFTP, WebDAV and FTP.
+- JA: NukoSyncは、スマホのフォルダを自宅のNASやPCへバックアップ・同期するAndroidアプリです。変更されたファイルだけを高速にコピーし、途中で切れても続きから再開します。SMB・SFTP・WebDAV・FTPに対応。
+- Questions it answers:
+  - Is there an app that automatically backs up phone photos and folders to a home NAS?
+  - What happens if the connection drops mid-backup?
+  - Are my files ever sent to the developer?
+  - スマホの写真やフォルダを自宅のNASに自動でバックアップするアプリはありますか？
+  - バックアップの途中で通信が切れたらどうなりますか？
+  - ファイルが開発者に送られることはありますか？
+
+### Tidy (Tidy - Auto File Organizer)
+
+- Page: https://nukoapps.fyi/tidy/
+- Get it: Coming soon to Google Play / Google Playで近日公開
+- Price: Free (every feature works in the free version). Pro is a one-time in-app purchase. Coming soon to Google Play.
+- 料金: 無料(機能はすべて無料版でも使える)。Proは買い切りのアプリ内購入。Google Playで近日公開。
+- EN: Tidy is an Android app that organizes the files scattered across your phone automatically, by rules. Gather the images every app saves into one folder, and switch the Camera folder each year or month. Every move can be undone.
+- JA: Tidyは、スマホの中に散らばったファイルをルールで自動整理するAndroidアプリです。アプリごとにバラバラの画像を1つのフォルダにまとめ、年や月が変わったらCameraフォルダを自動で切り替え。すべての操作は元に戻せます。
+- Questions it answers:
+  - Is there an app that organizes Android files automatically?
+  - My Camera folder has so many photos that it opens slowly.
+  - How much is it, and when is it available?
+  - Androidのファイルを自動で整理してくれるアプリはありますか？
+  - Cameraフォルダに写真がたまりすぎて開くのが遅いです。
+  - 料金といつ使えるかを教えてください。
+
+### Rename
+
+- Page: https://nukoapps.fyi/rename/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.rename
+- Price: Free (up to 50 files per batch). Pro is a one-time in-app purchase.
+- 料金: 無料(1回のバッチで最大50ファイル)。Proは買い切りのアプリ内購入。
+- EN: Rename is a batch file renamer. Add a prefix or suffix, find & replace, or number your files in order. Preview every new name before you rename, and undo in one tap.
+- JA: Renameは、たくさんのファイル名をまとめて変更できるアプリです。先頭・末尾の追加、検索と置換、連番。変更後の名前をプレビューしてから実行でき、ワンタップで元に戻せます。
+- Questions it answers:
+  - Is there an app for batch renaming files on Android?
+  - I'm worried about renaming something by mistake.
+  - Androidでファイル名を一括変更できるアプリはありますか？
+  - 間違えて名前を変えてしまわないか心配です。
+
+## Chinese learning (Pinyin / Zhuyin) / 中国語学習(拼音・注音)
+
+### Scope
+
+- Page: https://nukoapps.fyi/scope/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.scope
+- Price: Free (all reading features are free, with a small ad at the top). Pro is a one-time in-app purchase.
+- 料金: 無料(読み取り機能はすべて無料、画面上部に小さな広告)。Proは買い切りのアプリ内購入。
+- EN: Scope is an Android app that overlays Pinyin and Zhuyin on Chinese text seen through your camera. Choose Taiwan Mandarin or Putonghua, and it works offline.
+- JA: Scopeは、カメラをかざすだけで中国語(繁体字・簡体字)に拼音・注音を重ねて表示するAndroidアプリ。台湾華語/普通話を選べて、オフラインでも使えます。
+- Questions it answers:
+  - Is there an app that shows the Pinyin or Zhuyin of Chinese signs and menus through the camera?
+  - Does it follow Taiwan Mandarin or Putonghua?
+  - 中国語の看板やメニューの読み方(ピンイン・注音)をカメラで調べられるアプリはありますか？
+  - 台湾華語と普通話のどちらに対応していますか？
+
+### ChineseShadowing
+
+- Page: https://nukoapps.fyi/chineseshadowing/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.chineseshadowing
+- Price: Free (up to 50 sentences, with a small ad). Pro is a one-time in-app purchase.
+- 料金: 無料(文章は合計50文まで、小さな広告)。Proは買い切りのアプリ内購入。
+- EN: ChineseShadowing is an Android app for Chinese shadowing practice. It adds Pinyin and Zhuyin to any text automatically, works offline, and lets you record and compare your voice, with optional AI scoring.
+- JA: ChineseShadowingは、好きな中国語の文章に拼音・注音を自動で付けてシャドウイング練習ができるAndroidアプリ。オフライン対応、録音して聞き比べ、AI発音採点(任意)。
+- Questions it answers:
+  - Is there an app for Chinese shadowing practice with any text I choose?
+  - Does it support Taiwan Mandarin and Zhuyin (Bopomofo)?
+  - 好きな中国語の文章でシャドウイング練習ができるアプリはありますか？
+  - 台湾華語や注音(ボポモフォ)にも対応していますか？
+
+## Records & hobbies / 記録・趣味
+
+### Trips
+
+- Page: https://nukoapps.fyi/trip/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.trip
+- Price: Free (up to 5 trips). Pro is a one-time in-app purchase.
+- 料金: 無料(旅行5件まで)。Proは買い切りのアプリ内購入。
+- EN: Trips is a travel log that records every flight and every country you visit, trip by trip. Read flights from booking mails and screenshots, and collect a passport-style stamp for every entry and exit.
+- JA: Tripsは、乗った便と行った国を旅行ごとに記録する海外旅行ログアプリです。予約メールやスクショから便を読み取り、入国のたびにパスポート風のスタンプ帳にスタンプが押されます。
+- Questions it answers:
+  - Is there an app for logging the countries I've visited and the flights I've taken?
+  - Can it read flights from booking emails?
+  - My passport doesn't get stamped anymore. Can I still keep a record?
+  - Does it handle overnight flights and the date line?
+  - 海外旅行で行った国や乗った飛行機を記録できるアプリはありますか？
+  - 予約メールから便の情報を読み取れますか？
+  - パスポートにスタンプが押されなくなったので、記念に残したいです。
+  - 夜行便や日付変更線をまたぐフライトも正しく記録できますか？
+
+### Lyrics
+
+- Page: https://nukoapps.fyi/lyrics/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.lyrics
+- Price: Free (up to 3 artists). Pro is a one-time in-app purchase.
+- 料金: 無料(アーティスト3組まで)。Proは買い切りのアプリ内購入。
+- EN: Lyrics is a lyric book app for collecting and learning your favorite artists' lyrics, with a memorize mode, playback of your own music, and one-tap setlist logging at concerts.
+- JA: Lyricsは、好きなアーティストの歌詞を集めて覚えるための歌詞帳アプリです。暗記モード、端末の曲との再生、ライブ中にタップするだけのセトリ記録に対応。
+- Questions it answers:
+  - Is there an app for learning my favorite artist's lyrics?
+  - 好きなアーティストの歌詞を覚えるためのアプリはありますか？
+
+### Nukoket
+
+- Page: https://nukoapps.fyi/doujin/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.doujin
+- Price: All features free, no subscription. Small ads on some screens; optional in-app tips.
+- 料金: 全機能無料(サブスクなし)。一部画面に小さな広告、任意のカンパあり。
+- EN: Nukoket is a free Android app for doujin events and fan conventions. Booth register with change calculation, stock tracking, venue map and budget — all working offline.
+- JA: Nukoketは、同人誌即売会・コミケ・オンリーイベントで頒布と買い物をサポートする無料Androidアプリです。レジ・お釣り計算・在庫管理・会場マップ・予算管理に対応し、オフラインで使えます。
+- Questions it answers:
+  - Is there a register app for exhibitors at doujin events like Comiket?
+  - Does it work at venues with bad reception?
+  - Is it free, and does it work at events abroad?
+  - 同人誌即売会(コミケなど)でサークル参加するときに使えるレジアプリはありますか？
+  - 電波の悪い会場でも使えますか？
+  - 無料ですか？海外のイベントでも使えますか？
+
+## Drawing / お絵描き
+
+### NukoClip
+
+- Page: https://nukoapps.fyi/nukoclip/
+- Get it: Google Play: https://play.google.com/store/apps/details?id=fyi.nukoapps.nukoclip
+- Price: Free to use with no ads. Pro is a one-time in-app purchase.
+- 料金: 基本無料・広告なし。Proは買い切りのアプリ内購入。
+- EN: Simple drawing app with rich layers, pressure brushes & left-hand controller. Free to use, no ads, with an optional one-time Pro upgrade.
+- JA: NukoClipは、レイヤー機能や豊富な描画ツールを備えた、Android向けの基本無料お絵描きアプリです。広告なし・個人情報の収集なし。追加機能は買い切りのProで解放できます。
+- Questions it answers:
+  - Is there a drawing app for Android with full layer support?
+  - Does it support pen pressure and a left-hand device?
+  - Androidで使えるレイヤー機能付きのお絵描きアプリはありますか？
+  - 筆圧や左手デバイスには対応していますか？
+
+## Property investment / 不動産投資
+
+### 大家ノート (Landlord Note)
+
+- Page: https://nukoapps.fyi/estate/
+- Get it: Coming soon to Google Play / Google Playで近日公開
+- Price: All features free for one property. Pro (one-time in-app purchase) for two or more. Coming soon to Google Play.
+- 料金: 1物件まで全機能無料。2物件目からはPro(買い切りのアプリ内購入)。Google Playで近日公開。
+- EN: Landlord Note is an Android app for owners of rental condos and other investment property. Record loans, rent, expenses and documents in one place and get monthly cash flow and tax estimates calculated for you, with prepayment, refinancing and sale simulations and tax rules for 12 countries.
+- JA: 大家ノートは、区分マンションなど投資用不動産のオーナー向けAndroidアプリです。ローン・家賃・経費・書類をまとめて記録し、毎月のキャッシュフローと税金の目安を自動で計算。繰上返済・借り換え・売却のシミュレーション、12か国の税制に対応。
+- Questions it answers:
+  - Is there an app for tracking income and loans on a rental condo investment?
+  - How much is it, and when is it available?
+  - 区分マンション投資の収支やローンを管理できるアプリはありますか？
+  - 料金といつ使えるかを教えてください。

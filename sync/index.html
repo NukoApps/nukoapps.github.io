@@ -212,6 +212,93 @@
     .screens { justify-content: flex-start; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/sync/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "UtilitiesApplication",
+      "description" : "NukoSyncは、スマホのフォルダを自宅のNASやPCへバックアップ・同期するAndroidアプリです。変更されたファイルだけを高速にコピーし、途中で切れても続きから再開します。SMB・SFTP・WebDAV・FTPに対応。",
+      "image" : "https://nukoapps.fyi/sync/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.sync",
+      "isAccessibleForFree" : true,
+      "name" : "NukoSync",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(バックアップの基本機能はすべて無料)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/sync/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/sync/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "NukoSyncは、スマホのフォルダを自宅のNASやPCへバックアップ・同期するAndroidアプリです。新しいファイルと変更されたファイルだけをコピーし、N時間ごと・毎日・毎週・毎月の自動実行や、Wi-Fiのときだけ・充電中だけといった条件も選べます。"
+          },
+          "name" : "スマホの写真やフォルダを自宅のNASに自動でバックアップするアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Wi-Fiが切れたりAndroidに止められたりしても、次の実行で続きから再開します。中途半端なファイルは残りません。"
+          },
+          "name" : "バックアップの途中で通信が切れたらどうなりますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "SMB・SFTP・WebDAV・FTPに対応しています。家庭用NAS、Windowsの共有フォルダ、Raspberry Piなどで使えます。"
+          },
+          "name" : "どのNASやサーバーに対応していますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "バックアップの基本機能はすべて無料です。買い切りのProでは、定期実行のジョブ数が無制限(無料版は1件)になり、双方向同期、ファイルフィルタ、並列転送、SHA-256での検証、ウィジェットなどが使え、広告も表示されなくなります。"
+          },
+          "name" : "無料で使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ありません。ファイルはスマホとあなたが登録したサーバーの間だけでやり取りされ、スマホ側はあなたが選んだフォルダにだけアクセスします。"
+          },
+          "name" : "ファイルが開発者に送られることはありますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/sync/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 <header>
@@ -353,6 +440,34 @@
     </div>
     <div class="privacy-note" data-ja="Windowsの共有フォルダを使う場合:パスワード保護共有にはローカルアカウントが必要です。Microsoftアカウントだけのパソコンでは、パスワード保護共有をオフにして、アプリのユーザー名を空欄にしてください。" data-en="Using a Windows shared folder: password-protected sharing needs a local account. On a PC with only a Microsoft account, turn password-protected sharing off and leave the user name empty in the app.">
       Windowsの共有フォルダを使う場合:パスワード保護共有にはローカルアカウントが必要です。Microsoftアカウントだけのパソコンでは、パスワード保護共有をオフにして、アプリのユーザー名を空欄にしてください。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="スマホの写真やフォルダを自宅のNASに自動でバックアップするアプリはありますか？" data-en="Is there an app that automatically backs up phone photos and folders to a home NAS?">スマホの写真やフォルダを自宅のNASに自動でバックアップするアプリはありますか？</summary>
+        <p data-ja="NukoSyncは、スマホのフォルダを自宅のNASやPCへバックアップ・同期するAndroidアプリです。新しいファイルと変更されたファイルだけをコピーし、N時間ごと・毎日・毎週・毎月の自動実行や、Wi-Fiのときだけ・充電中だけといった条件も選べます。" data-en="NukoSync is an Android app that backs up and syncs phone folders to your home NAS or PC. It copies only new and changed files, and can run automatically every N hours, daily, weekly or monthly, optionally only on Wi-Fi or while charging.">NukoSyncは、スマホのフォルダを自宅のNASやPCへバックアップ・同期するAndroidアプリです。新しいファイルと変更されたファイルだけをコピーし、N時間ごと・毎日・毎週・毎月の自動実行や、Wi-Fiのときだけ・充電中だけといった条件も選べます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="バックアップの途中で通信が切れたらどうなりますか？" data-en="What happens if the connection drops mid-backup?">バックアップの途中で通信が切れたらどうなりますか？</summary>
+        <p data-ja="Wi-Fiが切れたりAndroidに止められたりしても、次の実行で続きから再開します。中途半端なファイルは残りません。" data-en="Even if Wi-Fi drops or Android stops the app, the next run resumes where it left off, and no half-written files are left behind.">Wi-Fiが切れたりAndroidに止められたりしても、次の実行で続きから再開します。中途半端なファイルは残りません。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="どのNASやサーバーに対応していますか？" data-en="Which NAS and servers does it support?">どのNASやサーバーに対応していますか？</summary>
+        <p data-ja="SMB・SFTP・WebDAV・FTPに対応しています。家庭用NAS、Windowsの共有フォルダ、Raspberry Piなどで使えます。" data-en="It supports SMB, SFTP, WebDAV and FTP, so it works with home NAS units, Windows shared folders, a Raspberry Pi and more.">SMB・SFTP・WebDAV・FTPに対応しています。家庭用NAS、Windowsの共有フォルダ、Raspberry Piなどで使えます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="バックアップの基本機能はすべて無料です。買い切りのProでは、定期実行のジョブ数が無制限(無料版は1件)になり、双方向同期、ファイルフィルタ、並列転送、SHA-256での検証、ウィジェットなどが使え、広告も表示されなくなります。" data-en="All basic backup features are free. The one-time Pro purchase adds unlimited scheduled jobs (the free version has one), two-way sync, file filters, parallel transfers, SHA-256 verification, widgets and more, and removes ads.">バックアップの基本機能はすべて無料です。買い切りのProでは、定期実行のジョブ数が無制限(無料版は1件)になり、双方向同期、ファイルフィルタ、並列転送、SHA-256での検証、ウィジェットなどが使え、広告も表示されなくなります。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="ファイルが開発者に送られることはありますか？" data-en="Are my files ever sent to the developer?">ファイルが開発者に送られることはありますか？</summary>
+        <p data-ja="ありません。ファイルはスマホとあなたが登録したサーバーの間だけでやり取りされ、スマホ側はあなたが選んだフォルダにだけアクセスします。" data-en="No. Files travel only between your phone and the servers you register, and the app accesses only the phone folders you choose.">ありません。ファイルはスマホとあなたが登録したサーバーの間だけでやり取りされ、スマホ側はあなたが選んだフォルダにだけアクセスします。</p>
+      </details>
     </div>
   </div>
 </section>

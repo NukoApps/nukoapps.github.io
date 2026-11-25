@@ -164,6 +164,85 @@
     header { flex-wrap: wrap; gap: 10px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@graph" : [
+    {
+      "@id" : "https://nukoapps.fyi/rename/#app",
+      "@type" : "SoftwareApplication",
+      "applicationCategory" : "UtilitiesApplication",
+      "description" : "Renameは、たくさんのファイル名をまとめて変更できるアプリです。先頭・末尾の追加、検索と置換、連番。変更後の名前をプレビューしてから実行でき、ワンタップで元に戻せます。",
+      "image" : "https://nukoapps.fyi/rename/assets/icon.png",
+      "installUrl" : "https://play.google.com/store/apps/details?id=fyi.nukoapps.rename",
+      "isAccessibleForFree" : true,
+      "name" : "Rename",
+      "offers" : {
+        "@type" : "Offer",
+        "description" : "無料(1回のバッチで最大50ファイル)。Proは買い切りのアプリ内購入。",
+        "price" : "0",
+        "priceCurrency" : "USD"
+      },
+      "operatingSystem" : "Android",
+      "publisher" : {
+        "@id" : "https://nukoapps.fyi/#org",
+        "@type" : "Organization",
+        "name" : "NukoApps",
+        "url" : "https://nukoapps.fyi/"
+      },
+      "url" : "https://nukoapps.fyi/rename/"
+    },
+    {
+      "@id" : "https://nukoapps.fyi/rename/#faq",
+      "@type" : "FAQPage",
+      "mainEntity" : [
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "Renameは、たくさんのファイル名をまとめて変更できるAndroidアプリです。新しい名前と連番への付け替え、先頭・末尾への文字の追加、検索と置換、桁数を指定した連番に対応し、写真・動画・書類・音楽など、どのファイル形式でも使えます。"
+          },
+          "name" : "Androidでファイル名を一括変更できるアプリはありますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "実行前にすべてのファイルの「今の名前」と「変更後の名前」を並べてプレビューでき、同じ名前や空の名前になる場合はその場で警告します。直前のバッチはワンタップで元の名前に戻せます。"
+          },
+          "name" : "間違えて名前を変えてしまわないか心配です。"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "無料版では1回のバッチで最大50ファイルまで変更できます。買い切りのProでは1回あたりのファイル数が無制限になり、フォルダの一括追加が使え、広告も表示されなくなります。"
+          },
+          "name" : "無料で使えますか？"
+        },
+        {
+          "@type" : "Question",
+          "acceptedAnswer" : {
+            "@type" : "Answer",
+            "text" : "ありません。リネームの処理はすべて端末内で行われ、ファイル名や中身がサーバーに送信されることはありません。"
+          },
+          "name" : "ファイルが外部に送られることはありますか？"
+        }
+      ],
+      "url" : "https://nukoapps.fyi/rename/"
+    }
+  ]
+}
+</script>
+<style>
+  .faq-list { max-width: 760px; margin: 24px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid rgba(127,127,127,.3); }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 32px 16px 0; list-style: none; position: relative; line-height: 1.6; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 13px; font-size: 22px; font-weight: 400; opacity: .6; }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p { margin: 0 0 18px; line-height: 1.8; opacity: .85; }
+</style>
 </head>
 <body>
 <header>
@@ -284,6 +363,30 @@
     </div>
     <div class="privacy-note" data-ja="Androidのバージョンによっては、メディアフォルダにある写真・動画のリネーム時に、システムのダイアログで1回限りの許可を求められることがあります。" data-en="On some Android versions, renaming photos and videos in media folders may ask for a one-time permission in a system dialog.">
       Androidのバージョンによっては、メディアフォルダにある写真・動画のリネーム時に、システムのダイアログで1回限りの許可を求められることがあります。
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 data-ja="よくある質問" data-en="FAQ">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-ja="Androidでファイル名を一括変更できるアプリはありますか？" data-en="Is there an app for batch renaming files on Android?">Androidでファイル名を一括変更できるアプリはありますか？</summary>
+        <p data-ja="Renameは、たくさんのファイル名をまとめて変更できるAndroidアプリです。新しい名前と連番への付け替え、先頭・末尾への文字の追加、検索と置換、桁数を指定した連番に対応し、写真・動画・書類・音楽など、どのファイル形式でも使えます。" data-en="Rename is an Android app that renames many files at once. It can give files a new name with numbering, add a prefix or suffix, find and replace, and number files with a chosen number of digits. It works with any file type: photos, videos, documents, music and more.">Renameは、たくさんのファイル名をまとめて変更できるAndroidアプリです。新しい名前と連番への付け替え、先頭・末尾への文字の追加、検索と置換、桁数を指定した連番に対応し、写真・動画・書類・音楽など、どのファイル形式でも使えます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="間違えて名前を変えてしまわないか心配です。" data-en="I'm worried about renaming something by mistake.">間違えて名前を変えてしまわないか心配です。</summary>
+        <p data-ja="実行前にすべてのファイルの「今の名前」と「変更後の名前」を並べてプレビューでき、同じ名前や空の名前になる場合はその場で警告します。直前のバッチはワンタップで元の名前に戻せます。" data-en="Before renaming, a preview lists every file's current and new name, and it warns you on the spot about duplicate or empty names. The last batch can be undone in one tap.">実行前にすべてのファイルの「今の名前」と「変更後の名前」を並べてプレビューでき、同じ名前や空の名前になる場合はその場で警告します。直前のバッチはワンタップで元の名前に戻せます。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="無料で使えますか？" data-en="Is it free?">無料で使えますか？</summary>
+        <p data-ja="無料版では1回のバッチで最大50ファイルまで変更できます。買い切りのProでは1回あたりのファイル数が無制限になり、フォルダの一括追加が使え、広告も表示されなくなります。" data-en="The free version renames up to 50 files per batch. The one-time Pro purchase removes the limit, adds whole-folder import and removes ads.">無料版では1回のバッチで最大50ファイルまで変更できます。買い切りのProでは1回あたりのファイル数が無制限になり、フォルダの一括追加が使え、広告も表示されなくなります。</p>
+      </details>
+      <details class="faq-item">
+        <summary data-ja="ファイルが外部に送られることはありますか？" data-en="Are my files sent anywhere?">ファイルが外部に送られることはありますか？</summary>
+        <p data-ja="ありません。リネームの処理はすべて端末内で行われ、ファイル名や中身がサーバーに送信されることはありません。" data-en="No. Renaming happens entirely on the device, and file names and contents are never sent to a server.">ありません。リネームの処理はすべて端末内で行われ、ファイル名や中身がサーバーに送信されることはありません。</p>
+      </details>
     </div>
   </div>
 </section>
